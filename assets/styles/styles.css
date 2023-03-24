@@ -1,11 +1,18 @@
  body {
      background-color: rgb(125, 173, 113);
-     background: url(../images/background/background-night.png) center no-repeat;
+     background: url(../images/background/background.png) center no-repeat;
      background-size: cover;
      background-position-y: 0;
      min-height: 100vh;
  }
  
+ .dark-mode {
+    background-color: #333;
+    background-image: url(../images/background/background-night.png);
+    background-size: cover;
+    min-height: 100vh;
+  }
+
  #pokemon {
      border: 1px solid white;
      border-radius: 20px;

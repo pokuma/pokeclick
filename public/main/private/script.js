@@ -160,3 +160,9 @@ function validateForm() {
           }
           return true;
         }
+
+function changeDarkMode() {
+    var body = document.getElementById("body");
+    body.classList.toggle("dark-mode");
+}
+        
