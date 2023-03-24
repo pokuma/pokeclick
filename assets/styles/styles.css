@@ -33,6 +33,28 @@
      padding-top: 60px;
  }
  
+ .input-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.input-container input {
+  padding-left: 40px; /*Agrega el espacio para el ícono*/
+}
+
+.input-container i {
+  position: absolute;
+  left: 10px; /*Ajusta la posición del ícono*/
+  color: #ccc;
+  padding-bottom: 15px;
+}
+
+.input-container input:focus + i {
+  color: #007bff;
+}
+
+
  .form-register {
      width: fit-content;
      padding: 30px;
