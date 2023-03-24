@@ -2,8 +2,8 @@ let pokemonList = ["0.png", "1.01.png", "1.02.png", "1.03.png", "1.png", "10.01.
 
 // Pokemon health points bar
 const hpBar = document.getElementById("hpBar");
-const yellowZone = hpBar.value / 1.3;
-const redZone = hpBar.value / 4;
+const yellowZone = hpBar.value / 1.5;
+const redZone = hpBar.value / 3;
 
 // Experience bar
 let xpBar = document.getElementById("xpBar");
