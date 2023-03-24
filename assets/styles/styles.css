@@ -34,6 +34,21 @@
  }
 
 
+ .form-register {
+  width: 250px;
+  padding:  30px;
+  margin: auto;
+}
+
+.controlsRegister {
+ width: 200px;
+ padding: 10px;
+ border-radius: 4px;
+ margin-bottom: 16px;
+ border: 1px solid rgb(123, 42, 199);
+}
+
+
  @keyframes shake {
    0% {
      transform: translate(1px, 1px) rotate(0deg);
