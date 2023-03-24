@@ -58,7 +58,6 @@
  border: 1px solid rgb(123, 42, 199);
 }
 
-
  @keyframes shake {
    0% {
      transform: translate(1px, 1px) rotate(0deg);
