@@ -24,10 +24,12 @@ let dmg = 1;
 let pokeDamageNav = document.getElementById("pokeDamage");
 let pokeDmg = 1;
 
-
+// Pokemon image
 const pokemon = document.getElementById("pokemon");
 
+// Pokemon name
 const pokeName = document.getElementById("pokemonName");
+
 init();
 
 // Initiates the game for the first time
@@ -57,14 +59,30 @@ function attack() {
     }
 
     if (hpBar.value <= 0) {
-        stopPokemonShake()
-        hpBar.style.accentColor = "green";
-        spawnPokemon();
-        gainXP();
-        gainMoney();
-        restoreHP();
+        pokemonDies();
     }
 }
+
+/* When the pokemon dies:
+ *      Get the drops of the pokemon (money and xp)
+ *      Restart next pokemon's shake animation
+ *      Change the color of the hp bar to green
+ *      Spawn another random pokemon
+ *      Restore the bar's hp for the next pokemon
+ */
+function pokemonDies() {
+    getPokemonDrops();
+    stopPokemonShake()
+    hpBar.style.accentColor = "green";
+    spawnPokemon();
+    restoreHP();
+}
+
+function getPokemonDrops() {
+    gainXP();
+    gainMoney();
+}
+
 
 function gainMoney() {
     money += 1;
@@ -90,8 +108,7 @@ function spawnPokemon() {
 }
 
 function gainXP() {
-    if (xpBar.value < 100) // gaining experience
-    {
+    if (xpBar.value < 100) {
         xpBar.value += 20;
     }
 
@@ -101,7 +118,7 @@ function gainXP() {
         xpBar.value = 0;
 
         if (lvl % 5 == 0) {
-            alert("Hihi");
+            alert("You got stronger! +2 damage :)");
             dmg += 2;
             damageNav.innerHTML = "--- Damage: " + dmg;
         }
