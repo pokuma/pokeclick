@@ -19,15 +19,29 @@
         src="assets/images/logo/logo.png"></a>
     <img src="assets\images\register\registerlogo.png" alt="Registro" width="250" style="display: block;  margin: 50px auto 0; ">
                 <div class="form-register">
-               <section>
+                    <form onsubmit="return validateForm()" action="game.html" method="get">
+                    <section>
                 <input class="controlsRegister" type="text" name="nickname" id="nicknames" placeholder="Nickname">
                 <input class="controlsRegister" type="text" name="email" id="emails" placeholder="Email">
                 <input class="controlsRegister" type="password" name="password" id="passwords" placeholder="Password">
-                <form action="game.html" method="get">
                     <input class="submitRegister" type="submit" value="Submit">
-                  </form>
-               </section>
-    </div>
-    <script src="public/main/private/script.js"></script>
+                  </section>
+                </form>
+    </div>  
+
+    <script>//comprobamos que los campos no estén vacíos
+        function validateForm() {
+          const nameInput = document.getElementById("nicknames");
+          const emailInput = document.getElementById("emails");
+          const passwordInput = document.getElementById("passwords");
+
+          if (nameInput.value === "" || emailInput.value === "" || passwordInput.value === "") {
+            alert("Por favor, rellene todos los campos requeridos.");
+            return false;
+          }
+          return true;
+        }
+        </script>
+   <script src="public/main/private/script.js"></script>
 </body>
 </html>
