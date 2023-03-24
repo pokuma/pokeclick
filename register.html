@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta name="Register" content="Register page">
     </meta>
@@ -12,36 +13,42 @@
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="assets/styles/styles.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="assets/styles/styles.css" media="all" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
-    <a draggable="false" href="index.html"><img draggable="false" style="width:150px"
-        src="assets/images/logo/logo.png"></a>
-    <img src="assets\images\register\registerlogo.png" alt="Registro" width="250" style="display: block;  margin: 50px auto 0; ">
-                <div class="form-register">
-                    <form onsubmit="return validateForm()" action="game.html" method="get">
-                    <section>
-                <input class="controlsRegister" type="text" name="nickname" id="nicknames" placeholder="Nickname">
-                <input class="controlsRegister" type="text" name="email" id="emails" placeholder="Email">
-                <input class="controlsRegister" type="password" name="password" id="passwords" placeholder="Password">
-                    <input class="submitRegister" type="submit" value="Submit">
-                  </section>
-                </form>
-    </div>  
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="nav-link" draggable="false" href="index.html"><img src="assets\images\logo\logo.png" draggable="false" style="width: 100px;" alt="logo"></a>
+        </div>
+    </nav>
+    <img src="assets\images\register\registerlogo.png" alt="Registro" width="250" style="display: block;  margin: 50px auto 0; padding-bottom:30px">
+    <div class="form-register bg-secondary">
+        <form onsubmit="return validateForm()" action="game.html" method="get">
+            <section>
+                <input class="controlsRegister" type="text" name="nickname" id="nicknames" placeholder="Nickname"><br>
+                <input class="controlsRegister" type="text" name="email" id="emails" placeholder="Email"><br>
+                <input class="controlsRegister" type="password" name="password" id="passwords" placeholder="Password"><br>
+                <input class="submitRegister" type="submit" value="Submit">
+            </section>
+        </form>
+    </div>
 
-    <script>//comprobamos que los campos no estén vacíos
+    <script>
+        //comprobamos que los campos no estén vacíos
         function validateForm() {
-          const nameInput = document.getElementById("nicknames");
-          const emailInput = document.getElementById("emails");
-          const passwordInput = document.getElementById("passwords");
+            const nameInput = document.getElementById("nicknames");
+            const emailInput = document.getElementById("emails");
+            const passwordInput = document.getElementById("passwords");
 
-          if (nameInput.value === "" || emailInput.value === "" || passwordInput.value === "") {
-            alert("Por favor, rellene todos los campos requeridos.");
-            return false;
-          }
-          return true;
+            if (nameInput.value === "" || emailInput.value === "" || passwordInput.value === "") {
+                alert("Por favor, rellene todos los campos requeridos.");
+                return false;
+            }
+            return true;
         }
-        </script>
-   <script src="public/main/private/script.js"></script>
+    </script>
+    <script src="public/main/private/script.js"></script>
 </body>
+
 </html>
