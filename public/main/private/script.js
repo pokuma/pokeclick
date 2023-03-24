@@ -141,8 +141,10 @@ function options() {
     alert("Options was clicked");
 }
 
-
-
+// Function that plays the sound of the file url we send as parameter
+function playAudio(url) {
+    new Audio(url).play();
+}
 
 
 
