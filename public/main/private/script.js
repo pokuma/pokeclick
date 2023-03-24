@@ -37,10 +37,12 @@ function init() {
     // Spawn the first pokemon
     spawnPokemon();
 
-    levelNav.innerHTML = "--- Level: " + lvl;
-    moneyNav.innerHTML = "--- Money: " + money;
-    damageNav.innerHTML = "--- Player Damage: " + dmg;
-    pokeDamageNav.innerHTML = "--- Pokemon damage: " + pokeDmg;
+
+
+    levelNav.innerHTML = "Level: " + lvl;
+    moneyNav.innerHTML = "Money: " + money;
+    damageNav.innerHTML = "Player Damage: " + dmg;
+    pokeDamageNav.innerHTML = "Pokemon damage: " + pokeDmg;
 
 }
 
@@ -76,6 +78,7 @@ function pokemonDies() {
     hpBar.style.accentColor = "green";
     spawnPokemon();
     restoreHP();
+
 }
 
 function getPokemonDrops() {
@@ -86,7 +89,7 @@ function getPokemonDrops() {
 
 function gainMoney() {
     money += 1;
-    moneyNav.innerHTML = "--- Money: " + money;
+    moneyNav.innerHTML = "Money: " + money;
 }
 
 function startPokemonShake() {
@@ -114,13 +117,13 @@ function gainXP() {
 
     if (xpBar.value >= 100) {
         lvl += 1;
-        levelNav.innerHTML = "--- Level: " + lvl;
+        levelNav.innerHTML =  "Level: " + lvl;
         xpBar.value = 0;
 
         if (lvl % 5 == 0) {
             alert("You got stronger! +2 damage :)");
             dmg += 2;
-            damageNav.innerHTML = "--- Damage: " + dmg;
+            damageNav.innerHTML =  "Damage: " + dmg;
         }
     }
 }
