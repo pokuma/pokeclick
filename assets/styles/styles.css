@@ -40,6 +40,16 @@
   margin: auto;
 }
 
+.submitRegister {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  padding: 10px;
+  border-radius: 4px;
+  margin: auto;
+ }
+
 .controlsRegister {
  width: 200px;
  padding: 10px;
