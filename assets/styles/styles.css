@@ -1,12 +1,8 @@
-/* body {
+ body {
   background-color: rgb(125, 173, 113);
   background: url(../images/background/background.png) center no-repeat;
   background-size: cover;
   min-height: 100vh;
-} */
-
-body {
-  background-color: black;
 }
 
 #pokemon {
