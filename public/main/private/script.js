@@ -117,13 +117,13 @@ function gainXP() {
 
     if (xpBar.value >= 100) {
         lvl += 1;
-        levelNav.innerHTML =  "Level: " + lvl;
+        levelNav.innerHTML = "Level: " + lvl;
         xpBar.value = 0;
 
         if (lvl % 5 == 0) {
             alert("You got stronger! +2 damage :)");
             dmg += 2;
-            damageNav.innerHTML =  "Damage: " + dmg;
+            damageNav.innerHTML = "Damage: " + dmg;
         }
     }
 }
@@ -148,6 +148,3 @@ function options() {
 function playAudio(url) {
     new Audio(url).play();
 }
-
-
-
