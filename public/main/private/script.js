@@ -26,9 +26,9 @@ function init()
     // Spawn the first pokemon
     spawnPokemon();
 
-    levelNav.innerHTML =  "--- Level: " + lvl;
-    moneyNav.innerHTML =  "--- Money: " + money;
-    damageNav.innerHTML = "--- Damage: " + dmg;
+    levelNav.innerHTML =  "Level: " + lvl;
+    moneyNav.innerHTML =  "Money: " + money;
+    damageNav.innerHTML = "Damage: " + dmg;
 }
 
 function attack()
@@ -63,7 +63,7 @@ function attack()
 function gainMoney()
 {
     money+=1;
-    moneyNav.innerHTML =  "--- Money: " + money;
+    moneyNav.innerHTML =  "Money: " + money;
 }
 
 function startPokemonShake()
@@ -97,14 +97,14 @@ function gainXP()
     if (xpBar.value >= 100)
     {
         lvl += 1;
-        levelNav.innerHTML =  "--- Level: " + lvl;
+        levelNav.innerHTML =  "Level: " + lvl;
         xpBar.value = 0;
 
         if (lvl % 5 == 0)
         {
             alert("Hihi");
             dmg += 2;
-            damageNav.innerHTML =  "--- Damage: " + dmg;
+            damageNav.innerHTML =  "Damage: " + dmg;
         }
     }
 }
