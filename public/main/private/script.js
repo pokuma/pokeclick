@@ -11,7 +11,7 @@ let hpBarText = document.getElementById("hpBarText");
 const xpBar = document.getElementById("xpBar");
 let xpBarText = document.getElementById("xpBarText");
 let xp = 0;
-
+const xpGain = 9;
 
 // Player level 
 let levelNav = document.getElementById("level");
@@ -23,7 +23,7 @@ let money = 0;
 
 // Player damage
 let damageNav = document.getElementById("damage");
-let dmg = 15;
+let dmg = 9;
 
 // Player's pokemon damage
 let pokeDamageNav = document.getElementById("pokeDamage");
@@ -42,40 +42,44 @@ function init() {
     // Spawn the first pokemon
     spawnPokemon();
 
-    levelNav.innerHTML = "Level: " + lvl;
-    moneyNav.innerHTML = "Money: " + money;
-    damageNav.innerHTML = "Player Damage: " + dmg;
-    pokeDamageNav.innerHTML = "Pokemon damage: " + pokeDmg;
-    hpBarText.innerHTML = hpBar.ariaValueNow;
+    levelNav.innerHTML = "level: " + lvl;
+    moneyNav.innerHTML = "money: " + money;
+    damageNav.innerHTML = "player damage: " + dmg;
+    pokeDamageNav.innerHTML = "pokemon damage: " + pokeDmg;
+    hpBarText.innerHTML = "hp: " + hpBar.ariaValueNow + " / " + hpBar.ariaValueMax;
     hpBarText.style.color = "white";
-    xpBarText.innerHTML = xpBar.ariaValueNow;
+    xpBarText.innerHTML = "xp: " + xpBar.ariaValueNow + " / " + xpBar.ariaValueMax;
+    setExperiencePadding();
     xpBarText.style.color = "black";
 
 }
 
 function attack() {
     if (hpBar.ariaValueNow > 0) {
-        if (hpBar.ariaValueNow < redZone) {
-            hpBar.classList = "progress-bar progress-bar-striped progress-bar-animated bg-danger";
+        startPokemonShake();
+        if (hpBar.ariaValueNow - dmg <= 65) {
             hpBarText.style.color = "black";
 
-        } else if (hpBar.ariaValueNow < yellowZone && hpBar.ariaValueNow > redZone) {
-            hpBar.classList = "progress-bar progress-bar-striped progress-bar-animated bg-warning";
-            hpBarText.style.color = "black";
+            if (hpBar.ariaValueNow < redZone) {
+                hpBar.classList = "progress-bar progress-bar-striped progress-bar-animated bg-danger";
+
+            } else if (hpBar.ariaValueNow < yellowZone && hpBar.ariaValueNow > redZone) {
+                hpBar.classList = "progress-bar progress-bar-striped progress-bar-animated bg-warning";
+            }
         }
 
         hpBar.ariaValueNow -= dmg;
-        hpBarText.innerHTML = hpBar.ariaValueNow;
-
+        hpBarText.innerHTML = "hp: " + hpBar.ariaValueNow + " / " + hpBar.ariaValueMax;
         hpBar.style.width = "" + hpBar.ariaValueNow + "%";
-        startPokemonShake();
     }
 
     if (hpBar.ariaValueNow <= 0) {
-        hpBarText.innerHTML = hpBar.ariaValueMax;
+        hpBarText.innerHTML = "hp: " + hpBar.ariaValueMax + " / " + hpBar.ariaValueMax;
         hpBarText.style.color = "white";
         pokemonDies();
     }
+
+    setHealthPointsPadding();
 }
 
 /* When the pokemon dies:
@@ -113,7 +117,6 @@ function stopPokemonShake() {
     pokemon.onanimationiteration = "none";
 }
 
-
 function spawnPokemon() {
     let pokeSize = pokemonList.length;
     let pokemonNumber = Math.floor(Math.random() * (pokeSize - 1));
@@ -121,11 +124,36 @@ function spawnPokemon() {
     pokeName.innerHTML = (pokemonList[pokemonNumber].toLowerCase());
 }
 
+function setExperiencePadding() {
+    if (xpBar.ariaValueNow == 100) {
+        xpBarText.style.paddingLeft = "100px";
+    }
+    else if (xpBar.ariaValueNow > 9 && xpBar.ariaValueNow < 100) {
+        xpBarText.style.paddingLeft = "104px";
+    }
+    else {
+        xpBarText.style.paddingLeft = "108px";
+    }
+}
+
+function setHealthPointsPadding() {
+    if (hpBar.ariaValueNow - dmg <= 0) {
+        hpBarText.style.paddingLeft = "108px";
+    }
+    else if (xpBar.ariaValueNow - dmg > 9 && xpBar.ariaValueNow - dmg < 100) {
+        hpBarText.style.paddingLeft = "104px";
+    }
+    else {
+        hpBarText.style.paddingLeft = "100px";
+    }
+}
+
+
 function gainXP() {
     if (xpBar.ariaValueNow < 100) {
-        xp += 20;
+        xp += xpGain;
         xpBar.ariaValueNow = xp;
-        xpBarText.innerHTML = xpBar.ariaValueNow;
+        xpBarText.innerHTML = "xp: " + xpBar.ariaValueNow + " / " + xpBar.ariaValueMax;
     }
 
     if (xpBar.ariaValueNow >= 100) {
@@ -135,7 +163,7 @@ function gainXP() {
 
         levelNav.innerHTML = "Level: " + lvl;
         xpBar.ariaValueNow = 0;
-        xpBarText.innerHTML = xpBar.ariaValueNow;
+        xpBarText.innerHTML = "xp: " + xpBar.ariaValueNow + " / " + xpBar.ariaValueMax;
 
         if (lvl % 5 == 0) {
             alert("You got stronger! +2 damage :)");
@@ -148,6 +176,7 @@ function gainXP() {
     }
 
     xpBar.style.width = "" + xp + "%";
+    setExperiencePadding();
 }
 
 function restoreHP() {
