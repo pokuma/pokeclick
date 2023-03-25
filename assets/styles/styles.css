@@ -19,6 +19,11 @@
      margin-bottom: 15px;
  }
  
+ #pokemonName {
+     font-family: 'PEPgenius10', sans-serif;
+     font-size: x-large;
+ }
+ 
  #pokemonCard {
      width: 400px;
      height: 550px;

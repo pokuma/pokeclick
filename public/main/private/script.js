@@ -106,7 +106,7 @@ function spawnPokemon() {
     let pokeSize = pokemonList.length;
     let pokemonNumber = Math.floor(Math.random() * (pokeSize - 1));
     pokemon.src = "assets/images/pokemon/" + (pokemonNumber + 1) + ".png";
-    pokeName.innerHTML = pokemonList[pokemonNumber];
+    pokeName.innerHTML = (pokemonList[pokemonNumber].toLowerCase());
 }
 
 function gainXP() {
