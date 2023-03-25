@@ -4,10 +4,14 @@ let pokemonList = ["Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon
 const hpBar = document.getElementById("hpBar");
 const yellowZone = hpBar.ariaValueMax / 1.5;
 const redZone = hpBar.ariaValueMax / 3;
+let hpBarText = document.getElementById("hpBarText");
+
 
 // Experience bar
-let xpBar = document.getElementById("xpBar");
+const xpBar = document.getElementById("xpBar");
+let xpBarText = document.getElementById("xpBarText");
 let xp = 0;
+
 
 // Player level 
 let levelNav = document.getElementById("level");
@@ -42,6 +46,10 @@ function init() {
     moneyNav.innerHTML = "Money: " + money;
     damageNav.innerHTML = "Player Damage: " + dmg;
     pokeDamageNav.innerHTML = "Pokemon damage: " + pokeDmg;
+    hpBarText.innerHTML = hpBar.ariaValueNow;
+    hpBarText.style.color = "white";
+    xpBarText.innerHTML = xpBar.ariaValueNow;
+    xpBarText.style.color = "black";
 
 }
 
@@ -49,18 +57,23 @@ function attack() {
     if (hpBar.ariaValueNow > 0) {
         if (hpBar.ariaValueNow < redZone) {
             hpBar.classList = "progress-bar progress-bar-striped progress-bar-animated bg-danger";
+            hpBarText.style.color = "black";
 
         } else if (hpBar.ariaValueNow < yellowZone && hpBar.ariaValueNow > redZone) {
             hpBar.classList = "progress-bar progress-bar-striped progress-bar-animated bg-warning";
+            hpBarText.style.color = "black";
         }
 
         hpBar.ariaValueNow -= dmg;
+        hpBarText.innerHTML = hpBar.ariaValueNow;
 
         hpBar.style.width = "" + hpBar.ariaValueNow + "%";
         startPokemonShake();
     }
 
     if (hpBar.ariaValueNow <= 0) {
+        hpBarText.innerHTML = hpBar.ariaValueMax;
+        hpBarText.style.color = "white";
         pokemonDies();
     }
 }
@@ -112,7 +125,7 @@ function gainXP() {
     if (xpBar.ariaValueNow < 100) {
         xp += 20;
         xpBar.ariaValueNow = xp;
-
+        xpBarText.innerHTML = xpBar.ariaValueNow;
     }
 
     if (xpBar.ariaValueNow >= 100) {
@@ -122,12 +135,15 @@ function gainXP() {
 
         levelNav.innerHTML = "Level: " + lvl;
         xpBar.ariaValueNow = 0;
-        alert("Level up!");
+        xpBarText.innerHTML = xpBar.ariaValueNow;
 
         if (lvl % 5 == 0) {
             alert("You got stronger! +2 damage :)");
             dmg += 2;
             damageNav.innerHTML = "Damage: " + dmg;
+        }
+        else {
+            alert("Level up!");
         }
     }
 

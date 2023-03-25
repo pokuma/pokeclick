@@ -48,7 +48,7 @@
         </div>
     </nav>
 
-<!--    <label href="#" onclick="changeDarkMode()" class="btn btn-warning col-md-3 m-3 border border-dark">Change dark mode</label> -->
+    <!--    <label href="#" onclick="changeDarkMode()" class="btn btn-warning col-md-3 m-3 border border-dark">Change dark mode</label> -->
     <div class="d-flex justify-content-center align-items-center pb-5" id="saveSelector">
         <div class="justify-content-center row pb-5">
             <div class="border border-light bg-dark p-5 pt-0 pb-0" id="pokemonCard">
@@ -61,10 +61,14 @@
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                             id="hpBar" aria-valuemin="0" style="width: 100%;" aria-valuenow="100" aria-valuemax="100">
                         </div>
+                        <div style="position: absolute;" id="hpBarText">
+                        </div>
                     </div>
                     <div class="progress mt-3">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                            id="xpBar" aria-valuemin="0" style="width: 0%;" aria-valuenow="" aria-valuemax="100">
+                            id="xpBar" aria-valuemin="0" style="width: 0%;" aria-valuenow="0" aria-valuemax="100">
+                        </div>
+                        <div style="position: absolute;" id="xpBarText">
                         </div>
                     </div>
                 </div>
