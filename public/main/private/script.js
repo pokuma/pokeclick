@@ -11,7 +11,7 @@ let hpBarText = document.getElementById("hpBarText");
 const xpBar = document.getElementById("xpBar");
 let xpBarText = document.getElementById("xpBarText");
 let xp = 0;
-const xpGain = 9;
+const xpGain = 10;
 
 // Player level 
 let levelNav = document.getElementById("level");
@@ -23,7 +23,7 @@ let money = 0;
 
 // Player damage
 let damageNav = document.getElementById("damage");
-let dmg = 9;
+let dmg = 10;
 
 // Player's pokemon damage
 let pokeDamageNav = document.getElementById("pokeDamage");
@@ -50,6 +50,7 @@ function init() {
     hpBarText.style.color = "white";
     xpBarText.innerHTML = "xp: " + xpBar.ariaValueNow + " / " + xpBar.ariaValueMax;
     setExperiencePadding();
+    setHealthPointsPadding();
     xpBarText.style.color = "black";
 
 }
@@ -137,14 +138,17 @@ function setExperiencePadding() {
 }
 
 function setHealthPointsPadding() {
-    if (hpBar.ariaValueNow - dmg <= 0) {
-        hpBarText.style.paddingLeft = "108px";
-    }
-    else if (xpBar.ariaValueNow - dmg > 9 && xpBar.ariaValueNow - dmg < 100) {
-        hpBarText.style.paddingLeft = "104px";
+
+    if (hpBar.ariaValueNow == 100) {
+        hpBarText.style.paddingLeft = "100px";
     }
     else {
-        hpBarText.style.paddingLeft = "100px";
+        if (hpBar.ariaValueNow - dmg > 9) {
+            hpBarText.style.paddingLeft = "104px";
+        }
+        else if (hpBar.ariaValueNow <= 9) {
+            hpBarText.style.paddingLeft = "108px";
+        }
     }
 }
 
