@@ -188,24 +188,6 @@
       .nightmode-toggle .switch .slider.round:before {
         border-radius: 50%; }
 
-.btn-start-menu {
-    font-size: 1rem;
-    color: #fff;
-    background-color: gray;
-    }
-    
-.dropdown-item-start-menu {
-    font-size: 1rem;
-    color: gray;
-    background-color: white;
-    margin: 0;
-}
-
-.dropdown-menu-start-menu li {
-    margin: 0;
-    padding: 0;
-}
-
  /* Shake style animation, for now its used on the pokemons only when the player attacks them. */
  
  @keyframes shake {
