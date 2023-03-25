@@ -52,7 +52,7 @@ function attack() {
             hpBar.style.accentColor = "red";
 
         } else if (hpBar.value < yellowZone && hpBar.value > redZone) {
-            hpBar.style.accentColor = "yellow";
+            hpBar.style.accentColor = "orange";
         }
 
         hpBar.value -= dmg;
