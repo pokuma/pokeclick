@@ -22,11 +22,11 @@
 
 </head>
 
-<body id="body">
+<body id="body" class="clicked">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
-            <a class="nav-link" draggable="false" href="index.html"><img src="assets\images\logo\logo.png"
-                    draggable="false" style="width: 100px;" alt="logo"></a>
+            <a class="nav-link" draggable="false" href="index.html"><img id="navBarLogo"
+                    src="assets\images\logo\logo.png" draggable="false" style="width: 100px;" alt="logo"></a>
 
             <div class="collapse navbar-collapse d-flex justify-content-center align-items-center pe-5"
                 id="collapsibleNavbar">
@@ -52,7 +52,7 @@
     <div class="d-flex justify-content-center align-items-center pb-5" id="saveSelector">
         <div class="justify-content-center row pb-5">
             <div class="border border-light bg-dark p-5 pt-0 pb-0" id="pokemonCard">
-                <div class="justify-content-center container row g-0 p-5">
+                <div class="justify-content-center container row g-0 p-5 ">
                     <div id="pokemonName" class="justify-content-center container row g-0 text-light mb-3"></div>
                     <img onclick="attack()" draggable="false" id="pokemon" src="">
                 </div>
