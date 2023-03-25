@@ -31,10 +31,6 @@
      accent-color: green;
  }
  
- #hpBar::-webkit-progress-bar {
-     background: white;
- }
- 
  #xpBar {
      height: 70px;
      width: 250px;
