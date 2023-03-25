@@ -128,7 +128,7 @@ function gainXP() {
 }
 
 function restoreHP() {
-    hpBar.value = 20;
+    hpBar.value = hpBar.getAttribute("max");
 }
 
 function login() {
