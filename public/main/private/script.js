@@ -48,10 +48,10 @@ function init() {
 
 function attack() {
     if (hpBar.value > 0) {
-        if (hpBar.value <= redZone) {
+        if (hpBar.value < redZone) {
             hpBar.style.accentColor = "red";
 
-        } else if (hpBar.value <= yellowZone && hpBar.value > redZone) {
+        } else if (hpBar.value < yellowZone && hpBar.value > redZone) {
             hpBar.style.accentColor = "yellow";
         }
 
