@@ -7,12 +7,12 @@
  }
  
  .dark-mode {
-    background-color: #333;
-    background-image: url(../images/background/background-night.png);
-    background-size: cover;
-    min-height: 100vh;
-  }
-
+     background-color: #333;
+     background-image: url(../images/background/background-night.png);
+     background-size: cover;
+     min-height: 100vh;
+ }
+ 
  #pokemon {
      border: 1px solid white;
      border-radius: 20px;
@@ -41,27 +41,28 @@
  }
  
  .input-container {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.input-container input {
-  padding-left: 40px; /*Agrega el espacio para el ícono*/
-}
-
-.input-container i {
-  position: absolute;
-  left: 10px; /*Ajusta la posición del ícono*/
-  color: #ccc;
-  padding-bottom: 15px;
-}
-
-.input-container input:focus + i {
-  color: #007bff;
-}
-
-
+     display: flex;
+     align-items: center;
+     position: relative;
+ }
+ 
+ .input-container input {
+     padding-left: 40px;
+     /*Agrega el espacio para el ícono*/
+ }
+ 
+ .input-container i {
+     position: absolute;
+     left: 10px;
+     /*Ajusta la posición del ícono*/
+     color: #ccc;
+     padding-bottom: 15px;
+ }
+ 
+ .input-container input:focus+i {
+     color: #007bff;
+ }
+ 
  .form-register {
      width: fit-content;
      padding: 30px;
