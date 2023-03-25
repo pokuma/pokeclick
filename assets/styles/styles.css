@@ -132,6 +132,62 @@
      background-color: #ffffff;
      border-radius: 100px;
  }
+    
+ .nightmode-toggle {
+    display: inline-block;
+    margin-right: 20px; }
+    .nightmode-toggle .fa {
+      font-size: 16px;
+      line-height: 18px;
+      vertical-align: bottom;
+      text-decoration: none; }
+    .nightmode-toggle .switch {
+      margin: 0 2px 1px 2px;
+      font-size: 18px;
+      line-height: 22px;
+      vertical-align: bottom;
+      position: relative;
+      display: inline-block;
+      width: 30px;
+      height: 15px;
+      /* Hide default HTML checkbox */
+      /* The slider */
+      /* Rounded sliders */ }
+      .nightmode-toggle .switch input {
+        display: none; }
+      .nightmode-toggle .switch .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s; }
+        .nightmode-toggle .switch .slider:before {
+          position: absolute;
+          content: "";
+          height: 12px;
+          width: 12px;
+          left: 2px;
+          bottom: 1.5px;
+          background-color: white;
+          -webkit-transition: .4s;
+          transition: .4s; }
+      .nightmode-toggle .switch input:checked + .slider {
+        background-color: #2aa3cc; }
+      .nightmode-toggle .switch input:focus + .slider {
+        box-shadow: 0 0 1px #2aa3cc; }
+      .nightmode-toggle .switch input:checked + .slider:before {
+        -webkit-transform: translateX(13px);
+        -ms-transform: translateX(13px);
+        transform: translateX(13px); }
+      .nightmode-toggle .switch .slider.round {
+        border-radius: 15px; }
+      .nightmode-toggle .switch .slider.round:before {
+        border-radius: 50%; }
+
  /* Shake style animation, for now its used on the pokemons only when the player attacks them. */
  
  @keyframes shake {
