@@ -179,7 +179,7 @@ function gainXP() {
         if (lvl % 5 == 0) {
 
             dmg += 2;
-            damageNav.innerHTML = "damage: " + dmg;
+            damageNav.innerHTML = "player damage: " + dmg;
         } else {
 
         }
