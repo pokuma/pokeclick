@@ -1,13 +1,13 @@
 let pokemonList = ["Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise", "Caterpie", "Metapod", "Butterfree", "Weedle", "Kakuna", "Beedrill", "Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Ekans", "Arbok", "Pikachu", "Raichu", "Sandshrew", "Sandslash", "Nidoran", "Nidorina", "Nidoqueen", "Nidoran", "Nidorino", "Nidoking", "Clefairy", "Clefable", "Vulpix", "Ninetales", "Jigglypuff", "Wigglytuff", "Zubat", "Golbat", "Oddish", "Gloom", "Vileplume", "Paras", "Parasect", "Venonat", "Venomoth", "Diglett", "Dugtrio", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Poliwrath", "Abra", "Kadabra", "Alakazam", "Machop", "Machoke", "Machamp", "Bellsprout", "Weepinbell", "Victreebel", "Tentacool", "Tentacruel", "Geodude", "Graveler", "Golem", "Ponyta", "Rapidash", "Slowpoke", "Slowbro", "Magnemite", "Magneton", "Farfetch'd", "Doduo", "Dodrio", "Seel", "Dewgong", "Grimer", "Muk", "Shellder", "Cloyster", "Gastly", "Haunter", "Gengar", "Onix", "Drowzee", "Hypno", "Krabby", "Kingler", "Voltorb", "Electrode", "Exeggcute", "Exeggutor", "Cubone", "Marowak", "Hitmonlee", "Hitmonchan", "Lickitung", "Koffing", "Weezing", "Rhyhorn", "Rhydon", "Chansey", "Tangela", "Kangaskhan", "Horsea", "Seadra", "Goldeen", "Seaking", "Staryu", "Starmie", "Mr. Mime", "Scyther", "Jynx", "Electabuzz", "Magmar", "Pinsir", "Tauros", "Magikarp", "Gyarados", "Lapras", "Ditto", "Eevee", "Vaporeon", "Jolteon", "Flareon", "Porygon", "Omanyte", "Omastar", "Kabuto", "Kabutops", "Aerodactyl", "Snorlax", "Articuno", "Zapdos", "Moltres", "Dratini", "Dragonair", "Dragonite", "Mewtwo", "Mew"];
 
 // Cursor
-document.getElementById("body").addEventListener("onmousedown", function (e) { document.getElementById("body").style.cursor.URL = "/clickdown.gif"; });
+document.getElementById("body").addEventListener("onmousedown", function(e) { document.getElementById("body").style.cursor.URL = "/clickdown.gif"; });
 
 var cursor = document.getElementsByClassName('clicked')[0]
-cursor.onmousedown = function () {
+cursor.onmousedown = function() {
     cursor.classList.add('clickdown')
 }
-cursor.onmouseup = function () {
+cursor.onmouseup = function() {
     cursor.classList.remove('clickdown')
 }
 
@@ -116,7 +116,7 @@ function getPokemonDrops() {
 
 function gainMoney() {
     money += 1;
-    moneyNav.innerHTML = "Money: " + money;
+    moneyNav.innerHTML = "money: " + money;
 }
 
 function startPokemonShake() {
@@ -139,11 +139,9 @@ function spawnPokemon() {
 function setExperiencePadding() {
     if (xpBar.ariaValueNow == 100) {
         xpBarText.style.paddingLeft = "100px";
-    }
-    else if (xpBar.ariaValueNow > 9 && xpBar.ariaValueNow < 100) {
+    } else if (xpBar.ariaValueNow > 9 && xpBar.ariaValueNow < 100) {
         xpBarText.style.paddingLeft = "104px";
-    }
-    else {
+    } else {
         xpBarText.style.paddingLeft = "108px";
     }
 }
@@ -152,12 +150,10 @@ function setHealthPointsPadding() {
 
     if (hpBar.ariaValueNow == 100) {
         hpBarText.style.paddingLeft = "100px";
-    }
-    else {
+    } else {
         if (hpBar.ariaValueNow - dmg > 9) {
             hpBarText.style.paddingLeft = "104px";
-        }
-        else if (hpBar.ariaValueNow <= 9) {
+        } else if (hpBar.ariaValueNow <= 9) {
             hpBarText.style.paddingLeft = "108px";
         }
     }
@@ -176,17 +172,16 @@ function gainXP() {
         lvl += 1;
         xp = 0;
 
-        levelNav.innerHTML = "Level: " + lvl;
+        levelNav.innerHTML = "level: " + lvl;
         xpBar.ariaValueNow = 0;
         xpBarText.innerHTML = "xp: " + xpBar.ariaValueNow + " / " + xpBar.ariaValueMax;
 
         if (lvl % 5 == 0) {
-            alert("You got stronger! +2 damage :)");
+
             dmg += 2;
-            damageNav.innerHTML = "Damage: " + dmg;
-        }
-        else {
-            alert("Level up!");
+            damageNav.innerHTML = "damage: " + dmg;
+        } else {
+
         }
     }
 
