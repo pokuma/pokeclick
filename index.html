@@ -15,8 +15,15 @@
     <link href="assets/styles/styles.css" media="all" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
-
+<body id="body">
+    <div class="nightmode-toggle hide-for-small-down">
+        <i class="fa fa-sun"></i>
+        <label class="switch">
+            <input type="checkbox" onclick="changeDarkMode()">
+            <span class="slider round"></span>
+        </label>
+        <i class="fa fa-moon"></i>
+    </div>
     <div class="d-flex justify-content-center align-items-center" id="saveSelector">
 
         <div class="justify-content-center container row">

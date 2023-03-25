@@ -7,12 +7,12 @@
  }
  
  .dark-mode {
-     background-color: #333;
-     background-image: url(../images/background/background-night.png);
-     background-size: cover;
-     min-height: 100vh;
- }
- 
+    background-color: rgb(51, 51, 51);
+    background-image: url(../images/background/background-night.png);
+    background-size: cover;
+    min-height: 100vh;
+  }
+
  #pokemon {
      border: 1px solid white;
      border-radius: 20px;
@@ -28,6 +28,7 @@
      width: 400px;
      height: 550px;
      border-radius: 20px;
+     background-color: rgb(51, 51, 51, 0.9);
  }
  
  .progress > #hpBar {
