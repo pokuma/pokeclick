@@ -7,6 +7,7 @@ const redZone = hpBar.ariaValueMax / 3;
 
 // Experience bar
 let xpBar = document.getElementById("xpBar");
+let xp = 0;
 
 // Player level 
 let levelNav = document.getElementById("level");
@@ -54,6 +55,7 @@ function attack() {
         }
 
         hpBar.ariaValueNow -= dmg;
+
         hpBar.style.width = "" + hpBar.ariaValueNow + "%";
         startPokemonShake();
     }
@@ -76,7 +78,6 @@ function pokemonDies() {
     hpBar.classList = "progress-bar progress-bar-striped progress-bar-animated bg-sucess";
     spawnPokemon();
     restoreHP();
-
 }
 
 function getPokemonDrops() {
@@ -109,12 +110,16 @@ function spawnPokemon() {
 
 function gainXP() {
     if (xpBar.ariaValueNow < 100) {
-        xpBar.ariaValueNow += 20;
+        xp += 20;
+        xpBar.ariaValueNow = xp;
 
     }
 
     if (xpBar.ariaValueNow >= 100) {
+        alert("Level up!");
         lvl += 1;
+        xp = 0;
+
         levelNav.innerHTML = "Level: " + lvl;
         xpBar.ariaValueNow = 0;
 
@@ -125,6 +130,7 @@ function gainXP() {
         }
     }
 
+    xpBar.style.width = "" + xp + "%";
 }
 
 function restoreHP() {
