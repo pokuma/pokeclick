@@ -2,8 +2,8 @@ let pokemonList = ["Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon
 
 // Pokemon health points bar
 const hpBar = document.getElementById("hpBar");
-const yellowZone = hpBar.value / 1.5;
-const redZone = hpBar.value / 3;
+const yellowZone = hpBar.ariaValueMax / 1.5;
+const redZone = hpBar.ariaValueMax / 3;
 
 // Experience bar
 let xpBar = document.getElementById("xpBar");
@@ -18,7 +18,7 @@ let money = 0;
 
 // Player damage
 let damageNav = document.getElementById("damage");
-let dmg = 1;
+let dmg = 15;
 
 // Player's pokemon damage
 let pokeDamageNav = document.getElementById("pokeDamage");
@@ -37,8 +37,6 @@ function init() {
     // Spawn the first pokemon
     spawnPokemon();
 
-
-
     levelNav.innerHTML = "Level: " + lvl;
     moneyNav.innerHTML = "Money: " + money;
     damageNav.innerHTML = "Player Damage: " + dmg;
@@ -47,19 +45,20 @@ function init() {
 }
 
 function attack() {
-    if (hpBar.value > 0) {
-        if (hpBar.value < redZone) {
-            hpBar.style.accentColor = "red";
+    if (hpBar.ariaValueNow > 0) {
+        if (hpBar.ariaValueNow < redZone) {
+            hpBar.classList = "progress-bar progress-bar-striped progress-bar-animated bg-danger";
 
-        } else if (hpBar.value < yellowZone && hpBar.value > redZone) {
-            hpBar.style.accentColor = "orange";
+        } else if (hpBar.ariaValueNow < yellowZone && hpBar.ariaValueNow > redZone) {
+            hpBar.classList = "progress-bar progress-bar-striped progress-bar-animated bg-warning";
         }
 
-        hpBar.value -= dmg;
+        hpBar.ariaValueNow -= dmg;
+        hpBar.style.width = "" + hpBar.ariaValueNow + "%";
         startPokemonShake();
     }
 
-    if (hpBar.value <= 0) {
+    if (hpBar.ariaValueNow <= 0) {
         pokemonDies();
     }
 }
@@ -74,7 +73,7 @@ function attack() {
 function pokemonDies() {
     getPokemonDrops();
     stopPokemonShake()
-    hpBar.style.accentColor = "green";
+    hpBar.classList = "progress-bar progress-bar-striped progress-bar-animated bg-sucess";
     spawnPokemon();
     restoreHP();
 
@@ -84,7 +83,6 @@ function getPokemonDrops() {
     gainXP();
     gainMoney();
 }
-
 
 function gainMoney() {
     money += 1;
@@ -110,14 +108,15 @@ function spawnPokemon() {
 }
 
 function gainXP() {
-    if (xpBar.value < 100) {
-        xpBar.value += 20;
+    if (xpBar.ariaValueNow < 100) {
+        xpBar.ariaValueNow += 20;
+
     }
 
-    if (xpBar.value >= 100) {
+    if (xpBar.ariaValueNow >= 100) {
         lvl += 1;
         levelNav.innerHTML = "Level: " + lvl;
-        xpBar.value = 0;
+        xpBar.ariaValueNow = 0;
 
         if (lvl % 5 == 0) {
             alert("You got stronger! +2 damage :)");
@@ -125,10 +124,12 @@ function gainXP() {
             damageNav.innerHTML = "Damage: " + dmg;
         }
     }
+
 }
 
 function restoreHP() {
-    hpBar.value = hpBar.getAttribute("max");
+    hpBar.ariaValueNow = hpBar.ariaValueMax;
+    hpBar.style.width = "100%";
 }
 
 function login() {
