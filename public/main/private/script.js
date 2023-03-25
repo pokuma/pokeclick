@@ -116,12 +116,13 @@ function gainXP() {
     }
 
     if (xpBar.ariaValueNow >= 100) {
-        alert("Level up!");
+
         lvl += 1;
         xp = 0;
 
         levelNav.innerHTML = "Level: " + lvl;
         xpBar.ariaValueNow = 0;
+        alert("Level up!");
 
         if (lvl % 5 == 0) {
             alert("You got stronger! +2 damage :)");
