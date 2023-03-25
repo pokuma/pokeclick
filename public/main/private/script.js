@@ -74,10 +74,10 @@ function attack() {
             hpBarText.style.color = "black";
 
             if (hpBar.ariaValueNow < redZone) {
-                hpBar.classList = "progress-bar progress-bar-striped progress-bar-animated bg-danger";
+                hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-danger";
 
             } else if (hpBar.ariaValueNow < yellowZone && hpBar.ariaValueNow > redZone) {
-                hpBar.classList = "progress-bar progress-bar-striped progress-bar-animated bg-warning";
+                hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-warning";
             }
         }
         hpBar.ariaValueNow -= dmg;
@@ -104,7 +104,7 @@ function attack() {
 function pokemonDies() {
     getPokemonDrops();
     stopPokemonShake()
-    hpBar.classList = "progress-bar progress-bar-striped progress-bar-animated bg-sucess";
+    hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-sucess";
     spawnPokemon();
     restoreHP();
 }
