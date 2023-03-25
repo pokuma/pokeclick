@@ -43,15 +43,17 @@
     <div class="form-register bg-secondary">
         <form onsubmit="return validateForm()" action="game.html" method="get">
             <section>
-                <input class="controlsRegister" type="text" name="nickname" id="nicknames" placeholder="Nickname"><br>
+                <div class="input-container">
+                    <input class="controlsRegister" type="text" name="nickname" id="nicknames" placeholder="Nickname">
+                    <i class="material-icons">person</i>
+                </div>
                 <div class="input-container">
                     <input class="controlsRegister" type="text" name="email" id="emails" placeholder="Email">
                     <i class="material-icons">email</i>
                 </div>
                 <div class="input-container">
-                    <input class="controlsRegister" type="password" name="password" id="passwords"
-                        placeholder="Password"><br>
-                    <i class="fas fa-lock"></i>
+                    <input class="controlsRegister" type="password" name="password" id="passwords" placeholder="Pasword">
+                    <i class="material-icons">lock</i>
                 </div>
 
                 <input class="submitRegister" type="submit" value="Submit">
