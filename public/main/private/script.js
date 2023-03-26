@@ -15,6 +15,33 @@ function playAudio(url) {
 }
 
 function changeDarkMode() {
+    
     var body = document.getElementById("body");
     body.classList.toggle("dark-mode");
+
+    var isDarkModeEnabled = body.classList.contains("dark-mode");
+    document.cookie = "darkModeEnabled=" + isDarkModeEnabled;
+
+    var toggle = document.getElementById("dark-mode-toggle");
+    toggle.checked = isDarkModeEnabled;
+    document.cookie = "darkModeToggle=" + toggle.checked;
+
+}
+
+function loadDarkMode() {
+
+    var cookies = document.cookie.split(";").map(cookie => cookie.trim());
+    var darkModeCookie = cookies.find(cookie => cookie.startsWith("darkModeEnabled="));
+    if (darkModeCookie) {
+        var isDarkModeEnabled = darkModeCookie.split("=")[1] === "true";
+        var body = document.getElementById("body");
+        body.classList.toggle("dark-mode", isDarkModeEnabled);
+        
+        var toggleCookie = cookies.find(cookie => cookie.startsWith("darkModeToggle="));
+        if (toggleCookie) {
+          var isToggleChecked = toggleCookie.split("=")[1] === "true";
+          var toggle = document.getElementById("dark-mode-toggle");
+          toggle.checked = isToggleChecked;
+        }
+    }
 }

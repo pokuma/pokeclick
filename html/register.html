@@ -24,14 +24,14 @@
     <link href="../assets/styles/register.css" media="all" rel="stylesheet" type="text/css" />
 </head>
 
-<body id="body">
+<body id="body" onload="loadDarkMode()">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
             <a class="nav-link" draggable="false" href="index.html"><img src="../assets/images/logo/logo.png" draggable="false" style="width: 100px;" alt="logo"></a>
             <div class="nightmode-toggle hide-for-small-down ">
                 <i class="fa fa-sun-o text-light"> </i>
                 <label class="switch ">
-                            <input type="checkbox" onclick="changeDarkMode()">
+                            <input type="checkbox" id="dark-mode-toggle" onclick="changeDarkMode()">
                             <span class="slider round clickable">  </span>
                         </label>
                 <i class="fa fa-moon-o text-light"> </i>
