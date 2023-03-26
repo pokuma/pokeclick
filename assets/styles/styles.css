@@ -23,8 +23,7 @@
  button,
  label,
  input,
- #navBarLogo,
- #indexLogo {
+ #navBarLogo {
      animation: cursor 700ms linear infinite;
  }
 
