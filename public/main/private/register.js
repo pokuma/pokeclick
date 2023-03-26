@@ -9,7 +9,7 @@ function validateForm() {
         return false;
     }
 
-    if (passwordInput != reppasswordInput) {
+    if (passwordInput.value != reppasswordInput.value) {
         alert("Las contraseñas no coinciden.");
         return false;
     }
