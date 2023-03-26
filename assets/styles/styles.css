@@ -1,24 +1,24 @@
  * {
      font-family: 'PEPgenius10', sans-serif;
  }
- 
+
  body {
      background-color: rgb(125, 173, 113);
-     background: url(../images/background/background.png) center no-repeat;
+     background: url("../images/background/background.png") center no-repeat;
      background-size: cover;
      background-position-y: 0;
      min-height: 100vh;
-     cursor: url("/cursor/clickup.gif"), auto;
+     cursor: url("../images/cursor/clickup.gif"), auto;
  }
- 
+
  .clicked:hover {
-     cursor: url("/cursor/clickup.gif"), auto;
+     cursor: url("../images/cursor/clickup.gif"), auto;
  }
- 
+
  .clicked.clickdown:hover {
-     cursor: url("/cursor/clickdown.gif"), auto;
+     cursor: url("../images/cursor/clickdown.gif"), auto;
  }
- 
+
  .clickable,
  button,
  label,
@@ -27,51 +27,51 @@
  #indexLogo {
      animation: cursor 700ms linear infinite;
  }
- 
+
  .dark-mode {
      background-color: rgb(51, 51, 51);
      background-image: url(../images/background/background-night.png);
      background-size: cover;
      min-height: 100vh;
  }
- 
+
  #saveSelector {
      padding-top: 60px;
  }
- 
+
  .input-container {
      display: flex;
      align-items: center;
      position: relative;
  }
- 
+
  .input-container input {
      padding-left: 40px;
  }
- 
+
  .input-container i {
      position: absolute;
      left: 10px;
      color: #ccc;
      padding-bottom: 15px;
  }
- 
+
  .input-container input:focus+i {
      color: #007bff;
  }
- 
+
  .nightmode-toggle {
      display: inline-block;
      margin-right: 20px;
  }
- 
+
  .nightmode-toggle .fa {
      font-size: 16px;
      line-height: 18px;
      vertical-align: bottom;
      text-decoration: none;
  }
- 
+
  .nightmode-toggle .switch {
      margin: 0 2px 1px 2px;
      font-size: 18px;
@@ -85,11 +85,11 @@
      /* The slider */
      /* Rounded sliders */
  }
- 
+
  .nightmode-toggle .switch input {
      display: none;
  }
- 
+
  .nightmode-toggle .switch .slider {
      position: absolute;
      cursor: pointer;
@@ -101,7 +101,7 @@
      -webkit-transition: .4s;
      transition: .4s;
  }
- 
+
  .nightmode-toggle .switch .slider:before {
      position: absolute;
      content: "";
@@ -113,45 +113,48 @@
      -webkit-transition: .4s;
      transition: .4s;
  }
- 
+
  .nightmode-toggle .switch input:checked+.slider {
      background-color: #2aa3cc;
  }
- 
+
  .nightmode-toggle .switch input:focus+.slider {
      box-shadow: 0 0 1px #2aa3cc;
  }
- 
+
  .nightmode-toggle .switch input:checked+.slider:before {
      -webkit-transform: translateX(13px);
      -ms-transform: translateX(13px);
      transform: translateX(13px);
  }
- 
+
  .nightmode-toggle .switch .slider.round {
      border-radius: 15px;
  }
- 
+
  .nightmode-toggle .switch .slider.round:before {
      border-radius: 50%;
  }
 
  /* Cursor idle animation hovering over clickable item */
- 
  @keyframes cursor {
      0% {
-         cursor: url("/cursor/clickup.gif"), auto;
+         cursor: url("../images/cursor/clickup.gif"), auto;
      }
+
      20% {
-         cursor: url("/cursor/clickdown.gif"), auto;
+         cursor: url("../images/cursor/clickdown.gif"), auto;
      }
+
      35% {
-         cursor: url("/cursor/clickup.gif"), auto;
+         cursor: url("../images/cursor/clickup.gif"), auto;
      }
+
      70% {
-         cursor: url("/cursor/clickdown.gif"), auto;
+         cursor: url("../images/cursor/clickdown.gif"), auto;
      }
+
      100% {
-         cursor: url("/cursor/clickup.gif"), auto;
+         cursor: url("../images/cursor/clickup.gif"), auto;
      }
  }
