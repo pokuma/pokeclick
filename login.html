@@ -2,29 +2,33 @@
 <html lang="en">
 
 <head>
-    <meta name="Register" content="Register page">
+    <meta name="Login" content="Login page">
     <meta charset="utf-8">
     <meta name="theme-color" content="rgb(83, 82, 82);" />
-    <link rel="icon" type="image/x-icon" href="../assets/images/logo/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="assets/images/logo/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Register</title>
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <script src="https://example.com/fontawesome/v5.15.4/js/all.js" data-auto-a11y="true"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
-    <link href="../assets/styles/styles.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="../assets/styles/register.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="assets/styles/styles.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="assets/styles/register.css" media="all" rel="stylesheet" type="text/css" />
 </head>
 
 <body id="body" onload="loadDarkMode()">
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container-fluid">
-            <a class="nav-link" draggable="false" href="../index.html"><img id="navBarLogo"
-                    src="../assets/images/logo/logo.png" draggable="false" style="width: 100px;" alt="logo"></a>
+            <a class="nav-link" draggable="false" href="index.html"><img id="navBarLogo"
+                    src="assets/images/logo/logo.png" draggable="false" style="width: 100px;" alt="logo"></a>
             <div class="row">
                 <div class="col">
                     <div class="nightmode-toggle hide-for-small-down">
@@ -39,14 +43,10 @@
             </div>
         </div>
     </nav>
-    <img src="../assets\images\register\registerLogo.png" alt="Registro" width="250" style="display: block;  margin: 50px auto 0; padding-bottom:30px">
+    <img src="assets/images/login/loginLogo.png" alt="Registro" width="250" style="display: block;  margin: 50px auto 0; padding-bottom:30px">
     <div class="form-register bg-secondary">
         <form onsubmit="return validateForm()" action="game.html" method="get">
             <section>
-                <div class="input-container">
-                    <input class="controlsRegister" type="text" name="nickname" id="nicknames" placeholder="Nickname">
-                    <i class="material-icons">person</i>
-                </div>
                 <div class="input-container">
                     <input class="controlsRegister" type="text" name="email" id="emails" placeholder="Email">
                     <i class="material-icons">email</i>
@@ -55,17 +55,12 @@
                     <input class="controlsRegister" type="password" name="password" id="passwords" placeholder="Password">
                     <i class="material-icons">lock</i>
                 </div>
-                <div class="input-container">
-                    <input class="controlsRegister" type="password" name="password" id="reppasswords" placeholder="Confirm Password">
-                    <i class="material-icons">refresh</i>
-                </div>
-
-                <input class="submitRegister bg-primary" type="submit" value="Submit" style="color: white;">
+                <input class="submitRegister bg-primary" type="submit" value="Enter" style="color: white;">
             </section>
         </form>
     </div>
-    <script src="../public/main/private/script.js"></script>
-    <script src="../public/main/private/register.js"></script>
+    <script src="public/main/private/script.js"></script>
+    <script src="public/main/private/login.js"></script>
 </body>
 
 </html>
