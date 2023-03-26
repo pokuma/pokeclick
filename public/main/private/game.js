@@ -45,7 +45,6 @@ function init() {
     levelNav.innerHTML = "level: " + lvl;
     moneyNav.innerHTML = "money: " + money;
     damageNav.innerHTML = "player damage: " + dmg;
-    pokeDamageNav.innerHTML = "pokemon damage: " + pokeDmg;
     hpBarText.innerHTML = "hp: " + hpBar.ariaValueNow + " / " + hpBar.ariaValueMax;
     hpBarText.style.color = "white";
     xpBarText.innerHTML = "xp: " + xpBar.ariaValueNow + " / " + xpBar.ariaValueMax;
