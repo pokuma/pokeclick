@@ -1,0 +1,105 @@
+#pokemon {
+    border: 1px solid white;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    animation: cursor 1s infinite;
+}
+
+#pokemonName {
+    font-family: 'PEPgenius10', sans-serif;
+    font-size: x-large;
+}
+
+#pokemonCard {
+    width: 400px;
+    height: 550px;
+    border-radius: 20px;
+    background-color: rgb(51, 51, 51, 0.9);
+}
+
+#hpBarText,
+#xpBarText {
+    position: absolute;
+    padding-left: 100px;
+    padding-top: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.progress>#hpBar {
+    height: 70px;
+    width: 250px;
+    accent-color: green;
+    background-color: green;
+}
+
+.progress>#xpBar {
+    height: 70px;
+    width: 250px;
+}
+
+.progress {
+    height: 40px;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 100px;
+}
+
+.dropdown-item-start-menu:hover {
+    background-color: rgba(86, 94, 100, 1);
+    color: white;
+}
+
+.separator {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+/* Shake style animation, for now its used on the pokemons only when the player attacks them. */
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}

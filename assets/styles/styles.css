@@ -1,45 +1,159 @@
-/* body {
-  background-color: rgb(125, 173, 113);
-  background: url(../images/background/background.png) center no-repeat;
-  background-size: cover;
-  min-height: 100vh;
-} */
+ * {
+     font-family: 'PEPgenius10', sans-serif;
+ }
 
-body {
-  background-color: black;
-}
+ body {
+     background-color: rgb(125, 173, 113);
+     background: url("../images/background/background.png") center no-repeat;
+     background-size: cover;
+     background-position-y: 0;
+     min-height: 100vh;
+     cursor: url("../images/cursor/clickup.gif"), auto;
+ }
 
-#pokemon {
-  width: 250px;
-}
+ .clicked:hover {
+     cursor: url("../images/cursor/clickup.gif"), auto;
+ }
 
-#hpBar
-{
-  height: 70px;
-  width: 250px;
-  accent-color: green;
-}
-  
-#xpBar
-{
-  height: 70px;
-  width: 250px;
-}
+ .clicked.clickdown:hover {
+     cursor: url("../images/cursor/clickdown.gif"), auto;
+ }
 
-#saveSelector{
-  min-height: 100vh;
-}
+ .clickable,
+ button,
+ label,
+ input,
+ #navBarLogo {
+     animation: cursor 700ms linear infinite;
+ }
 
-@keyframes shake {
-  0%   { transform: translate(1px, 1px)   rotate(0deg);   }
-  10%  { transform: translate(-1px, -2px) rotate(-1deg);  }
-  20%  { transform: translate(-3px, 0px)  rotate(1deg);   }
-  30%  { transform: translate(3px, 2px)   rotate(0deg);   }
-  40%  { transform: translate(1px, -1px)  rotate(1deg);   }
-  50%  { transform: translate(-1px, 2px)  rotate(-1deg);  }
-  60%  { transform: translate(-3px, 1px)  rotate(0deg);   }
-  70%  { transform: translate(3px, 1px)   rotate(-1deg);  }
-  80%  { transform: translate(-1px, -1px) rotate(1deg);   }
-  90%  { transform: translate(1px, 2px)   rotate(0deg);   }
-  100% { transform: translate(1px, -2px)  rotate(-1deg);  }
-}
+ .dark-mode {
+     background-color: rgb(51, 51, 51);
+     background-image: url(../images/background/background-night.png);
+     background-size: cover;
+     min-height: 100vh;
+ }
+
+ #saveSelector {
+     padding-top: 60px;
+ }
+
+ .input-container {
+     display: flex;
+     align-items: center;
+     position: relative;
+ }
+
+ .input-container input {
+     padding-left: 40px;
+ }
+
+ .input-container i {
+     position: absolute;
+     left: 10px;
+     color: #ccc;
+     padding-bottom: 15px;
+ }
+
+ .input-container input:focus+i {
+     color: #007bff;
+ }
+
+ .nightmode-toggle {
+     display: inline-block;
+     margin-right: 20px;
+ }
+
+ .nightmode-toggle .fa {
+     font-size: 16px;
+     line-height: 18px;
+     vertical-align: bottom;
+     text-decoration: none;
+ }
+
+ .nightmode-toggle .switch {
+     margin: 0 2px 1px 2px;
+     font-size: 18px;
+     line-height: 22px;
+     vertical-align: bottom;
+     position: relative;
+     display: inline-block;
+     width: 30px;
+     height: 15px;
+     /* Hide default HTML checkbox */
+     /* The slider */
+     /* Rounded sliders */
+ }
+
+ .nightmode-toggle .switch input {
+     display: none;
+ }
+
+ .nightmode-toggle .switch .slider {
+     position: absolute;
+     cursor: pointer;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background-color: #ccc;
+     -webkit-transition: .4s;
+     transition: .4s;
+ }
+
+ .nightmode-toggle .switch .slider:before {
+     position: absolute;
+     content: "";
+     height: 12px;
+     width: 12px;
+     left: 2px;
+     bottom: 1.5px;
+     background-color: white;
+     -webkit-transition: .4s;
+     transition: .4s;
+ }
+
+ .nightmode-toggle .switch input:checked+.slider {
+     background-color: #2aa3cc;
+ }
+
+ .nightmode-toggle .switch input:focus+.slider {
+     box-shadow: 0 0 1px #2aa3cc;
+ }
+
+ .nightmode-toggle .switch input:checked+.slider:before {
+     -webkit-transform: translateX(13px);
+     -ms-transform: translateX(13px);
+     transform: translateX(13px);
+ }
+
+ .nightmode-toggle .switch .slider.round {
+     border-radius: 15px;
+ }
+
+ .nightmode-toggle .switch .slider.round:before {
+     border-radius: 50%;
+ }
+
+ /* Cursor idle animation hovering over clickable item */
+ @keyframes cursor {
+     0% {
+         cursor: url("../images/cursor/clickup.gif"), auto;
+     }
+
+     20% {
+         cursor: url("../images/cursor/clickdown.gif"), auto;
+     }
+
+     35% {
+         cursor: url("../images/cursor/clickup.gif"), auto;
+     }
+
+     70% {
+         cursor: url("../images/cursor/clickdown.gif"), auto;
+     }
+
+     100% {
+         cursor: url("../images/cursor/clickup.gif"), auto;
+     }
+ }

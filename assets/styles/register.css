@@ -1,0 +1,25 @@
+.form-register {
+    width: fit-content;
+    padding: 30px;
+    margin: auto;
+    border-radius: 10px;
+    border: solid black 2px;
+}
+
+.submitRegister {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 125px;
+    padding: 10px;
+    border-radius: 4px;
+    margin: auto;
+}
+
+.controlsRegister {
+    width: 200px;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 2px solid rgb(0, 0, 0);
+}
