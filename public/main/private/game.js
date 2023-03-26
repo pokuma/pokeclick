@@ -44,7 +44,7 @@ function init() {
 
     levelNav.innerHTML = "level: " + lvl;
     moneyNav.innerHTML = "money: " + money;
-    damageNav.innerHTML = "player damage: " + dmg;
+    damageNav.innerHTML = "click damage: " + dmg;
     hpBarText.innerHTML = "hp: " + hpBar.ariaValueNow + " / " + hpBar.ariaValueMax;
     hpBarText.style.color = "white";
     xpBarText.innerHTML = "xp: " + xpBar.ariaValueNow + " / " + xpBar.ariaValueMax;
@@ -166,7 +166,7 @@ function gainXP() {
         if (lvl % 5 == 0) {
 
             dmg += 2;
-            damageNav.innerHTML = "player damage: " + dmg;
+            damageNav.innerHTML = "click damage: " + dmg;
         } else {
 
         }

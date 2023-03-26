@@ -18,22 +18,25 @@
 </head>
 
 <body id="body" onload="loadDarkMode()">
-
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container-fluid">
-            <a class="nav-link" draggable="false" href="index.html"><img src="../assets/images/logo/logo.png"
-                    draggable="false" style="width: 100px;" alt="logo"></a>
-
-            <div class="nightmode-toggle hide-for-small-down">
-                <i class="fa fa-sun-o text-light"> </i>
-                <label class="switch ">
-                    <input type="checkbox" id="dark-mode-toggle" onclick="changeDarkMode()">
-                    <span class="slider round clickable"> </span>
-                </label>
-                <i class="fa fa-moon-o text-light"> </i>
+            <a class="nav-link" draggable="false" href="index.html"><img id="navBarLogo"
+                    src="../assets/images/logo/logo.png" draggable="false" style="width: 100px;" alt="logo"></a>
+            <div class="row">
+                <div class="col">
+                    <div class="nightmode-toggle hide-for-small-down">
+                        <i class="fa fa-sun-o text-light"> </i>
+                        <label class="switch ">
+                            <input type="checkbox" id="dark-mode-toggle" onclick="changeDarkMode()">
+                            <span class="slider round clickable"> </span>
+                        </label>
+                        <i class="fa fa-moon-o text-light"> </i>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
+
 
     <div>
         <img draggable="false"  src="../assets\images\options\options.png" alt="Options" width="250"
