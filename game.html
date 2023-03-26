@@ -3,7 +3,6 @@
 
 <head>
     <meta name="description" content="Webpage designed for my game project">
-    </meta>
     <meta name="author" content="Edgar Álvarez González">
     <meta charset="utf-8">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -23,43 +22,47 @@
 </head>
 
 <body id="body" class="clicked">
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <div class="container-fluid ">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
             <a class="nav-link" draggable="false" href="index.html"><img id="navBarLogo" src="assets\images\logo\logo.png" draggable="false" style="width: 100px;" alt="logo"></a>
 
-            <div class="collapse navbar-collapse d-flex justify-content-center align-items-center pe-5 " id="collapsibleNavbar">
+            <div class="navbar-collapse justify-content-center align-items-center my-3" id="collapsibleNavbar">
                 <ul class="navbar-nav text-light ">
                     <li class="nav-item pe-5" id="level"></li>
                     <li class="nav-item pe-5" id="money"></li>
                     <li class="nav-item pe-5" id="damage"></li>
-                    <li class="nav-item" id="pokeDamage"></li>
+                    <li class="nav-item pe-5" id="pokeDamage"></li>
                 </ul>
             </div>
 
-            <div class="nightmode-toggle hide-for-small-down ">
-                <i class="fa fa-sun-o text-light"> </i>
-                <label class="switch ">
-                    <input type="checkbox" onclick="changeDarkMode()">
-                    <span class="slider round clickable">  </span>
-                </label>
-                <i class="fa fa-moon-o text-light"> </i>
+            <div class="row">
+                <div class="col">
+                    <div class="nightmode-toggle hide-for-small-down">
+                        <i class="fa fa-sun-o text-light"> </i>
+                        <label class="switch ">
+                            <input type="checkbox" onclick="changeDarkMode()">
+                            <span class="slider round clickable">  </span>
+                        </label>
+                        <i class="fa fa-moon-o text-light"> </i>
+                    </div>
+                </div>
+                <div class="col">
+                    <div id="startMenu" class="dropdown clearfix">
+                        <button class="btn btn-secondary btn-start-menu dropdown-toggle" type="dropdownMenubutton" data-bs-toggle="dropdown" aria-expanded="false">
+                            start menu
+                            
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item dropdown-item-start-menu" href="\options.html" data-toggle="modal">options</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item dropdown-item-start-menu" href="#" data-toggle="modal">help</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-
-            <div id="startMenu" class="dropdown clearfix">
-                <button class="btn btn-secondary btn-start-menu dropdown-toggle" type="dropdownMenubutton" data-bs-toggle="dropdown" aria-expanded="false">
-                    start menu
-                    
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li>
-                        <a class="dropdown-item dropdown-item-start-menu" href="\options.html" data-toggle="modal">options</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item dropdown-item-start-menu" href="#" data-toggle="modal">help</a>
-                    </li>
-                </ul>
-            </div>
-
         </div>
     </nav>
 
