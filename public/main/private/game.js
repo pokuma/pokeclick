@@ -44,6 +44,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
         load();
     }
 
+    // Attack every second
+    setInterval(function () {
+        attack();
+    }, 1000);
+
     // Spawn the first pokemon
     spawnPokemon();
 
