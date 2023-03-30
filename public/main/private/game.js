@@ -4,7 +4,7 @@ let player = {
     xp: 0,
     level: 1,
     money: 0,
-    attack: 5
+    attacks: 5
 }
 
 // Pokemon health points bar
@@ -28,10 +28,6 @@ let moneyNav = document.getElementById("money");
 // Player damage
 let damageNav = document.getElementById("damage");
 
-// Player's pokemon damage
-let pokeDamageNav = document.getElementById("pokeDamage");
-let pokeDmg = 1;
-
 // Pokemon image
 const pokemon = document.getElementById("pokemon");
 
@@ -54,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     levelNav.innerHTML = "level: " + player.level;
     moneyNav.innerHTML = "money: " + player.money;
-    damageNav.innerHTML = "click damage: " + player.attack;
+    damageNav.innerHTML = "click damage: " + player.attacks;
     hpBarText.innerHTML = "hp: " + hpBar.ariaValueNow + " / " + hpBar.ariaValueMax;
     hpBarText.style.color = "white";
     xpBarText.innerHTML = "xp: " + xpBar.ariaValueNow + " / " + xpBar.ariaValueMax;
@@ -67,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 function attack() {
     if (hpBar.ariaValueNow > 0) {
         startPokemonShake();
-        if (hpBar.ariaValueNow - player.attack <= 65) {
+        if (hpBar.ariaValueNow - player.attacks <= 65) {
             hpBarText.style.color = "black";
 
             if (hpBar.ariaValueNow < redZone) {
@@ -77,7 +73,7 @@ function attack() {
                 hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-warning";
             }
         }
-        hpBar.ariaValueNow -= player.attack;
+        hpBar.ariaValueNow -= player.attacks;
         hpBarText.innerHTML = "hp: " + hpBar.ariaValueNow + " / " + hpBar.ariaValueMax;
         hpBar.style.width = "" + hpBar.ariaValueNow + "%";
     }
@@ -149,7 +145,7 @@ function setHealthPointsPadding() {
     if (hpBar.ariaValueNow == 100) {
         hpBarText.style.paddingLeft = "100px";
     } else {
-        if (hpBar.ariaValueNow - player.attack > 9) {
+        if (hpBar.ariaValueNow - player.attacks > 9) {
             hpBarText.style.paddingLeft = "104px";
         } else if (hpBar.ariaValueNow <= 9) {
             hpBarText.style.paddingLeft = "108px";
@@ -173,12 +169,9 @@ function gainXP() {
         xpBar.ariaValueNow = 0;
         xpBarText.innerHTML = "xp: " + xpBar.ariaValueNow + " / " + xpBar.ariaValueMax;
 
-        if (player.level % 5 == 0) {
-
-            player.attack += 2;
-            damageNav.innerHTML = "click damage: " + player.attack;
-        } else {
-
+        if (player.level % 2 == 0) {
+            player.attacks += 3;
+            damageNav.innerHTML = "click damage: " + player.attacks;
         }
     }
 
@@ -199,4 +192,18 @@ var save = function () {
 // Loads the game from localStorage and update favIcon to starter
 var load = function () {
     player = JSON.parse(localStorage.getItem("player"));
-}		
+}
+
+var resetProfile = function () {
+    alert("You have reset your profile!");
+
+    player = {
+        xp: 0,
+        level: 1,
+        money: 0,
+        attacks: 5
+    }
+
+    save();
+    location.reload();
+}
