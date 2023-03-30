@@ -194,7 +194,7 @@ var load = function () {
     player = JSON.parse(localStorage.getItem("player"));
 }
 
-var resetProfile = function () {
+function resetConfirmed() {
     alert("You have reset your profile!");
 
     player = {
@@ -206,4 +206,14 @@ var resetProfile = function () {
 
     save();
     location.reload();
+}
+
+var resetProfile = function () {
+    let confirm = prompt("If you wish to reset your profile, please enter \"RESET\":", "");
+
+    if (confirm === null || confirm === "") {
+        alert("Profile was NOT reset!");
+    } else if (confirm === "RESET") {
+        resetConfirmed();
+    }
 }
