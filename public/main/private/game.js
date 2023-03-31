@@ -62,7 +62,11 @@ var pokemonIsCapturedPokeball = function () {
 // Waits for all the html to load before doing this code
 document.addEventListener("DOMContentLoaded", function (e) {
     if (localStorage.getItem("player") != null) {
-        load();
+        loadPlayer();
+    }
+
+    if (localStorage.getItem("pokedex") != null || localStorage.getItem("caught") != null) {
+        loadPokeCaught();
     }
 
     pokemonIsCapturedPokeball();
@@ -232,11 +236,19 @@ function restoreHP() {
 // Saves the game by writing play to JSON and save it in localStorage			
 var save = function () {
     localStorage.setItem("player", JSON.stringify(player));
+    localStorage.setItem("caught", JSON.stringify(caughtPokemons));
+    localStorage.setItem("pokeCounter", JSON.stringify(pokeCounter));
 }
 
 // Loads the game from localStorage and update favIcon to starter
-var load = function () {
+var loadPlayer = function () {
     player = JSON.parse(localStorage.getItem("player"));
+
+}
+
+var loadPokeCaught = function () {
+    caughtPokemons = JSON.parse(localStorage.getItem("caught"));
+    pokeCounter = JSON.parse(localStorage.getItem("pokeCounter"));
 }
 
 function resetConfirmed() {
@@ -248,6 +260,9 @@ function resetConfirmed() {
         money: 0,
         attacks: 5
     }
+
+    caughtPokemons = [];
+    pokeCounter = 0;
 
     save();
     location.reload();
