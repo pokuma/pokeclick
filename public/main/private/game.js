@@ -119,9 +119,9 @@ function attack() {
 }
 
 var alreadyCaught = function (name) {
-    for (let i = 0; i < caughtPokemons.length; i++) {
+    for (let i = 0; i < player.caughtPokemons.length; i++) {
 
-        if (caughtPokemons[i] === name) {
+        if (player.caughtPokemons[i] === name) {
             return true;
         }
     }
