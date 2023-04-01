@@ -37,11 +37,6 @@ function loadDarkMode() {
         var body = document.getElementById("body");
         body.classList.toggle("dark-mode", isDarkModeEnabled);
         
-        var toggleCookie = cookies.find(cookie => cookie.startsWith("darkModeToggle="));
-        if (toggleCookie) {
-          var isToggleChecked = toggleCookie.split("=")[1] === "true";
-          var toggle = document.getElementById("dark-mode-toggle");
-          toggle.checked = isToggleChecked;
-        }
+        
     }
 }
