@@ -1,14 +1,13 @@
-var pokemonList = ["bulbasaur", "ivysaur", "venusaur", "charmander", "charmeleon", "charizard", "squirtle", "wartortle", "blastoise", "caterpie", "metapod", "butterfree", "weedle", "kakuna", "beedrill", "pidgey", "pidgeotto", "pidgeot", "rattata", "raticate", "spearow", "fearow", "ekans", "arbok", "pikachu", "raichu", "sandshrew", "sandslash", "nidoran♀", "nidorina", "nidoqueen", "nidoran♂", "nidorino", "nidoking", "clefairy", "clefable", "vulpix", "ninetales", "jigglypuff", "wigglytuff", "zubat", "golbat", "oddish", "gloom", "vileplume", "paras", "parasect", "venonat", "venomoth", "diglett", "dugtrio", "meowth", "persian", "psyduck", "golduck", "mankey", "primeape", "growlithe", "arcanine", "poliwag", "poliwhirl", "poliwrath", "abra", "kadabra", "alakazam", "machop", "machoke", "machamp", "bellsprout", "weepinbell", "victreebel", "tentacool", "tentacruel", "geodude", "graveler", "golem", "ponyta", "rapidash", "slowpoke", "slowbro", "magnemite", "magneton", "farfetch’d", "doduo", "dodrio", "seel", "dewgong", "grimer", "muk", "shellder", "cloyster", "gastly", "haunter", "gengar", "onix", "drowzee", "hypno", "krabby", "kingler", "voltorb", "electrode", "exeggcute", "exeggutor", "cubone", "marowak", "hitmonlee", "hitmonchan", "lickitung", "koffing", "weezing", "rhyhorn", "rhydon", "chansey", "tangela", "kangaskhan", "horsea", "seadra", "goldeen", "seaking", "staryu", "starmie", "mr.mime", "scyther", "jynx", "electabuzz", "magmar", "pinsir", "tauros", "magikarp", "gyarados", "lapras", "ditto", "eevee", "vaporeon", "jolteon", "flareon", "porygon", "omanyte", "omastar", "kabuto", "kabutops", "aerodactyl", "snorlax", "articuno", "zapdos", "moltres", "dratini", "dragonair", "dragonite", "mewtwo", "mew"];
+const pokemonList = ["bulbasaur", "ivysaur", "venusaur", "charmander", "charmeleon", "charizard", "squirtle", "wartortle", "blastoise", "caterpie", "metapod", "butterfree", "weedle", "kakuna", "beedrill", "pidgey", "pidgeotto", "pidgeot", "rattata", "raticate", "spearow", "fearow", "ekans", "arbok", "pikachu", "raichu", "sandshrew", "sandslash", "nidoran♀", "nidorina", "nidoqueen", "nidoran♂", "nidorino", "nidoking", "clefairy", "clefable", "vulpix", "ninetales", "jigglypuff", "wigglytuff", "zubat", "golbat", "oddish", "gloom", "vileplume", "paras", "parasect", "venonat", "venomoth", "diglett", "dugtrio", "meowth", "persian", "psyduck", "golduck", "mankey", "primeape", "growlithe", "arcanine", "poliwag", "poliwhirl", "poliwrath", "abra", "kadabra", "alakazam", "machop", "machoke", "machamp", "bellsprout", "weepinbell", "victreebel", "tentacool", "tentacruel", "geodude", "graveler", "golem", "ponyta", "rapidash", "slowpoke", "slowbro", "magnemite", "magneton", "farfetch’d", "doduo", "dodrio", "seel", "dewgong", "grimer", "muk", "shellder", "cloyster", "gastly", "haunter", "gengar", "onix", "drowzee", "hypno", "krabby", "kingler", "voltorb", "electrode", "exeggcute", "exeggutor", "cubone", "marowak", "hitmonlee", "hitmonchan", "lickitung", "koffing", "weezing", "rhyhorn", "rhydon", "chansey", "tangela", "kangaskhan", "horsea", "seadra", "goldeen", "seaking", "staryu", "starmie", "mr.mime", "scyther", "jynx", "electabuzz", "magmar", "pinsir", "tauros", "magikarp", "gyarados", "lapras", "ditto", "eevee", "vaporeon", "jolteon", "flareon", "porygon", "omanyte", "omastar", "kabuto", "kabutops", "aerodactyl", "snorlax", "articuno", "zapdos", "moltres", "dratini", "dragonair", "dragonite", "mewtwo", "mew"];
 
 let player = {
     xp: 0,
     level: 5,
     money: 0,
     attacks: 5,
+    pokeCounter: 0,
     caughtPokemons: []
 };
-
-let pokeCounter = 0;
 
 // Pokemon health points bar
 const hpBar = document.getElementById("hpBar");
@@ -68,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     levelNav.innerHTML = "level: " + player.level;
     moneyNav.innerHTML = "money: " + player.money;
     damageNav.innerHTML = "click damage: " + player.attacks;
-    pokeCount.innerHTML = "pokemon caught: " + pokeCounter;
+    pokeCount.innerHTML = "pokemon caught: " + player.pokeCounter;
     hpBarText.innerHTML = "hp: " + hpBar.ariaValueNow + " / " + hpBar.ariaValueMax;
     hpBarText.style.color = "white";
     xpBarText.innerHTML = "xp: " + xpBar.ariaValueNow + " / " + xpBar.ariaValueMax;
@@ -138,8 +137,8 @@ var alreadyCaught = function (name) {
 function pokemonDies() {
     if (!alreadyCaught(pokeName.innerHTML)) {
         player.caughtPokemons.push(pokeName.innerHTML);
-        pokeCounter++;
-        pokeCount.innerHTML = "pokemon caught: " + pokeCounter;
+        player.pokeCounter++;
+        pokeCount.innerHTML = "pokemon caught: " + player.pokeCounter;
     }
 
     getPokemonDrops();
@@ -239,7 +238,7 @@ function restoreHP() {
 var save = function () {
     localStorage.setItem("player", JSON.stringify(player));
     localStorage.setItem("caught", JSON.stringify(caughtPokemons));
-    localStorage.setItem("pokeCounter", JSON.stringify(pokeCounter));
+    localStorage.setItem("pokeCounter", JSON.stringify(player.pokeCounter));
 }
 
 // Loads the game from localStorage and update favIcon to starter
@@ -250,7 +249,7 @@ var loadPlayer = function () {
 
 var loadPokeCaught = function () {
     caughtPokemons = JSON.parse(localStorage.getItem("caught"));
-    pokeCounter = JSON.parse(localStorage.getItem("pokeCounter"));
+    player.pokeCounter = JSON.parse(localStorage.getItem("pokeCounter"));
 }
 
 function resetConfirmed() {
@@ -261,10 +260,11 @@ function resetConfirmed() {
         level: 1,
         money: 0,
         attacks: 5,
+        pokeCounter: 0,
         caughtPokemons: []
     }
 
-    pokeCounter = 0;
+
 
     save();
     location.reload();
