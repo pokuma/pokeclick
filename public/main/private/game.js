@@ -6,8 +6,8 @@ let player = {
     xp: 0,
     level: 1,
     money: 0,
-    attacks: 5,
-}
+    attacks: 5
+};
 
 let pokeCounter = 0;
 
@@ -47,17 +47,6 @@ caught.style.width = "30px";
 caught.style.height = "30px";
 
 
-var pokemonIsCapturedPokeball = function () {
-    if (alreadyCaught(pokeName.innerHTML)) {
-        caught.src = "assets/images/pokeballs/Pokeball.svg";
-        caught.style.filter = "invert(0%)";
-    }
-    else {
-        caught.src = "assets/images/pokeballs/None.svg";
-        caught.style.filter = "invert(100%)";
-    }
-}
-
 
 // Waits for all the html to load before doing this code
 document.addEventListener("DOMContentLoaded", function (e) {
@@ -90,6 +79,19 @@ document.addEventListener("DOMContentLoaded", function (e) {
     setHealthPointsPadding();
     xpBarText.style.color = "black";
 });
+
+
+
+function pokemonIsCapturedPokeball() {
+    if (alreadyCaught(pokeName.innerHTML)) {
+        caught.src = "assets/images/pokeballs/Pokeball.svg";
+        caught.style.filter = "invert(0%)";
+    }
+    else {
+        caught.src = "assets/images/pokeballs/None.svg";
+        caught.style.filter = "invert(100%)";
+    }
+}
 
 
 function attack() {
@@ -207,7 +209,7 @@ function gainXP() {
     if (xpBar.ariaValueNow < 100) {
         player.xp += xpGain;
         xpBar.ariaValueNow = player.xp;
-        xpBarText.innerHTML = xpBar.ariaValueNow + " / " + xpBar.ariaValueMax;
+        xpBarText.innerHTML = "xp " + xpBar.ariaValueNow + " / " + xpBar.ariaValueMax;
     }
 
     if (xpBar.ariaValueNow >= 100) {
