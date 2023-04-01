@@ -47,18 +47,16 @@ caught.style.width = "30px";
 caught.style.height = "30px";
 
 
-
 // Waits for all the html to load before doing this code
 document.addEventListener("DOMContentLoaded", function (e) {
-    if (localStorage.getItem("player") != null) {
+    if (localStorage.getItem("player") !== null) {
         loadPlayer();
     }
 
-    if (localStorage.getItem("pokedex") != null || localStorage.getItem("caught") != null) {
+    if (localStorage.getItem("pokeCounter") !== null && localStorage.getItem("caught") !== null) {
         loadPokeCaught();
     }
 
-    pokemonIsCapturedPokeball();
 
     // Attack every second
     setInterval(function () {
@@ -175,10 +173,13 @@ function stopPokemonShake() {
 }
 
 function spawnPokemon() {
+
     let pokeSize = pokemonList.length;
     let pokemonNumber = Math.floor(Math.random() * pokeSize) + 1;
     pokemon.src = "assets/images/pokemon/" + (pokemonNumber) + ".png";
     pokeName.innerHTML = (pokemonList[pokemonNumber - 1]);
+    pokemonIsCapturedPokeball();
+
 }
 
 function setExperiencePadding() {
