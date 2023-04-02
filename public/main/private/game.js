@@ -321,6 +321,12 @@ var updatePokemonCounter = function () {
     player.caughtPokemons.push(pokemon.name);
     player.pokeCounter++;
     pokeCount.innerHTML = "pokedex: " + player.pokeCounter + " / " + pokemonList.length;
+    pokeCount.style.animation = "levelUp 1s";
+        pokeCount.onanimationiteration = "infinite";
+        setTimeout(function () {
+            pokeCount.style.animation = "none";
+            pokeCount.onanimationiteration = "none";
+        }, 1000);
 }
 
 var startCaptureAnimation = function () {
@@ -431,6 +437,12 @@ var gainXP = function () {
 
         // If the player has leveled up, increase level, update xp bar with correct xp and increase damage
         levelNav.innerHTML = "level: " + player.level;
+        levelNav.style.animation = "levelUp 1s";
+        levelNav.onanimationiteration = "infinite";
+        setTimeout(function () {
+            levelNav.style.animation = "none";
+            levelNav.onanimationiteration = "none";
+        }, 1000);
         xpBar.ariaValueNow = player.xp;
         xpBarText.innerHTML = "xp: " + xpBar.ariaValueNow + " / " + xpBar.ariaValueMax;
 
