@@ -40,6 +40,12 @@ function loadDarkMode() {
         var body = document.getElementById("body");
         body.classList.toggle("dark-mode", isDarkModeEnabled);
 
+        var toggleCookie = cookies.find(cookie => cookie.startsWith("darkModeToggle="));
 
+        if (toggleCookie && document.getElementById("dark-mode-toggle")) {
+            var isToggleChecked = toggleCookie.split("=")[1] === "true";
+            var toggle = document.getElementById("dark-mode-toggle");
+            toggle.checked = isToggleChecked;
+        }
     }
 }
