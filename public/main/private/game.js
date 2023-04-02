@@ -151,6 +151,15 @@ const pokemonList = [
     { id: 150, name: "mewtwo", baseXP: 306, baseHP: 100, route: 1 },
     { id: 151, name: "mew", baseXP: 270, baseHP: 100, route: 1 },
 ];
+
+let pokemon = {
+    id: 0,
+    name: "",
+    baseXP: 0,
+    baseHP: 0,
+    route: 0,
+}
+
 let player = {
     xp: 0,
     level: 5,
@@ -184,7 +193,7 @@ let damageNav = document.getElementById("damage");
 let pokeCount = document.getElementById("pokeCount");
 
 // Pokemon image
-const pokemon = document.getElementById("pokemon");
+const pokemonSprite = document.getElementById("pokemon");
 
 // Pokemon name
 const pokeName = document.getElementById("pokemonName");
@@ -226,7 +235,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 });
 
 function pokemonIsCapturedPokeball() {
-    if (alreadyCaught(pokeName.innerHTML)) {
+    if (alreadyCaught(pokemon.name)) {
         caught.src = "assets/images/pokeballs/Pokeball.svg";
         caught.style.filter = "invert(0%)";
     }
@@ -238,7 +247,7 @@ function pokemonIsCapturedPokeball() {
 
 function attack() {
     if (hpBar.ariaValueNow > 0) {
-        if (pokemon.getAttribute("src").includes("Pokeball")) {
+        if (pokemonSprite.getAttribute("src").includes("Pokeball")) {
             return
         }
         startPokemonShake();
@@ -287,7 +296,7 @@ function pokemonDies() {
     stopPokemonShake();
     restoreHP();
     hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-sucess";
-    if (!alreadyCaught(pokeName.innerHTML)) {
+    if (!alreadyCaught(pokemon.name)) {
         startCaptureAnimation();
 
         setTimeout(function () {
@@ -305,16 +314,16 @@ function pokemonDies() {
 }
 
 var updatePokemonCounter = function () {
-    player.caughtPokemons.push(pokeName.innerHTML);
+    player.caughtPokemons.push(pokemon.name);
     player.pokeCounter++;
     pokeCount.innerHTML = "pokedex: " + player.pokeCounter + " / " + pokemonList.length;
 }
 
 function startCaptureAnimation() {
-    pokemon.style.border = "none";
-    pokemon.src = "assets/images/pokeballs/Pokeball.svg";
-    pokemon.style.animation = "rotate 1s";
-    pokemon.onanimationiteration = "infinite";
+    pokemonSprite.style.border = "none";
+    pokemonSprite.src = "assets/images/pokeballs/Pokeball.svg";
+    pokemonSprite.style.animation = "rotate 1s";
+    pokemonSprite.onanimationiteration = "infinite";
 }
 
 function getPokemonDrops() {
@@ -328,23 +337,30 @@ function gainMoney() {
 }
 
 function startPokemonShake() {
-    pokemon.style.animation = "shake 0.5s";
-    pokemon.onanimationiteration = "infinite";
+    pokemonSprite.style.animation = "shake 0.5s";
+    pokemonSprite.onanimationiteration = "infinite";
 }
 
 function stopPokemonShake() {
-    pokemon.style.animation = "none";
-    pokemon.onanimationiteration = "none";
+    pokemonSprite.style.animation = "none";
+    pokemonSprite.onanimationiteration = "none";
 }
 
 function spawnPokemon() {
-    let pokeSize = pokemonList.length;
-    let pokemonNumber = Math.floor(Math.random() * pokeSize) + 1;
-    pokemon.src = "assets/images/pokemon/" + pokemonNumber + ".png";
-    pokemon.style.border = "1px solid white";
-    pokemon.style.borderRadius = "20px";
-    pokeName.innerHTML = pokemonList[pokemonNumber - 1].name;
+    pokemon.id = Math.floor(Math.random() * pokemonList.length) + 1;
+    updatePokemonObjectFromId(pokemon.id);
+    pokemonSprite.src = "assets/images/pokemon/" + pokemon.id + ".png";
+    pokemonSprite.style.border = "1px solid white";
+    pokemonSprite.style.borderRadius = "20px";
+    pokeName.innerHTML = pokemon.name;
     pokemonIsCapturedPokeball();
+}
+
+function updatePokemonObjectFromId(id){
+    pokemon.name = pokemonList[id - 1].name;
+    pokemon.baseHP = pokemonList[id - 1].baseHP;
+    pokemon.baseXP = pokemonList[id - 1].baseXP;
+    pokemon.route = pokemonList[id - 1].route;
 }
 
 function setExperiencePadding() {
@@ -371,17 +387,24 @@ function setHealthPointsPadding() {
 
 function gainXP() {
     if (xpBar.ariaValueNow < 100) {
-        player.xp += xpGain;
+        player.xp += pokemon.baseXP;
         xpBar.ariaValueNow = player.xp;
         xpBarText.innerHTML = "xp " + xpBar.ariaValueNow + " / " + xpBar.ariaValueMax;
     }
 
     if (xpBar.ariaValueNow >= 100) {
-        player.level += 1;
-        player.xp = 0;
 
+        // If the player has enough xp to level up, level up and reset the xp bar
+        let obtainedLevels = Math.floor(xpBar.ariaValueNow / xpBar.ariaValueMax);
+        player.level += obtainedLevels;
+        let xpLeft = xpBar.ariaValueNow % xpBar.ariaValueMax;
+        player.xp = xpLeft;
+
+        //TODO: Make a formula for the xp bar
+
+        // If the player has leveled up, increase level, update xp bar with correct xp and increase damage
         levelNav.innerHTML = "level: " + player.level;
-        xpBar.ariaValueNow = 0;
+        xpBar.ariaValueNow = player.xp;
         xpBarText.innerHTML = "xp: " + xpBar.ariaValueNow + " / " + xpBar.ariaValueMax;
 
         if (player.level % 2 == 0) {
