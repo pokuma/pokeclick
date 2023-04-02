@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     levelNav.innerHTML = "level: " + player.level;
     moneyNav.innerHTML = "money: " + player.money;
     damageNav.innerHTML = "click damage: " + player.attacks;
-    pokeCount.innerHTML = "pokédex: " + player.pokeCounter + " / " + pokemonList.length;
+    pokeCount.innerHTML = "pokedex: " + player.pokeCounter + " / " + pokemonList.length;
     hpBarText.innerHTML = "hp: " + hpBar.ariaValueNow + " / " + hpBar.ariaValueMax;
     hpBarText.style.color = "white";
     xpBarText.innerHTML = "xp: " + xpBar.ariaValueNow + " / " + xpBar.ariaValueMax;
@@ -321,7 +321,7 @@ function gainMoney() {
     moneyNav.innerHTML = "money: " + player.money;
 }
 
-function startPokemonShake() {
+function startPokemon() {
     pokemon.style.animation = "shake 0.5s";
     pokemon.onanimationiteration = "infinite";
 }
