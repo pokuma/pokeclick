@@ -208,7 +208,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     setInterval(function () {
         attack();
     }, 1000);
-    
+
 
     // Spawn the first pokemon
     spawnPokemon();
@@ -238,7 +238,7 @@ function pokemonIsCapturedPokeball() {
 
 function attack() {
     if (hpBar.ariaValueNow > 0) {
-        if(pokemon.getAttribute("src").includes("Pokeball")){
+        if (pokemon.getAttribute("src").includes("Pokeball")) {
             return
         }
         startPokemonShake();
@@ -291,15 +291,16 @@ function pokemonDies() {
         player.caughtPokemons.push(pokeName.innerHTML);
         player.pokeCounter++;
         pokeCount.innerHTML = "pokedex: " + player.pokeCounter + " / " + pokemonList.length;
-        pokemon.src = "assets/images/pokeballs/Pokeball.svg";
+
         startCaptureAnimation();
-        setTimeout(function(){ 
+
+        setTimeout(function () {
             spawnPokemon();
             pokemonIsCapturedPokeball();
-            save(); 
+            save();
         }, 1000);
     }
-    else{
+    else {
         spawnPokemon();
         pokemonIsCapturedPokeball();
         save();
@@ -307,6 +308,8 @@ function pokemonDies() {
 }
 
 function startCaptureAnimation() {
+    pokemon.src = "assets/images/pokeballs/Pokeball.svg";
+    pokemon.style.border = "none";
     pokemon.style.animation = "rotate 1s";
     pokemon.onanimationiteration = "infinite";
 }
@@ -335,6 +338,8 @@ function spawnPokemon() {
     let pokeSize = pokemonList.length;
     let pokemonNumber = Math.floor(Math.random() * pokeSize) + 1;
     pokemon.src = "assets/images/pokemon/" + pokemonNumber + ".png";
+    pokemon.style.border = "1px solid white";
+    pokemon.style.borderRadius = "20px";
     pokeName.innerHTML = pokemonList[pokemonNumber - 1].name;
     pokemonIsCapturedPokeball();
 }
