@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     // Attack every second
     setInterval(function () {
         attack();
-    }, 60);
+    }, 1000);
 
 
     // Spawn the first pokemon
@@ -311,8 +311,8 @@ var updatePokemonCounter = function () {
 }
 
 function startCaptureAnimation() {
-    pokemon.src = "assets/images/pokeballs/Pokeball.svg";
     pokemon.style.border = "none";
+    pokemon.src = "assets/images/pokeballs/Pokeball.svg";
     pokemon.style.animation = "rotate 1s";
     pokemon.onanimationiteration = "infinite";
 }
