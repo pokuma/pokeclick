@@ -290,7 +290,7 @@ function pokemonDies() {
     if (!alreadyCaught(pokeName.innerHTML)) {
         player.caughtPokemons.push(pokeName.innerHTML);
         player.pokeCounter++;
-        pokeCount.innerHTML = "pokédex: " + player.pokeCounter + " / " + pokemonList.length;
+        pokeCount.innerHTML = "pokedex: " + player.pokeCounter + " / " + pokemonList.length;
         pokemon.src = "assets/images/pokeballs/Pokeball.svg";
         startCaptureAnimation();
         setTimeout(function(){ 
@@ -321,7 +321,7 @@ function gainMoney() {
     moneyNav.innerHTML = "money: " + player.money;
 }
 
-function startPokemon() {
+function startPokemonShake() {
     pokemon.style.animation = "shake 0.5s";
     pokemon.onanimationiteration = "infinite";
 }
