@@ -299,12 +299,15 @@ var pokemonDies = function () {
     hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-sucess";
     if (!alreadyCaught(pokemon.name)) {
         startCaptureAnimation();
-
+        if(pokemon.catchRate > Math.floor(Math.random() * 256)){
+            setTimeout(function () {
+                updatePokemonCounter();
+                save();
+            }, 1000);
+        }
         setTimeout(function () {
-            updatePokemonCounter();
             spawnPokemon();
             pokemonIsCapturedPokeball();
-            save();
         }, 1000);
     }
     else {
