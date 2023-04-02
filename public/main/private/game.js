@@ -208,6 +208,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     setInterval(function () {
         attack();
     }, 1000);
+    
 
     // Spawn the first pokemon
     spawnPokemon();
@@ -237,6 +238,9 @@ function pokemonIsCapturedPokeball() {
 
 function attack() {
     if (hpBar.ariaValueNow > 0) {
+        if(pokemon.getAttribute("src").includes("Pokeball")){
+            return
+        }
         startPokemonShake();
         if (hpBar.ariaValueNow - player.attacks <= 65) {
             hpBarText.style.color = "black";
@@ -279,19 +283,32 @@ var alreadyCaught = function (name) {
  *      Restore the bar's hp for the next pokemon
  */
 function pokemonDies() {
+    getPokemonDrops();
+    stopPokemonShake();
+    restoreHP();
+    hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-sucess";
     if (!alreadyCaught(pokeName.innerHTML)) {
         player.caughtPokemons.push(pokeName.innerHTML);
         player.pokeCounter++;
         pokeCount.innerHTML = "pokédex: " + player.pokeCounter + " / " + pokemonList.length;
+        pokemon.src = "assets/images/pokeballs/Pokeball.svg";
+        startCaptureAnimation();
+        setTimeout(function(){ 
+            spawnPokemon();
+            pokemonIsCapturedPokeball();
+            save(); 
+        }, 1000);
     }
+    else{
+        spawnPokemon();
+        pokemonIsCapturedPokeball();
+        save();
+    }
+}
 
-    getPokemonDrops();
-    stopPokemonShake();
-    hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-sucess";
-    spawnPokemon();
-    restoreHP();
-    pokemonIsCapturedPokeball();
-    save();
+function startCaptureAnimation() {
+    pokemon.style.animation = "rotate 1s";
+    pokemon.onanimationiteration = "infinite";
 }
 
 function getPokemonDrops() {
