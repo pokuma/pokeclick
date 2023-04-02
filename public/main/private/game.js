@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     // Attack every second
     setInterval(function () {
         attack();
-    }, 1000);
+    }, 60);
 
 
     // Spawn the first pokemon
@@ -288,13 +288,10 @@ function pokemonDies() {
     restoreHP();
     hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-sucess";
     if (!alreadyCaught(pokeName.innerHTML)) {
-        player.caughtPokemons.push(pokeName.innerHTML);
-        player.pokeCounter++;
-        pokeCount.innerHTML = "pokedex: " + player.pokeCounter + " / " + pokemonList.length;
-
         startCaptureAnimation();
 
         setTimeout(function () {
+            updatePokemonCounter();
             spawnPokemon();
             pokemonIsCapturedPokeball();
             save();
@@ -305,6 +302,12 @@ function pokemonDies() {
         pokemonIsCapturedPokeball();
         save();
     }
+}
+
+var updatePokemonCounter = function () {
+    player.caughtPokemons.push(pokeName.innerHTML);
+    player.pokeCounter++;
+    pokeCount.innerHTML = "pokedex: " + player.pokeCounter + " / " + pokemonList.length;
 }
 
 function startCaptureAnimation() {
