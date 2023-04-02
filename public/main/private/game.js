@@ -234,7 +234,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     xpBarText.style.color = "black";
 });
 
-function pokemonIsCapturedPokeball() {
+var pokemonIsCapturedPokeball = function () {
     if (alreadyCaught(pokemon.name)) {
         caught.src = "assets/images/pokeballs/Pokeball.svg";
         caught.style.filter = "invert(0%)";
@@ -245,7 +245,7 @@ function pokemonIsCapturedPokeball() {
     }
 }
 
-function attack() {
+var attack = function () {
     if (hpBar.ariaValueNow > 0) {
         if (pokemonSprite.getAttribute("src").includes("Pokeball")) {
             return
@@ -291,7 +291,7 @@ var alreadyCaught = function (name) {
  *      Spawn another random pokemon
  *      Restore the bar's hp for the next pokemon
  */
-function pokemonDies() {
+var pokemonDies = function () {
     getPokemonDrops();
     stopPokemonShake();
     restoreHP();
@@ -319,51 +319,75 @@ var updatePokemonCounter = function () {
     pokeCount.innerHTML = "pokedex: " + player.pokeCounter + " / " + pokemonList.length;
 }
 
-function startCaptureAnimation() {
+var startCaptureAnimation = function () {
     pokemonSprite.style.border = "none";
     pokemonSprite.src = "assets/images/pokeballs/Pokeball.svg";
     pokemonSprite.style.animation = "rotate 1s";
     pokemonSprite.onanimationiteration = "infinite";
 }
 
-function getPokemonDrops() {
+var getPokemonDrops = function () {
     gainXP();
     gainMoney();
 }
 
-function gainMoney() {
+var gainMoney = function () {
     player.money += 1;
     moneyNav.innerHTML = "money: " + player.money;
 }
 
-function startPokemonShake() {
+var startPokemonShake = function () {
     pokemonSprite.style.animation = "shake 0.5s";
     pokemonSprite.onanimationiteration = "infinite";
 }
 
-function stopPokemonShake() {
+var stopPokemonShake = function () {
     pokemonSprite.style.animation = "none";
     pokemonSprite.onanimationiteration = "none";
 }
 
-function spawnPokemon() {
+var spawnShinyPokemon = function () {
+    let shinyChance = 0.02; // 2% chance of shiny
+    let randShiny = parseFloat(Math.random()).toFixed(4)
+
+    // Shiny spawned!
+    if (randShiny <= shinyChance) {
+        return true;
+    }
+
+    return false;
+}
+
+var spawnPokemon = function () {
     pokemon.id = Math.floor(Math.random() * pokemonList.length) + 1;
     updatePokemonObjectFromId(pokemon.id);
-    pokemonSprite.src = "assets/images/pokemon/" + pokemon.id + ".png";
+
+    if (spawnShinyPokemon()) {
+        pokemonSprite.src = "assets/images/pokemon/shiny/" + pokemon.id + ".png";
+        pokeName.innerHTML = pokemon.name + "✨";
+        alert("Shiny pokemon spawned!");
+    }
+    else {
+        pokemonSprite.src = "assets/images/pokemon/" + pokemon.id + ".png";
+        pokeName.innerHTML = pokemon.name;
+    }
+
     pokemonSprite.style.border = "1px solid white";
     pokemonSprite.style.borderRadius = "20px";
-    pokeName.innerHTML = pokemon.name;
+
     pokemonIsCapturedPokeball();
 }
 
-function updatePokemonObjectFromId(id){
+
+
+var updatePokemonObjectFromId = function (id) {
     pokemon.name = pokemonList[id - 1].name;
     pokemon.baseHP = pokemonList[id - 1].baseHP;
     pokemon.baseXP = pokemonList[id - 1].baseXP;
     pokemon.route = pokemonList[id - 1].route;
 }
 
-function setExperiencePadding() {
+var setExperiencePadding = function () {
     if (xpBar.ariaValueNow == 100) {
         xpBarText.style.paddingLeft = "100px";
     } else if (xpBar.ariaValueNow > 9 && xpBar.ariaValueNow < 100) {
@@ -373,7 +397,7 @@ function setExperiencePadding() {
     }
 }
 
-function setHealthPointsPadding() {
+var setHealthPointsPadding = function () {
     if (hpBar.ariaValueNow == 100) {
         hpBarText.style.paddingLeft = "100px";
     } else {
@@ -385,7 +409,7 @@ function setHealthPointsPadding() {
     }
 }
 
-function gainXP() {
+var gainXP = function () {
     if (xpBar.ariaValueNow < 100) {
         player.xp += pokemon.baseXP;
         xpBar.ariaValueNow = player.xp;
@@ -393,7 +417,6 @@ function gainXP() {
     }
 
     if (xpBar.ariaValueNow >= 100) {
-
         // If the player has enough xp to level up, level up and reset the xp bar
         let obtainedLevels = Math.floor(xpBar.ariaValueNow / xpBar.ariaValueMax);
         player.level += obtainedLevels;
@@ -417,7 +440,7 @@ function gainXP() {
     setExperiencePadding();
 }
 
-function restoreHP() {
+var restoreHP = function () {
     hpBar.ariaValueNow = hpBar.ariaValueMax;
     hpBar.style.width = "100%";
 }
@@ -439,7 +462,7 @@ var loadPokeCaught = function () {
     player.pokeCounter = JSON.parse(localStorage.getItem("pokeCounter"));
 };
 
-function resetConfirmed() {
+var resetConfirmed = function () {
     alert("You have reset your profile!");
 
     player = {
