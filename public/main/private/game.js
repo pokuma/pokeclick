@@ -365,7 +365,6 @@ var spawnPokemon = function () {
     if (spawnShinyPokemon()) {
         pokemonSprite.src = "assets/images/pokemon/shiny/" + pokemon.id + ".png";
         pokeName.innerHTML = pokemon.name + "✨";
-        alert("Shiny pokemon spawned!");
     }
     else {
         pokemonSprite.src = "assets/images/pokemon/" + pokemon.id + ".png";
