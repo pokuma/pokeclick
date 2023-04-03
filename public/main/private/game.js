@@ -369,7 +369,7 @@ var spawnPokemon = function () {
 
 var updatePokemonObjectFromId = function (id) {
     pokemon.name = pokemonList[id - 1].name;
-    pokemon.baseHP = pokemonList[id - 1].baseHP * hpMultiplier;
+    pokemon.baseHP = Math.floor(pokemonList[id - 1].baseHP * hpMultiplier);
     pokemon.baseXP = pokemonList[id - 1].baseXP;
     pokemon.hp = pokemon.baseHP;
     pokemon.catchRate = pokemonList[id - 1].catchRate;
