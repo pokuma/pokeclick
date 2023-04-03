@@ -4,10 +4,12 @@ let pokemon = {
     baseXP: 0,
     baseHP: 0,
     hp: 0,
+    xp: 0,
     catchRate: 0,
 }
 
 let player = {
+    nextLevelXP: 100,
     xp: 0,
     level: 5,
     money: 0,
@@ -17,6 +19,7 @@ let player = {
 };
 
 let hpMultiplier = 2;
+let xpMultiplier = 1;
 
 let tutorials = true;
 
@@ -61,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     if (localStorage.getItem("player") !== null) {
         loadPlayer();
         xpBar.ariaValueNow = player.xp;
+        xpBar.ariaValueMax = player.nextLevelXP;
         $("#xpBar").css("width", xpBar.ariaValueNow + "%");
     }
 
@@ -354,15 +358,18 @@ var spawnPokemon = function () {
 
     pokemonIsCapturedPokeball();
 
-    hpBar.ariaValueMax = (pokemon.baseHP);
+    hpBar.ariaValueMax = pokemon.baseHP;
     hpBar.ariaValueNow = 100;
 
     hpBarText.innerHTML = "hp: " + hpBar.ariaValueMax + " / " + hpBar.ariaValueMax;
     hpBarText.style.color = "white";
-    xpBarText.innerHTML = "xp: " + xpBar.ariaValueNow + " / " + xpBar.ariaValueMax;
-    setExperiencePadding();
     setHealthPointsPadding();
-    xpBarText.style.color = "black";
+
+    xpBar.ariaValueMax = player.nextLevelXP;
+    xpBar.ariaValueNow = Math.floor((player.xp /xpBar.ariaValueMax) * 100);
+    xpBarText.innerHTML = "xp " + player.xp + " / " + player.nextLevelXP;
+    xpBar.style.width = "" + xpBar.ariaValueNow + "%";
+    setExperiencePadding();
 }
 
 
@@ -370,7 +377,7 @@ var spawnPokemon = function () {
 var updatePokemonObjectFromId = function (id) {
     pokemon.name = pokemonList[id - 1].name;
     pokemon.baseHP = Math.floor(pokemonList[id - 1].baseHP * hpMultiplier);
-    pokemon.baseXP = pokemonList[id - 1].baseXP;
+    pokemon.baseXP = Math.floor(pokemonList[id - 1].baseXP * xpMultiplier);
     pokemon.hp = pokemon.baseHP;
     pokemon.catchRate = pokemonList[id - 1].catchRate;
 }
@@ -398,22 +405,15 @@ var setHealthPointsPadding = function () {
 }
 
 var gainXP = function () {
-    if (xpBar.ariaValueNow < 100) {
+    if (player.xp + pokemon.baseXP < player.nextLevelXP) {
         player.xp += pokemon.baseXP;
-        xpBar.ariaValueNow = player.xp;
-        xpBarText.innerHTML = "xp " + xpBar.ariaValueNow + " / " + xpBar.ariaValueMax;
     }
 
-    if (xpBar.ariaValueNow >= 100) {
-        // If the player has enough xp to level up, level up and reset the xp bar
-        let obtainedLevels = Math.floor(xpBar.ariaValueNow / xpBar.ariaValueMax);
+    if (player.xp + pokemon.baseXP >= player.nextLevelXP) {
+        player.xp += pokemon.baseXP;
+
+        let obtainedLevels = Math.floor(player.xp / player.nextLevelXP);
         player.level += obtainedLevels;
-        let xpLeft = xpBar.ariaValueNow % xpBar.ariaValueMax;
-        player.xp = xpLeft;
-
-        //TODO: Make a formula for the xp bar
-
-        // If the player has leveled up, increase level, update xp bar with correct xp and increase damage
         levelNav.innerHTML = "level: " + player.level;
         levelNav.style.animation = "levelUp 1s";
         levelNav.onanimationiteration = "infinite";
@@ -421,8 +421,11 @@ var gainXP = function () {
             levelNav.style.animation = "none";
             levelNav.onanimationiteration = "none";
         }, 1000);
-        xpBar.ariaValueNow = player.xp;
-        xpBarText.innerHTML = "xp: " + xpBar.ariaValueNow + " / " + xpBar.ariaValueMax;
+        player.xp = 0;
+
+        let xpLeft = player.xp % player.nextLevelXP;
+        player.xp = xpLeft;
+        player.nextLevelXP += 10 * obtainedLevels;
 
         if (player.level % 2 == 0) {
             player.attacks += 3;
@@ -430,7 +433,10 @@ var gainXP = function () {
         }
     }
 
-    xpBar.style.width = "" + player.xp + "%";
+    xpBar.ariaValueMax = player.nextLevelXP;
+    xpBar.ariaValueNow = Math.floor((player.xp /xpBar.ariaValueMax) * 100);
+    xpBarText.innerHTML = "xp " + player.xp + " / " + player.nextLevelXP;
+    xpBar.style.width = "" + xpBar.ariaValueNow + "%";
     setExperiencePadding();
 }
 
@@ -461,6 +467,7 @@ var resetConfirmed = function () {
     alert("You have reset your profile!");
 
     player = {
+        nextLevelXP: 100,
         xp: 0,
         level: 1,
         money: 0,
