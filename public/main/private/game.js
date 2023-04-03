@@ -76,7 +76,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     // Attack every second
     setInterval(function () {
-        attack();
+        if(!pokemonSprite.getAttribute("src").includes("Pokeball")){
+            attack();
+        }
     }, 1000);
 
 
@@ -259,7 +261,7 @@ var pokemonDies = function () {
     hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-sucess";
     if (!alreadyCaught(pokemon.name)) {
         startCaptureAnimation();
-        if(pokemon.catchRate > Math.floor(Math.random() * 256)){
+        if(pokemon.catchRate > Math.floor(Math.random() * 1)){
             setTimeout(function () {
                 updatePokemonCounter();
                 save();
@@ -294,6 +296,10 @@ var startCaptureAnimation = function () {
     pokemonSprite.src = "assets/images/pokeballs/Pokeball.svg";
     pokemonSprite.style.animation = "rotate 1s";
     pokemonSprite.onanimationiteration = "infinite";
+    setTimeout(function () {
+        pokemonSprite.style.animation = "none";
+        pokemonSprite.onanimationiteration = "none";
+    }, 1000);
 }
 
 var getPokemonDrops = function () {
