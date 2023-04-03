@@ -460,7 +460,7 @@ var resetConfirmed = function () {
     };
 
     save();
-    location.reload();
+    window.location.reload();
 }
 
 var resetProfile = function () {
