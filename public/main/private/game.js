@@ -75,11 +75,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     if (player.level == 1 && tutorials == true) {
         setTimeout(function () {
-            $('#welcomeModal').modal({
-                backdrop: 'static',
-                keyboard: false,
-            });
-            $('#welcomeModal').modal('show');
+            showTutorial();
         }, 1000);
     }
 
@@ -137,6 +133,10 @@ $(document).on('click', '#menuTutorialButton', function () {
 });
 
 var showTutorial = function () {
+    $('#welcomeModal').modal({
+        backdrop: 'static',
+        keyboard: false,
+    });
     $('#attackTutorial').popover({
         placement: 'top',
         title: 'Attack',
