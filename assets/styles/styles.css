@@ -35,6 +35,8 @@
      animation: cursor 700ms linear infinite;
  }
 
+
+
  .dark-mode {
      background-color: rgb(51, 51, 51);
      background-image: url(../images/background/background-night.png);

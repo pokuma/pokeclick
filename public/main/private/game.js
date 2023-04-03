@@ -58,6 +58,7 @@ caught.style.height = "30px";
 
 //Tutorial Modals
 const tutorialModal = document.getElementById("welcomeModal");
+const logoTutorial = document.getElementById("logoTutorial");
 
 // Waits for all the html to load before doing this code
 document.addEventListener("DOMContentLoaded", function (e) {
@@ -99,108 +100,101 @@ document.addEventListener("DOMContentLoaded", function (e) {
     pokeCount.innerHTML = "pokedex: " + player.pokeCounter + " / " + pokemonList.length;
 });
 
+$(document).on('click', '#welcomeTutorialButton', function(){
+    $('#welcomeModal').modal('hide');
+    $('#attackTutorial').popover('show');
+});
+$(document).on('click', '#attackTutorialButton', function(){
+    $('#attackTutorial').popover('hide');
+    $('#logoTutorial').popover('show');
+});
+$(document).on('click', '#logoTutorialButton', function(){
+    $('#logoTutorial').popover('hide');
+    $('#levelTutorial').popover('show');
+});
+$(document).on('click', '#levelTutorialButton', function(){
+    $('#levelTutorial').popover('hide');
+    $('#moneyTutorial').popover('show');
+});
+$(document).on('click', '#moneyTutorialButton', function(){
+    $('#moneyTutorial').popover('hide');
+    $('#clickDamageTutorial').popover('show');
+});
+$(document).on('click', '#clickDamageTutorialButton', function(){
+    $('#clickDamageTutorial').popover('hide');
+    $('#pokedexTutorial').popover('show');
+});
+$(document).on('click', '#pokedexTutorialButton', function(){
+    $('#pokedexTutorial').popover('hide');
+    $('#sliderTutorial').popover('show');
+});
+$(document).on('click', '#sliderTutorialButton', function(){
+    $('#sliderTutorial').popover('hide');
+    $('#menuTutorial').popover('show');
+});
+$(document).on('click', '#menuTutorialButton', function(){
+    $('#menuTutorial').popover('hide');
+});
+
 var showTutorial = function() {
     $('#attackTutorial').popover({
-        placement: 'bottom',
+        placement: 'top',
         title: 'Attack',
-        content: 'clicking the pokemon will deal damge, and you also have damage per second.',
+        html: true,
+        content: 'this is the attack button, it will attack the pokemon for damage equal to your click damage.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="attackTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
         trigger: 'manual',
         });
     $('#logoTutorial').popover({
         placement: 'bottom',
         title: 'Home Screen',
-        content: 'clicking on the logo will take you back to the home screen.',
+        html: true,
+        content: 'clicking on the logo will take you back to the home screen.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="logoTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
         trigger: 'manual',
         });
     $('#levelTutorial').popover({
         placement: 'bottom',
         title: 'Level',
-        content: 'this is your level, the higher the level the more damage you do, and the more xp you need to level up.',
+        html: true,
+        content: 'this is your level, the higher the level the more damage you do, and the more xp you need to level up.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="levelTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
         trigger: 'manual',
         });
     $('#moneyTutorial').popover({
         placement: 'bottom',
         title: 'Money',
-        content: 'this is your money, you can use it to buy upgrades.',
+        html: true,
+        content: 'this is your money, you can use it to buy upgrades.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="moneyTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
         trigger: 'manual',
         });
     $('#clickDamageTutorial').popover({
         placement: 'bottom',
         title: 'Click Damage',
-        content: 'this is your click damage, the higher the damage the more damage you do when you click on the pokemon.',
+        html: true,
+        content: 'this is your click damage, the higher the damage the more damage you do when you click on the pokemon.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="clickDamageTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
         trigger: 'manual',
         });
     $('#pokedexTutorial').popover({
         placement: 'bottom',
         title: 'Pokedex',
-        content: 'this is your pokedex, it shows how many pokemon you have caught.',
+        html: true,
+        content: 'this is your pokedex, it shows how many pokemon you have caught.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="pokedexTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
         trigger: 'manual',
         });
     $('#sliderTutorial').popover({
         placement: 'bottom',
         title: 'Dark Mode',
-        content: 'this is a slider, it shows whether you have activated dark mode or not.',
+        html: true,
+        content: 'this is a slider, it shows whether you have activated dark mode or not.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="sliderTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
         trigger: 'manual',
         });
     $('#menuTutorial').popover({
         placement: 'bottom',
         title: 'Menu',
-        content: 'this is the menu, a list of utilities.',
+        html: true,
+        content: 'this is the menu, a list of utilities.<br><div class="row"><div class="col-4"></div><div class="col-8"><a id="menuTutorialButton" class="btn btn-secondary text-light">end tutorial</a></div></div>',
         trigger: 'manual',
         });
-    
-    let timeout = 4000;
 
-    //this line should not be implemented until the popovers each have their own button to close them and the "next" button on THIS modal
-    //points to the first popover instead of full tutorial function
-    //$('#welcomeModal').modal('show'); //Shows the first tutorial (introduction)
-
-    $('#attackTutorial').popover('show');
-    setTimeout(() => {
-        $('#attackTutorial').popover('hide');
-    }, timeout);
-    setTimeout(() => {
-        $('#logoTutorial').popover('show');
-    }, timeout);
-    setTimeout(() => {
-        $('#logoTutorial').popover('hide');
-    }, timeout*2);
-    setTimeout(() => {
-        $('#levelTutorial').popover('show');
-    }, timeout*2);
-    setTimeout(() => {
-        $('#levelTutorial').popover("hide");
-    }, timeout*3);
-    setTimeout(() => {
-        $('#moneyTutorial').popover('show');
-    }, timeout*3);
-    setTimeout(() => {
-        $('#moneyTutorial').popover("hide");
-    }, timeout*4);
-    setTimeout(() => {
-        $('#clickDamageTutorial').popover('show');
-    }, timeout*4);
-    setTimeout(() => {
-        $('#clickDamageTutorial').popover("hide");
-    }, timeout*5);
-    setTimeout(() => {
-        $('#pokedexTutorial').popover('show');
-    }, timeout*5);
-    setTimeout(() => {
-        $('#pokedexTutorial').popover("hide");
-    }, timeout*6);
-    setTimeout(() => {
-        $('#sliderTutorial').popover('show');
-    }, timeout*6);
-    setTimeout(() => {
-        $('#sliderTutorial').popover("hide");
-    }, timeout*7);
-    setTimeout(() => {
-        $('#menuTutorial').popover('show');
-    }, timeout*7);
-    setTimeout(() => {
-        $('#menuTutorial').popover("hide");
-    }, timeout*8);
+    $('#welcomeModal').modal('show');
 }
 
 var pokemonIsCapturedPokeball = function () {
