@@ -263,26 +263,31 @@ var showTutorial = function() {
         placement: 'bottom',
         title: 'Level',
         content: 'this is your level, the higher the level the more damage you do, and the more xp you need to level up.',
+        trigger: 'manual',
         });
     $('#moneyTutorial').popover({
         placement: 'bottom',
         title: 'Money',
         content: 'this is your money, you can use it to buy upgrades.',
+        trigger: 'manual',
         });
     $('#clickDamageTutorial').popover({
         placement: 'bottom',
         title: 'Click Damage',
         content: 'this is your click damage, the higher the damage the more damage you do when you click on the pokemon.',
+        trigger: 'manual',
         });
     $('#pokedexTutorial').popover({
         placement: 'bottom',
         title: 'Pokedex',
         content: 'this is your pokedex, it shows how many pokemon you have caught.',
+        trigger: 'manual',
         });
     $('#sliderTutorial').popover({
         placement: 'bottom',
         title: 'Dark Mode',
         content: 'this is a slider, it shows whether you have activated dark mode or not.',
+        trigger: 'manual',
         });
     $('#menuTutorial').popover({
         placement: 'bottom',
