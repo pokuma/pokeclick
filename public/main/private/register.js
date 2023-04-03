@@ -15,5 +15,6 @@ function validateForm() {
         return false;
     }
 
+    alert("Cuenta \"" + emailInput.value + "\" creada con exito!");
     return true;
 }

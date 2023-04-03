@@ -8,5 +8,7 @@ function validateForm() {
         return false;
     }
 
+    alert("Cuenta \"" + emailInput.value + "\" creada con exito!");
+    alert("Logeado en la cuenta \"" + emailInput.value + "\" con exito!");
     return true;
 }
