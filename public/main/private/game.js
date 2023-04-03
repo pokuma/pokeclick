@@ -3,6 +3,7 @@ let pokemon = {
     name: "",
     baseXP: 0,
     baseHP: 0,
+    hp: 0,
     catchRate: 0,
 }
 
@@ -14,6 +15,8 @@ let player = {
     pokeCounter: 0,
     caughtPokemons: [],
 };
+
+let hpMultiplier = 1;
 
 let tutorials = true;
 
@@ -90,12 +93,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
     moneyNav.innerHTML = "money: " + player.money;
     damageNav.innerHTML = "click damage: " + player.attacks;
     pokeCount.innerHTML = "pokedex: " + player.pokeCounter + " / " + pokemonList.length;
-    hpBarText.innerHTML = "hp: " + hpBar.ariaValueNow + " / " + hpBar.ariaValueMax;
-    hpBarText.style.color = "white";
-    xpBarText.innerHTML = "xp: " + xpBar.ariaValueNow + " / " + xpBar.ariaValueMax;
-    setExperiencePadding();
-    setHealthPointsPadding();
-    xpBarText.style.color = "black";
 });
 
 var showTutorial = function() {
@@ -214,28 +211,28 @@ var pokemonIsCapturedPokeball = function () {
 }
 
 var attack = function () {
-    if (hpBar.ariaValueNow > 0) {
-        if (pokemonSprite.getAttribute("src").includes("Pokeball")) {
-            return
-        }
+    if (pokemonSprite.getAttribute("src").includes("Pokeball")) {
+        return
+    }
+    if (pokemon.hp - player.attacks > 0) {
         startPokemonShake();
-        if (hpBar.ariaValueNow - player.attacks <= Math.floor(yellowZone * hpBar.ariaValueMax)) {
+        pokemon.hp -= player.attacks;
+        //function that changes progress bar color based on the pokemon hp
+        if(pokemon.hp < pokemon.baseHP * yellowZone){
             hpBarText.style.color = "black";
-
-            if (hpBar.ariaValueNow < Math.floor(redZone * hpBar.ariaValueMax)) {
-                hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-danger";
-            } else if (hpBar.ariaValueNow < Math.floor(yellowZone * hpBar.ariaValueMax)) {
-                hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-warning";
-            }
+            hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-warning";
         }
 
-        hpBar.ariaValueNow -= player.attacks;
-        hpBarText.innerHTML = "hp: " + hpBar.ariaValueNow + " / " + hpBar.ariaValueMax;
-        hpBar.style.width = "" + hpBar.ariaValueNow + "%";
+        if(pokemon.hp < pokemon.baseHP * redZone){
+            hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-danger";
+        }
+
+        hpBarText.innerHTML = "hp: " + pokemon.hp + " / " + pokemon.baseHP;
+        hpBar.style.width = "" + pokemon.hp / pokemon.baseHP * 100 + "%";
+        hpBar.ariaValueNow = pokemon.hp / pokemon.baseHP * 100;
     }
 
-    if (hpBar.ariaValueNow <= 0) {
-        hpBarText.innerHTML = "hp: " + hpBar.ariaValueMax + " / " + hpBar.ariaValueMax;
+    if (pokemon.hp - player.attacks <= 0) {
         hpBarText.style.color = "white";
         pokemonDies();
     }
@@ -356,6 +353,16 @@ var spawnPokemon = function () {
     pokemonSprite.style.borderRadius = "20px";
 
     pokemonIsCapturedPokeball();
+
+    hpBar.ariaValueMax = (pokemon.baseHP);
+    hpBar.ariaValueNow = 100;
+
+    hpBarText.innerHTML = "hp: " + hpBar.ariaValueMax + " / " + hpBar.ariaValueMax;
+    hpBarText.style.color = "white";
+    xpBarText.innerHTML = "xp: " + xpBar.ariaValueNow + " / " + xpBar.ariaValueMax;
+    setExperiencePadding();
+    setHealthPointsPadding();
+    xpBarText.style.color = "black";
 }
 
 
@@ -364,6 +371,7 @@ var updatePokemonObjectFromId = function (id) {
     pokemon.name = pokemonList[id - 1].name;
     pokemon.baseHP = pokemonList[id - 1].baseHP;
     pokemon.baseXP = pokemonList[id - 1].baseXP;
+    pokemon.hp = pokemonList[id - 1].baseHP * hpMultiplier;
     pokemon.catchRate = pokemonList[id - 1].catchRate;
 }
 
@@ -427,7 +435,8 @@ var gainXP = function () {
 }
 
 var restoreHP = function () {
-    hpBar.ariaValueNow = hpBar.ariaValueMax;
+    hpBarText.innerHTML = "hp: " + hpBar.ariaValueMax + " / " + hpBar.ariaValueMax;
+    hpBar.ariaValueNow = 100;
     hpBar.style.width = "100%";
 }
 
