@@ -14,6 +14,6 @@ function validateForm() {
         alert("Las contraseñas no coinciden.");
         return false;
     }
-
+    alert("Cuenta \"" + emailInput.value + "\" creada con exito!");
     return true;
 }
