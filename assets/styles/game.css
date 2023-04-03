@@ -17,6 +17,10 @@
     background-color: rgb(51, 51, 51, 0.9);
 }
 
+#attackTutorial
+{
+}
+
 #hpBarText,
 #xpBarText {
     position: absolute;
@@ -116,6 +120,44 @@
 @keyframes levelUp{
     0% {
         transform: translate(0px, 0px);
+        color: green;
+    }
+    50% {
+        transform: translate(0px, -5px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+@keyframes moneyUp{
+    0% {
+        transform: translate(0px, 0px);
+        color: yellow;
+    }
+    50% {
+        transform: translate(0px, -5px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+@keyframes damageUp{
+    0% {
+        transform: translate(0px, 0px);
+        color: red;
+    }
+    50% {
+        transform: translate(0px, -5px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes pokedexUp{
+    0% {
+        transform: translate(0px, 0px);
+        color: cyan;
     }
     50% {
         transform: translate(0px, -5px);

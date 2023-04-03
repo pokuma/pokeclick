@@ -219,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         loadPokeCaught();
     }
 
-    if(player.level == 1 && tutorials == true){
+    if (player.level == 1 && tutorials == true) {
         setTimeout(function () {
             $('#welcomeModal').modal({
                 backdrop: 'static',
@@ -250,58 +250,58 @@ document.addEventListener("DOMContentLoaded", function (e) {
     xpBarText.style.color = "black";
 });
 
-var showTutorial = function() {
+var showTutorial = function () {
     $('#attackTutorial').popover({
         placement: 'bottom',
         title: 'Attack',
         content: 'clicking the pokemon will deal damge, and you also have damage per second.',
         trigger: 'manual',
-        });
+    });
     $('#logoTutorial').popover({
         placement: 'bottom',
         title: 'Home Screen',
         content: 'clicking on the logo will take you back to the home screen.',
         trigger: 'manual',
-        });
+    });
     $('#levelTutorial').popover({
         placement: 'bottom',
         title: 'Level',
         content: 'this is your level, the higher the level the more damage you do, and the more xp you need to level up.',
         trigger: 'manual',
-        });
+    });
     $('#moneyTutorial').popover({
         placement: 'bottom',
         title: 'Money',
         content: 'this is your money, you can use it to buy upgrades.',
         trigger: 'manual',
-        });
+    });
     $('#clickDamageTutorial').popover({
         placement: 'bottom',
         title: 'Click Damage',
         content: 'this is your click damage, the higher the damage the more damage you do when you click on the pokemon.',
         trigger: 'manual',
-        });
+    });
     $('#pokedexTutorial').popover({
         placement: 'bottom',
         title: 'Pokedex',
         content: 'this is your pokedex, it shows how many pokemon you have caught.',
         trigger: 'manual',
-        });
+    });
     $('#sliderTutorial').popover({
         placement: 'bottom',
         title: 'Dark Mode',
         content: 'this is a slider, it shows whether you have activated dark mode or not.',
         trigger: 'manual',
-        });
+    });
     $('#menuTutorial').popover({
         placement: 'bottom',
         title: 'Menu',
         content: 'this is the menu, a list of utilities.',
         trigger: 'manual',
-        });
-    
+    });
+
     let timeout = 4000;
-    
+
     $('#attackTutorial').popover('show');
     setTimeout(() => {
         $('#attackTutorial').popover('hide');
@@ -311,43 +311,43 @@ var showTutorial = function() {
     }, timeout);
     setTimeout(() => {
         $('#logoTutorial').popover('hide');
-    }, timeout*2);
+    }, timeout * 2);
     setTimeout(() => {
         $('#levelTutorial').popover('show');
-    }, timeout*2);
+    }, timeout * 2);
     setTimeout(() => {
         $('#levelTutorial').popover("hide");
-    }, timeout*3);
+    }, timeout * 3);
     setTimeout(() => {
         $('#moneyTutorial').popover('show');
-    }, timeout*3);
+    }, timeout * 3);
     setTimeout(() => {
         $('#moneyTutorial').popover("hide");
-    }, timeout*4);
+    }, timeout * 4);
     setTimeout(() => {
         $('#clickDamageTutorial').popover('show');
-    }, timeout*4);
+    }, timeout * 4);
     setTimeout(() => {
         $('#clickDamageTutorial').popover("hide");
-    }, timeout*5);
+    }, timeout * 5);
     setTimeout(() => {
         $('#pokedexTutorial').popover('show');
-    }, timeout*5);
+    }, timeout * 5);
     setTimeout(() => {
         $('#pokedexTutorial').popover("hide");
-    }, timeout*6);
+    }, timeout * 6);
     setTimeout(() => {
         $('#sliderTutorial').popover('show');
-    }, timeout*6);
+    }, timeout * 6);
     setTimeout(() => {
         $('#sliderTutorial').popover("hide");
-    }, timeout*7);
+    }, timeout * 7);
     setTimeout(() => {
         $('#menuTutorial').popover('show');
-    }, timeout*7);
+    }, timeout * 7);
     setTimeout(() => {
         $('#menuTutorial').popover("hide");
-    }, timeout*8);
+    }, timeout * 8);
 }
 
 var pokemonIsCapturedPokeball = function () {
@@ -414,7 +414,7 @@ var pokemonDies = function () {
     hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-sucess";
     if (!alreadyCaught(pokemon.name)) {
         startCaptureAnimation();
-        if(pokemon.catchRate > Math.floor(Math.random() * 256)){
+        if (pokemon.catchRate > Math.floor(Math.random() * 256)) {
             setTimeout(function () {
                 updatePokemonCounter();
                 save();
@@ -423,6 +423,8 @@ var pokemonDies = function () {
         setTimeout(function () {
             spawnPokemon();
             pokemonIsCapturedPokeball();
+            moneyNav.style.animation = "none";
+            moneyNav.onanimationiteration = "none";
         }, 1000);
     }
     else {
@@ -436,12 +438,13 @@ var updatePokemonCounter = function () {
     player.caughtPokemons.push(pokemon.name);
     player.pokeCounter++;
     pokeCount.innerHTML = "pokedex: " + player.pokeCounter + " / " + pokemonList.length;
-    pokeCount.style.animation = "levelUp 1s";
-        pokeCount.onanimationiteration = "infinite";
-        setTimeout(function () {
-            pokeCount.style.animation = "none";
-            pokeCount.onanimationiteration = "none";
-        }, 1000);
+    pokeCount.style.animation = "pokedexUp 1s";
+    pokeCount.onanimationiteration = "infinite";
+    setTimeout(function () {
+        pokeCount.style.animation = "none";
+        pokeCount.onanimationiteration = "none";
+
+    }, 1000);
 }
 
 var startCaptureAnimation = function () {
@@ -459,6 +462,8 @@ var getPokemonDrops = function () {
 var gainMoney = function () {
     player.money += 1;
     moneyNav.innerHTML = "money: " + player.money;
+    moneyNav.style.animation = "moneyUp 1s";
+    moneyNav.onanimationiteration = "infinite";
 }
 
 var startPokemonShake = function () {
@@ -563,6 +568,12 @@ var gainXP = function () {
         if (player.level % 2 == 0) {
             player.attacks += 3;
             damageNav.innerHTML = "click damage: " + player.attacks;
+            damageNav.style.animation = "damageUp 1s";
+            damageNav.onanimationiteration = "infinite";
+        }
+        else {
+            damageNav.style.animation = "none";
+            damageNav.onanimationiteration = "none";
         }
     }
 
