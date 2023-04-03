@@ -169,6 +169,7 @@ let player = {
     caughtPokemons: [],
 };
 
+
 let tutorials = true;
 
 // Pokemon health points bar
@@ -222,7 +223,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
         setTimeout(function () {
             $('#welcomeModal').modal('show');
         }, 1000);
-       
     }
 
     // Attack every second
@@ -245,6 +245,101 @@ document.addEventListener("DOMContentLoaded", function (e) {
     setHealthPointsPadding();
     xpBarText.style.color = "black";
 });
+
+var showTutorial = function() {
+    $('#attackTutorial').popover({
+        placement: 'bottom',
+        title: 'Attack',
+        content: 'clicking the pokemon will deal damge, and you also have damage per second.',
+        trigger: 'manual',
+        });
+    $('#logoTutorial').popover({
+        placement: 'bottom',
+        title: 'Home Screen',
+        content: 'clicking on the logo will take you back to the home screen.',
+        trigger: 'manual',
+        });
+    $('#levelTutorial').popover({
+        placement: 'bottom',
+        title: 'Level',
+        content: 'this is your level, the higher the level the more damage you do, and the more xp you need to level up.',
+        });
+    $('#moneyTutorial').popover({
+        placement: 'bottom',
+        title: 'Money',
+        content: 'this is your money, you can use it to buy upgrades.',
+        });
+    $('#clickDamageTutorial').popover({
+        placement: 'bottom',
+        title: 'Click Damage',
+        content: 'this is your click damage, the higher the damage the more damage you do when you click on the pokemon.',
+        });
+    $('#pokedexTutorial').popover({
+        placement: 'bottom',
+        title: 'Pokedex',
+        content: 'this is your pokedex, it shows how many pokemon you have caught.',
+        });
+    $('#sliderTutorial').popover({
+        placement: 'bottom',
+        title: 'Dark Mode',
+        content: 'this is a slider, it shows whether you have activated dark mode or not.',
+        });
+    $('#menuTutorial').popover({
+        placement: 'bottom',
+        title: 'Menu',
+        content: 'this is the menu, a list of utilities.',
+        trigger: 'manual',
+        });
+    
+    let timeout = 4000;
+    
+    $('#attackTutorial').popover('show');
+    setTimeout(() => {
+        $('#attackTutorial').popover('hide');
+    }, timeout);
+    setTimeout(() => {
+        $('#logoTutorial').popover('show');
+    }, timeout);
+    setTimeout(() => {
+        $('#logoTutorial').popover('hide');
+    }, timeout*2);
+    setTimeout(() => {
+        $('#levelTutorial').popover('show');
+    }, timeout*2);
+    setTimeout(() => {
+        $('#levelTutorial').popover("hide");
+    }, timeout*3);
+    setTimeout(() => {
+        $('#moneyTutorial').popover('show');
+    }, timeout*3);
+    setTimeout(() => {
+        $('#moneyTutorial').popover("hide");
+    }, timeout*4);
+    setTimeout(() => {
+        $('#clickDamageTutorial').popover('show');
+    }, timeout*4);
+    setTimeout(() => {
+        $('#clickDamageTutorial').popover("hide");
+    }, timeout*5);
+    setTimeout(() => {
+        $('#pokedexTutorial').popover('show');
+    }, timeout*5);
+    setTimeout(() => {
+        $('#pokedexTutorial').popover("hide");
+    }, timeout*6);
+    setTimeout(() => {
+        $('#sliderTutorial').popover('show');
+    }, timeout*6);
+    setTimeout(() => {
+        $('#sliderTutorial').popover("hide");
+    }, timeout*7);
+    setTimeout(() => {
+        $('#menuTutorial').popover('show');
+    }, timeout*7);
+    setTimeout(() => {
+        $('#menuTutorial').popover("hide");
+    }, timeout*8);
+}
 
 var pokemonIsCapturedPokeball = function () {
     if (alreadyCaught(pokemon.name)) {
