@@ -148,7 +148,11 @@ var showTutorial = function() {
         });
     
     let timeout = 4000;
-    
+
+    //this line should not be implemented until the popovers each have their own button to close them and the "next" button on THIS modal
+    //points to the first popover instead of full tutorial function
+    //$('#welcomeModal').modal('show'); //Shows the first tutorial (introduction)
+
     $('#attackTutorial').popover('show');
     setTimeout(() => {
         $('#attackTutorial').popover('hide');
