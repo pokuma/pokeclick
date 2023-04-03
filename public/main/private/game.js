@@ -18,7 +18,7 @@ let player = {
     caughtPokemons: [],
 };
 
-let hpMultiplier = 2;
+let hpMultiplier = 10;
 let xpMultiplier = 1;
 
 let tutorials = true;
@@ -212,6 +212,11 @@ var attack = function () {
     if (pokemonSprite.getAttribute("src").includes("Pokeball")) {
         return
     }
+
+    if (pokemon.hp - player.attacks <= 0) {
+        hpBarText.style.color = "white";
+        pokemonDies();
+    }
     if (pokemon.hp - player.attacks > 0) {
         startPokemonShake();
         pokemon.hp -= player.attacks;
@@ -228,12 +233,7 @@ var attack = function () {
         hpBarText.innerHTML = "hp: " + pokemon.hp + " / " + pokemon.baseHP;
         hpBar.style.width = "" + pokemon.hp / pokemon.baseHP * 100 + "%";
         hpBar.ariaValueNow = pokemon.hp / pokemon.baseHP * 100;
-    }
-
-    if (pokemon.hp - player.attacks <= 0) {
-        hpBarText.style.color = "white";
-        pokemonDies();
-    }
+    }    
 
     setHealthPointsPadding();
 }
