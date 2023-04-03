@@ -26,55 +26,76 @@
 <body id="body" class="clicked" onload="loadDarkMode()">
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container-fluid">
-            <a class="nav-link" draggable="false" href="index.html"><img id="navBarLogo"
+            <div data-toggle="popover" id="logoTutorial">
+                <a class="nav-link" draggable="false" href="index.html"><img id="navBarLogo"
                     src="assets/images/logo/logo.png" draggable="false" style="width: 100px;" alt="logo"></a>
-
+    
+            </div>
+            
             <div class="navbar-collapse justify-content-center align-items-center my-3" id="collapsibleNavbar">
                 <ul class="navbar-nav text-light ">
-                    <li class="nav-item pe-5"></li>
-                    <li class="nav-item pe-5"></li>
-                    <li class="nav-item pe-5" id="level"></li>
-                    <li class="nav-item pe-5" id="money"></li>
-                    <li class="nav-item pe-5" id="damage"></li>
-                    <li class="nav-item pe-5" id="pokeCount"></li>
+                    <div data-toggle="popover" id="levelTutorial">
+                        <li class="nav-item pe-5" id="level"></li>
+                    </div>
+                    <div data-toggle="popover" id="moneyTutorial">
+                        <li class="nav-item pe-5" id="money"></li>
+                    </div>
+                    <div data-toggle="popover" id="clickDamageTutorial">
+                        <li class="nav-item pe-5" id="damage"></li>
+                    </div>
+                    <div data-toggle="popover" id="pokedexTutorial">
+                        <li class="nav-item pe-5" id="pokeCount"></li>
+                    </div>
+                    
                 </ul>
             </div>
 
             <div class="row justify-content-center align-items-center pb-2">
                 <div class="col">
                     <div class="nightmode-toggle hide-for-small-down">
-                        <i class="fa fa-sun-o text-light"> </i>
+                        <div data-toggle="popover" id="sliderTutorial">
+                            <i class="fa fa-sun-o text-light"> </i>
                         <label class="switch ">
                             <input type="checkbox" id="dark-mode-toggle" onclick="changeDarkMode()">
                             <span class="slider round clickable"> </span>
                         </label>
                         <i class="fa fa-moon-o text-light"> </i>
+                        </div>
+                        
                     </div>
                 </div>
                 <div class="col">
                     <div id="startMenu" class="dropdown clearfix clickable">
-                        <button class="btn btn-secondary btn-start-menu dropdown-toggle clickable"
+                        <div data-toggle="popover" id="menuTutorial">
+                            <button class="btn btn-secondary btn-start-menu dropdown-toggle clickable"
                             type="dropdownMenubutton" data-bs-toggle="dropdown" aria-expanded="false">
                             start menu
 
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end clickable bg-dark border border-light">
                             <li>
-                                <a class="dropdown-item dropdown-item-start-menu clickable text-light"
+                                <a draggable="false" class="dropdown-item dropdown-item-start-menu clickable text-light"
                                     href="options.html">settings</a>
                             </li>
                             <hr class="separator" class="text-light">
                             <li>
-                                <a class="dropdown-item dropdown-item-start-menu clickable text-light" id="helpMenu"
-                                    href="#" data-toggle="modal" data-target="#helpModal">help</a>
+                                <a draggable="false" class="dropdown-item dropdown-item-start-menu clickable text-light"
+                                    id="helpMenu" href="#" data-toggle="modal" data-target="#helpModal">help</a>
                                 <a>
                             </li>
                             <hr class="separator" class="text-light">
                             <li>
-                                <a class="dropdown-item dropdown-item-start-menu clickable text-light"
+                                <a draggable="false" class="dropdown-item dropdown-item-start-menu clickable text-light"
                                     onclick="resetProfile();" href="#">reset profile</a>
                             </li>
+                            <hr class="separator" class="text-light">
+                            <li>
+                                <a draggable="false" class="dropdown-item dropdown-item-start-menu clickable text-light"
+                                    onclick="showTutorial();" href="#">replay tutorial</a>
+                            </li>
                         </ul>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -113,34 +134,72 @@
     <div class="d-flex justify-content-center align-items-center pb-5" id="saveSelector">
         <div class="justify-content-center row pb-5">
             <div class="border border-light bg-dark p-5 pt-0 pb-0" id="pokemonCard">
-                <div class="justify-content-center container row g-0 p-5 ">
+                <div data-toggle="popover" id="attackTutorial">
+                    <div class="justify-content-center container row g-0 p-5 ">
 
-                    <div class="justify-content-center container row g-0 text-light mb-3">
-                        <img id="caught" alt="pokeball"><span id="pokemonName"
-                            class="justify-content-center container row g-0 text-light"></span>
-
+                        <div class="justify-content-center container row g-0 text-light mb-3">
+                            <img id="caught" alt="pokeball"><span id="pokemonName"
+                                class="justify-content-center container row g-0 text-light"></span>
+    
+                        </div>
+                        <img onclick="attack()" draggable="false" id="pokemon" src="">
                     </div>
-                    <img onclick="attack()" draggable="false" id="pokemon" src="">
+                    <div class="border border-dark mb-3 g-0">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar progress-bar-animated" role="progressbar" id="hpBar"
+                                aria-valuemin="0" style="width: 100%;" aria-valuenow="100" aria-valuemax="100">
+                            </div>
+                            <div style="position: absolute;" id="hpBarText">
+                            </div>
+                        </div>
+                        <div class="progress mt-3">
+                            <div class="progress-bar progress-bar progress-bar-animated" role="progressbar" id="xpBar"
+                                aria-valuemin="0" style="width: 0%;" aria-valuenow="0" aria-valuemax="100">
+                            </div>
+                            <div style="position: absolute;" id="xpBarText">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="border border-dark mb-3 g-0">
-                    <div class="progress">
-                        <div class="progress-bar progress-bar progress-bar-animated" role="progressbar" id="hpBar"
-                            aria-valuemin="0" style="width: 100%;" aria-valuenow="100" aria-valuemax="100">
-                        </div>
-                        <div style="position: absolute;" id="hpBarText">
-                        </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <!-- TUTORIAL -->
+    <div class="modal" id="welcomeModal" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <div>
+                        <h5 class="modal-title">welcome to pokeclicker</h5>
                     </div>
-                    <div class="progress mt-3">
-                        <div class="progress-bar progress-bar progress-bar-animated" role="progressbar" id="xpBar"
-                            aria-valuemin="0" style="width: 0%;" aria-valuenow="0" aria-valuemax="100">
-                        </div>
-                        <div style="position: absolute;" id="xpBarText">
-                        </div>
-                    </div>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        this is a game where your goal is to catch all the 151 pokemons.
+                        
+                    </p>
+                    <p>
+                        you can do this by clicking on the pokemon on screen until its hp bar reaches 0.
+                        
+                    </p>
+                    <p>
+                        each pokemon has different stats and catch rate, so you will have to encounter some pokemon multiple times to catch it.
+                        
+                    </p>
+                    <p>
+                        if you are lucky, you might even encounter a shiny pokemon!
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-toggle="logoTutorial" onclick="showTutorial()">next</button>
                 </div>
             </div>
         </div>
     </div>
+
 
     <script src="public/main/private/script.js"></script>
     <script defer src="public/main/private/game.js"></script>
