@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         loadPokeCaught();
     }
 
-    if(player.level == 1 && tutorials == true){
+    if (player.level == 1 && tutorials == true) {
         setTimeout(function () {
             $('#welcomeModal').modal({
                 backdrop: 'static',
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     // Attack every second
     setInterval(function () {
-        if(!pokemonSprite.getAttribute("src").includes("Pokeball")){
+        if (!pokemonSprite.getAttribute("src").includes("Pokeball")) {
             attack();
         }
     }, 1000);
@@ -100,99 +100,99 @@ document.addEventListener("DOMContentLoaded", function (e) {
     pokeCount.innerHTML = "pokedex: " + player.pokeCounter + " / " + pokemonList.length;
 });
 
-$(document).on('click', '#welcomeTutorialButton', function(){
+$(document).on('click', '#welcomeTutorialButton', function () {
     $('#welcomeModal').modal('hide');
     $('#attackTutorial').popover('show');
 });
-$(document).on('click', '#attackTutorialButton', function(){
+$(document).on('click', '#attackTutorialButton', function () {
     $('#attackTutorial').popover('hide');
     $('#logoTutorial').popover('show');
 });
-$(document).on('click', '#logoTutorialButton', function(){
+$(document).on('click', '#logoTutorialButton', function () {
     $('#logoTutorial').popover('hide');
     $('#levelTutorial').popover('show');
 });
-$(document).on('click', '#levelTutorialButton', function(){
+$(document).on('click', '#levelTutorialButton', function () {
     $('#levelTutorial').popover('hide');
     $('#moneyTutorial').popover('show');
 });
-$(document).on('click', '#moneyTutorialButton', function(){
+$(document).on('click', '#moneyTutorialButton', function () {
     $('#moneyTutorial').popover('hide');
     $('#clickDamageTutorial').popover('show');
 });
-$(document).on('click', '#clickDamageTutorialButton', function(){
+$(document).on('click', '#clickDamageTutorialButton', function () {
     $('#clickDamageTutorial').popover('hide');
     $('#pokedexTutorial').popover('show');
 });
-$(document).on('click', '#pokedexTutorialButton', function(){
+$(document).on('click', '#pokedexTutorialButton', function () {
     $('#pokedexTutorial').popover('hide');
     $('#sliderTutorial').popover('show');
 });
-$(document).on('click', '#sliderTutorialButton', function(){
+$(document).on('click', '#sliderTutorialButton', function () {
     $('#sliderTutorial').popover('hide');
     $('#menuTutorial').popover('show');
 });
-$(document).on('click', '#menuTutorialButton', function(){
+$(document).on('click', '#menuTutorialButton', function () {
     $('#menuTutorial').popover('hide');
 });
 
-var showTutorial = function() {
+var showTutorial = function () {
     $('#attackTutorial').popover({
         placement: 'top',
         title: 'Attack',
         html: true,
         content: 'this is the attack button, it will attack the pokemon for damage equal to your click damage.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="attackTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
         trigger: 'manual',
-        });
+    });
     $('#logoTutorial').popover({
         placement: 'bottom',
         title: 'Home Screen',
         html: true,
         content: 'clicking on the logo will take you back to the home screen.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="logoTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
         trigger: 'manual',
-        });
+    });
     $('#levelTutorial').popover({
         placement: 'bottom',
         title: 'Level',
         html: true,
         content: 'this is your level, the higher the level the more damage you do, and the more xp you need to level up.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="levelTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
         trigger: 'manual',
-        });
+    });
     $('#moneyTutorial').popover({
         placement: 'bottom',
         title: 'Money',
         html: true,
         content: 'this is your money, you can use it to buy upgrades.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="moneyTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
         trigger: 'manual',
-        });
+    });
     $('#clickDamageTutorial').popover({
         placement: 'bottom',
         title: 'Click Damage',
         html: true,
         content: 'this is your click damage, the higher the damage the more damage you do when you click on the pokemon.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="clickDamageTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
         trigger: 'manual',
-        });
+    });
     $('#pokedexTutorial').popover({
         placement: 'bottom',
         title: 'Pokedex',
         html: true,
         content: 'this is your pokedex, it shows how many pokemon you have caught.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="pokedexTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
         trigger: 'manual',
-        });
+    });
     $('#sliderTutorial').popover({
         placement: 'bottom',
         title: 'Dark Mode',
         html: true,
         content: 'this is a slider, it shows whether you have activated dark mode or not.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="sliderTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
         trigger: 'manual',
-        });
+    });
     $('#menuTutorial').popover({
         placement: 'bottom',
         title: 'Menu',
         html: true,
         content: 'this is the menu, a list of utilities.<br><div class="row"><div class="col-4"></div><div class="col-8"><a id="menuTutorialButton" class="btn btn-secondary text-light">end tutorial</a></div></div>',
         trigger: 'manual',
-        });
+    });
 
     $('#welcomeModal').modal('show');
 }
@@ -221,19 +221,19 @@ var attack = function () {
         startPokemonShake();
         pokemon.hp -= player.attacks;
         //function that changes progress bar color based on the pokemon hp
-        if(pokemon.hp < pokemon.baseHP * yellowZone){
+        if (pokemon.hp < pokemon.baseHP * yellowZone) {
             hpBarText.style.color = "black";
             hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-warning";
         }
 
-        if(pokemon.hp < pokemon.baseHP * redZone){
+        if (pokemon.hp < pokemon.baseHP * redZone) {
             hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-danger";
         }
 
         hpBarText.innerHTML = "hp: " + pokemon.hp + " / " + pokemon.baseHP;
         hpBar.style.width = "" + pokemon.hp / pokemon.baseHP * 100 + "%";
         hpBar.ariaValueNow = pokemon.hp / pokemon.baseHP * 100;
-    }    
+    }
 
     setHealthPointsPadding();
 }
@@ -261,7 +261,7 @@ var pokemonDies = function () {
     hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-sucess";
     if (!alreadyCaught(pokemon.name)) {
         startCaptureAnimation();
-        if(pokemon.catchRate > Math.floor(Math.random() * 1)){
+        if (pokemon.catchRate > Math.floor(Math.random() * 1)) {
             setTimeout(function () {
                 updatePokemonCounter();
                 save();
@@ -270,6 +270,8 @@ var pokemonDies = function () {
         setTimeout(function () {
             spawnPokemon();
             pokemonIsCapturedPokeball();
+            moneyNav.style.animation = "none";
+            moneyNav.onanimationiteration = "none";
         }, 1000);
     }
     else {
@@ -283,12 +285,12 @@ var updatePokemonCounter = function () {
     player.caughtPokemons.push(pokemon.name);
     player.pokeCounter++;
     pokeCount.innerHTML = "pokedex: " + player.pokeCounter + " / " + pokemonList.length;
-    pokeCount.style.animation = "levelUp 1s";
-        pokeCount.onanimationiteration = "infinite";
-        setTimeout(function () {
-            pokeCount.style.animation = "none";
-            pokeCount.onanimationiteration = "none";
-        }, 1000);
+    pokeCount.style.animation = "pokedexUp 1s";
+    pokeCount.onanimationiteration = "infinite";
+    setTimeout(function () {
+        pokeCount.style.animation = "none";
+        pokeCount.onanimationiteration = "none";
+    }, 1000);
 }
 
 var startCaptureAnimation = function () {
@@ -310,6 +312,8 @@ var getPokemonDrops = function () {
 var gainMoney = function () {
     player.money += 1;
     moneyNav.innerHTML = "money: " + player.money;
+    moneyNav.style.animation = "moneyUp 1s";
+    moneyNav.onanimationiteration = "infinite";
 }
 
 var startPokemonShake = function () {
@@ -360,7 +364,7 @@ var spawnPokemon = function () {
     setHealthPointsPadding();
 
     xpBar.ariaValueMax = player.nextLevelXP;
-    xpBar.ariaValueNow = Math.floor((player.xp /xpBar.ariaValueMax) * 100);
+    xpBar.ariaValueNow = Math.floor((player.xp / xpBar.ariaValueMax) * 100);
     xpBarText.innerHTML = "xp " + player.xp + " / " + player.nextLevelXP;
     xpBar.style.width = "" + xpBar.ariaValueNow + "%";
     setExperiencePadding();
@@ -423,11 +427,17 @@ var gainXP = function () {
         if (player.level % 2 == 0) {
             player.attacks += 3;
             damageNav.innerHTML = "click damage: " + player.attacks;
+            damageNav.style.animation = "damageUp 1s";
+            damageNav.onanimationiteration = "infinite";
+        }
+        else {
+            damageNav.style.animation = "none";
+            damageNav.onanimationiteration = "none";
         }
     }
 
     xpBar.ariaValueMax = player.nextLevelXP;
-    xpBar.ariaValueNow = Math.floor((player.xp /xpBar.ariaValueMax) * 100);
+    xpBar.ariaValueNow = Math.floor((player.xp / xpBar.ariaValueMax) * 100);
     xpBarText.innerHTML = "xp " + player.xp + " / " + player.nextLevelXP;
     xpBar.style.width = "" + xpBar.ariaValueNow + "%";
     setExperiencePadding();
@@ -639,12 +649,16 @@ const pokemonList = [
 
 //Spawn rates must add up to 100 for each route and all pokemon must be available in at least one route
 const locationList = [
-    { id: 1, name: "Route 1", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-        { id: 16, spawnRate: 50},
-        { id: 19, spawnRate: 50},
-    ] },
-    { id: 2, name: "Viridian Forest", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-        { id: 16, spawnRate: 50},
-        { id: 19, spawnRate: 50},
-    ] },
+    {
+        id: 1, name: "Route 1", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 16, spawnRate: 50 },
+            { id: 19, spawnRate: 50 },
+        ]
+    },
+    {
+        id: 2, name: "Viridian Forest", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 16, spawnRate: 50 },
+            { id: 19, spawnRate: 50 },
+        ]
+    },
 ];
