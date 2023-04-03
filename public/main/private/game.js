@@ -421,7 +421,6 @@ var gainXP = function () {
             levelNav.style.animation = "none";
             levelNav.onanimationiteration = "none";
         }, 1000);
-        player.xp = 0;
 
         let xpLeft = player.xp % player.nextLevelXP;
         player.xp = xpLeft;
