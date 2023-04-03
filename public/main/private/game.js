@@ -169,6 +169,8 @@ let player = {
     caughtPokemons: [],
 };
 
+let tutorials = true;
+
 // Pokemon health points bar
 const hpBar = document.getElementById("hpBar");
 const yellowZone = hpBar.ariaValueMax / 1.5;
@@ -203,6 +205,9 @@ let caught = document.getElementById("caught");
 caught.style.width = "30px";
 caught.style.height = "30px";
 
+//Tutorial Modals
+const tutorialModal = document.getElementById("welcomeModal");
+
 // Waits for all the html to load before doing this code
 document.addEventListener("DOMContentLoaded", function (e) {
     if (localStorage.getItem("player") !== null) {
@@ -211,6 +216,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     if (localStorage.getItem("pokeCounter") !== null && localStorage.getItem("caught") !== null) {
         loadPokeCaught();
+    }
+
+    if(player.level == 1 && tutorials == true){
+        setTimeout(function () {
+            $('#welcomeModal').modal('show');
+        }, 1000);
+       
     }
 
     // Attack every second
