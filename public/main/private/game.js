@@ -221,6 +221,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     if(player.level == 1 && tutorials == true){
         setTimeout(function () {
+            $('#welcomeModal').modal({
+                backdrop: 'static',
+                keyboard: false,
+            });
             $('#welcomeModal').modal('show');
         }, 1000);
     }
