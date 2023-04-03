@@ -26,7 +26,6 @@ let hpBarText = document.getElementById("hpBarText");
 // Experience bar
 const xpBar = document.getElementById("xpBar");
 let xpBarText = document.getElementById("xpBarText");
-const xpGain = 10;
 
 // Player level Nav
 let levelNav = document.getElementById("level");
@@ -58,6 +57,8 @@ const tutorialModal = document.getElementById("welcomeModal");
 document.addEventListener("DOMContentLoaded", function (e) {
     if (localStorage.getItem("player") !== null) {
         loadPlayer();
+        xpBar.ariaValueNow = player.xp;
+        $("#xpBar").css("width", xpBar.ariaValueNow + "%");
     }
 
     if (localStorage.getItem("pokeCounter") !== null && localStorage.getItem("caught") !== null) {
