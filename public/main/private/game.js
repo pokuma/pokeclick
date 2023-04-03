@@ -619,11 +619,11 @@ const pokemonList = [
 
 //Spawn rates must add up to 100 for each route and all pokemon must be available in at least one route
 const locationList = [
-    { id: 1, name: "Route 1", minLevel: 5, maxLevel: 5, pokemon: [
+    { id: 1, name: "Route 1", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
         { id: 16, spawnRate: 50},
         { id: 19, spawnRate: 50},
     ] },
-    { id: 2, name: "Viridian Forest", minLevel: 5, maxLevel: 5, pokemon: [
+    { id: 2, name: "Viridian Forest", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
         { id: 16, spawnRate: 50},
         { id: 19, spawnRate: 50},
     ] },
