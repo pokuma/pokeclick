@@ -19,8 +19,8 @@ let tutorials = true;
 
 // Pokemon health points bar
 const hpBar = document.getElementById("hpBar");
-const yellowZone = hpBar.ariaValueMax / 1.5;
-const redZone = hpBar.ariaValueMax / 3;
+const yellowZone = 0.65;
+const redZone = 0.3;
 let hpBarText = document.getElementById("hpBarText");
 
 // Experience bar
@@ -219,12 +219,12 @@ var attack = function () {
             return
         }
         startPokemonShake();
-        if (hpBar.ariaValueNow - player.attacks <= 65) {
+        if (hpBar.ariaValueNow - player.attacks <= Math.floor(yellowZone * hpBar.ariaValueMax)) {
             hpBarText.style.color = "black";
 
-            if (hpBar.ariaValueNow < redZone) {
+            if (hpBar.ariaValueNow < Math.floor(redZone * hpBar.ariaValueMax)) {
                 hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-danger";
-            } else if (hpBar.ariaValueNow < yellowZone && hpBar.ariaValueNow > redZone) {
+            } else if (hpBar.ariaValueNow < Math.floor(yellowZone * hpBar.ariaValueMax)) {
                 hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-warning";
             }
         }
