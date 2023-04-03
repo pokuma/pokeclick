@@ -18,7 +18,7 @@ let player = {
     caughtPokemons: [],
 };
 
-let hpMultiplier = 10;
+let hpMultiplier = 2;
 let xpMultiplier = 1;
 
 let tutorials = true;
