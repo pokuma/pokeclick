@@ -650,15 +650,189 @@ const pokemonList = [
 //Spawn rates must add up to 100 for each route and all pokemon must be available in at least one route
 const locationList = [
     {
+        id: 0, name: "Pallet Town", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
         id: 1, name: "Route 1", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 16, spawnRate: 50 },
-            { id: 19, spawnRate: 50 },
+            { id: 1, spawnRate: 100 },
         ]
     },
     {
         id: 2, name: "Viridian Forest", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 16, spawnRate: 50 },
-            { id: 19, spawnRate: 50 },
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 3, name: "Route 22", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 4, name: "Route 2", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 5, name: "Route 3", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 6, name: "Route 4", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 7, name: "Mt. Moon", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 8, name: "Route 24", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 9, name: "Route 25", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 10, name: "Route 5", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 11, name: "Route 6", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 12, name: "Route 11", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 13, name: "Digglet's Cave", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 14, name: "Route 9", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 15, name: "Route 10", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 16, name: "Rock Tunnel", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 17, name: "Pokemon Tower", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 18, name: "Route 8", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 19, name: "Route 7", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 20, name: "Route 12", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 21, name: "Route 13", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 22, name: "Route 14", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 23, name: "Route 15", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 24, name: "Route 16", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 25, name: "Route 17", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 26, name: "Route 18", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+
+        id: 27, name: "Route 19", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 28, name: "Route 20", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 29, name: "Pokemon Mansion", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 30, name: "Route 21", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 31, name: "Route 23", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 32, name: "Victory Road", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 33, name: "Power Plant", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 34, name: "Seafoam Islands", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 35, name: "Cerulean Cave", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
+        ]
+    },
+    {
+        id: 36, name: "Pokemon League", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
+            { id: 1, spawnRate: 100 },
         ]
     },
 ];
