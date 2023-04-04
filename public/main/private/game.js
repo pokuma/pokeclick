@@ -11,7 +11,7 @@ let pokemon = {
 let player = {
     nextLevelXP: 100,
     xp: 0,
-    level: 5,
+    level: 1,
     money: 0,
     attacks: 5,
     pokeCounter: 0,
