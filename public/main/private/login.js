@@ -7,6 +7,7 @@ function validateForm() {
         alert("Por favor, rellene todos los campos requeridos.");
         return false;
     }
+    alert("Logeo en la cuenta \"" + emailInput.value + "\" con exito!");
 
     return true;
 }
