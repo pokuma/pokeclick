@@ -6,13 +6,11 @@ import {
 let route = {
     id: 0,
     name: "",
-    pokemon: [],
-    dropMultiplier: 1,
     minLevel: 1,
     maxLevel: 1,
+    dropMultiplier: 1,
+    pokemon: [],
 }
-
-route = locationList[0];
 
 let pokemon = {
     id: 0,
@@ -78,6 +76,7 @@ const logoTutorial = document.getElementById("logoTutorial");
 
 // Waits for all the html to load before doing this code
 document.addEventListener("DOMContentLoaded", function (e) {
+    loadDefaultRoute();
     document.getElementById("replayTutorialButton").addEventListener("click", function () {
         showTutorial();
     });
@@ -123,7 +122,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 
 
-
+var loadDefaultRoute = function () {
+    route = locationList[0];
+}
 
 var pokemonIsCapturedPokeball = function () {
     if (alreadyCaught(pokemon.name)) {
@@ -380,8 +381,6 @@ var restoreHP = function () {
 // Saves the game by writing play to JSON and save it in localStorage
 var save = function () {
     localStorage.setItem("player", JSON.stringify(player));
-    localStorage.setItem("caught", JSON.stringify(caughtPokemons));
-    localStorage.setItem("pokeCounter", JSON.stringify(player.pokeCounter));
 };
 
 // Loads the game from localStorage and update favIcon to starter
