@@ -78,6 +78,15 @@ const logoTutorial = document.getElementById("logoTutorial");
 
 // Waits for all the html to load before doing this code
 document.addEventListener("DOMContentLoaded", function (e) {
+    document.getElementById("replayTutorialButton").addEventListener("click", function () {
+        showTutorial();
+    });
+    document.getElementById("resetProfileButton").addEventListener("click", function () {
+        resetProfile();
+    });
+    document.getElementById("pokemon").addEventListener("click", function () {
+        attack();
+    });
     if (localStorage.getItem("player") !== null) {
         loadPlayer();
         xpBar.ariaValueNow = player.xp;
