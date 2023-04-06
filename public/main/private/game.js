@@ -73,10 +73,16 @@ const xpBar = document.getElementById("xpBar");
 const xpBarText = document.getElementById("xpBarText");
 
 
-// Waits for all the html to load before doing this code
+/* Waits for all the html to load before doing this code
+* Add click event listeners to the buttons
+* Load the player if it already exists
+* Show the tutorial if the player is level 1 and tutorials are enabled
+* Load the game elements
+* Attack every second
+*/
 document.addEventListener("DOMContentLoaded", function (e) {
 
-    // Add click event listeners to the buttons
+    
     document.getElementById("replayTutorialButton").addEventListener("click", function () {
         showTutorial();
     });
@@ -87,7 +93,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
         attack();
     });
     
-    // Load the player if it exists from the local storage
     if (localStorage.getItem("player") !== null) {
         loadPlayer();
         xpBar.ariaValueNow = player.xp;
@@ -95,19 +100,16 @@ document.addEventListener("DOMContentLoaded", function (e) {
         xpBarText.innerHTML = "xp: " + player.xp + " / " + player.nextLevelXP;
     }
 
-    // Show the tutorial if the player is level 1 and tutorials are enabled
     if (player.level == 1 && tutorials == true) {
         setTimeout(function () {
             showTutorial();
         }, 1000);
     }
 
-    //Load the game elements
     updateNavBar();
     spawnPokemon();
     loadDefaultRoute();
 
-    //Attack every second
     setInterval(function () {
         attack();
     }, 1000);
@@ -138,21 +140,20 @@ var pokemonIsCapturedPokeball = function () {
     }
 }
 
-//Every time the player tries attacks the pokemon, this function is called
+/*Every time the player tries attacks the pokemon, this function is called
+* If the sprite is not a pokemon, you can't attack
+* If the attack kills the pokemon, the pokemon dies
+* If the attack doesn't kill the pokemon, the pokemon shakes
+* Updates the hp bar
+*/
 var attack = function () {
-
-    //Only attack if the sprite is a pokemon
     if (!pokemonSprite.getAttribute("src").includes("pokemon")) {
         return
     }
-
-    //If the attack kills the pokemon
     if (pokemon.hp - player.attacks <= 0) {
         pokemon.hp = 0;
         pokemonDies();
     }
-
-    //If the attack doesn't kill the pokemon
     if (pokemon.hp - player.attacks > 0) {
         pokemon.hp -= player.attacks;
         startPokemonShake();        
@@ -160,13 +161,15 @@ var attack = function () {
     updateHpBar();
 }
 
-//Updates the hp bar
+/* Updates the hp bar
+ * Changes the color of the hp bar depending on the pokemon's health
+ * Sets the padding of the hp bar
+ */
 var updateHpBar = function () {
     hpBarText.innerHTML = "hp: " + pokemon.hp + " / " + pokemon.baseHP;
     hpBar.style.width = "" + pokemon.hp / pokemon.baseHP * 100 + "%";
     hpBar.ariaValueNow = pokemon.hp / pokemon.baseHP * 100;
 
-    //Change the color of the hp bar depending on the pokemon's health
     if (pokemon.hp > pokemon.baseHP * yellowZone) {
         hpBarText.style.color = "white";
         hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-green";
@@ -181,9 +184,10 @@ var updateHpBar = function () {
     setHealthPointsPadding();
 }
 
-//Check if the pokemon is already captured by the player
+/*Check if the pokemon is already captured by the player
+ * Iterates through the player's caught pokemons array and check if the pokemon is already captured by comparing the names
+ */
 var alreadyCaught = function (name) {
-    //Iterate through the player's caught pokemons array and check if the pokemon is already captured by comparing the names
     for (let i = 0; i < player.caughtPokemons.length; i++) {
         if (player.caughtPokemons[i] === name) {
             return true;
@@ -193,11 +197,13 @@ var alreadyCaught = function (name) {
 };
 
 /* When the pokemon dies:
- *      Get the drops of the pokemon (money and xp)
- *      Restart next pokemon's shake animation
- *      Change the color of the hp bar to green
- *      Spawn another random pokemon
- *      Restore the bar's hp for the next pokemon
+ * Get the drops of the pokemon (money and xp)
+ * Restart next pokemon's shake animation
+ * If the pokemon is already captured, the player doesn't capture it again
+ * If the pokemon is not already captured, the player has a pokemonCatchRate/256 chance of capturing it
+ * If the pokemon is captured, the player's pokedex counter is updated and the player is saved
+ * The player object is saved
+ * Spawn another random pokemon
  */
 var pokemonDies = function () {
     getPokemonDrops();
@@ -205,8 +211,6 @@ var pokemonDies = function () {
     
     if (!alreadyCaught(pokemon.name)) {
         startCaptureAnimation();
-
-        //If the pokemon is not already captured, the player has a pokemonCatchRate/256 chance of capturing it
         setTimeout(function () {
             if(pokemon.catchRate > Math.floor(Math.random() * 256)){
                 updatePokemonCounter();
@@ -229,6 +233,7 @@ var updatePokemonCounter = function () {
     startPokeCounterAnimation();
 }
 
+//Pokedex animation, moves the pokedex counter up
 var startPokeCounterAnimation = function () {
     pokeCount.style.animation = "pokedexUp 1s";
     pokeCount.onanimationiteration = "infinite";
@@ -263,6 +268,7 @@ var gainMoney = function () {
     startMoneyAnimation();
 }
 
+//Money animation, moves the money counter up
 var startMoneyAnimation = function () {
     moneyNav.style.animation = "moneyUp 1s";
     moneyNav.onanimationiteration = "infinite";
@@ -297,7 +303,16 @@ var spawnShinyPokemon = function () {
     return false;
 }
 
-//Spawns a random pokemon
+/*Spawns a random pokemon
+ *The pokemon is chosen randomly from the pokemonList array
+ *The pokemon's id is set to the pokemonList array index + 1
+ *The pokemon object stats are set to the pokemonList array values
+ *The pokemon's hp bar is restored to full
+ *The pokemon's sprite loaded
+ *The pokemon's name is displayed
+ *A border is added to the pokemon sprite
+ *hpBar and xpBar are updated
+ */
 var spawnPokemon = function () {
     pokemon.id = Math.floor(Math.random() * pokemonList.length) + 1;
     updatePokemonObjectFromId(pokemon.id);
@@ -313,21 +328,9 @@ var spawnPokemon = function () {
 
     pokemonSprite.style.border = "1px solid white";
     pokemonSprite.style.borderRadius = "20px";
-
     pokemonIsCapturedPokeball();
-
-    hpBar.ariaValueMax = pokemon.baseHP;
-    hpBar.ariaValueNow = 100;
-
-    hpBarText.innerHTML = "hp: " + hpBar.ariaValueMax + " / " + hpBar.ariaValueMax;
-    hpBarText.style.color = "white";
-    setHealthPointsPadding();
-
-    xpBar.ariaValueMax = player.nextLevelXP;
-    xpBar.ariaValueNow = Math.floor((player.xp / xpBar.ariaValueMax) * 100);
-    xpBarText.innerHTML = "xp " + player.xp + " / " + player.nextLevelXP;
-    xpBar.style.width = "" + xpBar.ariaValueNow + "%";
-    setExperiencePadding();
+    updateHpBar();
+    updateXpBar();
 }
 
 //Loads the new pokemon in the pokemon object given its id
@@ -365,6 +368,7 @@ var setHealthPointsPadding = function () {
 
 /*  When the pokemon is defeated, the player gains xp according to the pokemon base xp and some other factors
 *   If the player has enough xp to level up, the player levels up and the xp bar resets, but keeps the extra xp
+*   xp bar is updated
 */  
 var gainXP = function () {
     if (player.xp + pokemon.baseXP < player.nextLevelXP) {
@@ -398,19 +402,17 @@ var gainXP = function () {
             damageNav.onanimationiteration = "none";
         }
     }
+    updateXpBar();
+}
 
+//Updates the xp bar
+var updateXpBar = function () {
     xpBar.ariaValueMax = player.nextLevelXP;
     xpBar.ariaValueNow = Math.floor((player.xp / xpBar.ariaValueMax) * 100);
     xpBarText.innerHTML = "xp " + player.xp + " / " + player.nextLevelXP;
     xpBar.style.width = "" + xpBar.ariaValueNow + "%";
     setExperiencePadding();
-}
-
-//Sets the hp bar to 100% and the hp text to the max hp
-var restoreHP = function () {
-    pokemon.hp = pokemon.baseHP;
-    updateHpBar();
-}
+};
 
 // Saves the player by writing player to JSON and saving it in localStorage
 var savePlayer = function () {
