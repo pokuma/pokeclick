@@ -9,7 +9,7 @@ let startingRequiredXP = 10;
 let hpMultiplier = 3;
 let xpMultiplier = 1;
 
-let tutorials = false;
+let tutorials = true;
 
 //Objects
 let route = {
