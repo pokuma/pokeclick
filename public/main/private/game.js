@@ -659,188 +659,477 @@ const pokemonList = [
 const locationList = [
     {
         id: 0, name: "Pallet Town", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+            { name: "bulbasaur", spawnRate: 100 },
         ]
     },
     {
-        id: 1, name: "Route 1", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 1, name: "Route 1", minLevel: 3, maxLevel: 4, dropMultiplier: 1, pokemon: [
+            { name: "pidgey", spawnRate: 40 },
+            { name: "ratata", spawnRate: 30 },
+            { name: "oddish", spawnRate: 30 },
+            { name: "bellsprout", spawnRate: 30 },
         ]
     },
     {
-        id: 2, name: "Viridian Forest", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 2, name: "Viridian Forest", minLevel: 3, maxLevel: 6, dropMultiplier: 1, pokemon: [
+            { name: "caterpie", spawnRate: 25 },
+            { name: "metapod", spawnRate: 10 },
+            { name: "butterfree", spawnRate: 1 },
+            { name: "weedle", spawnRate: 25 },
+            { name: "kakuna", spawnRate: 10 },
+            { name: "beedrill", spawnRate: 1 },
+            { name: "pidgey", spawnRate: 15 },
+            { name: "pikachu", spawnRate: 4 },
+            { name: "oddish", spawnRate: 10 },
+            { name: "bellsprout", spawnRate: 10 },
+            { name: "bulbasaur", spawnRate: 1 },
+
         ]
     },
     {
-        id: 3, name: "Route 22", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 3, name: "Route 22", minLevel: 3, maxLevel: 4, dropMultiplier: 1, pokemon: [
+            { name: "ratata", spawnRate: 30 },
+            { name: "spearow", spawnRate: 30 },
+            { name: "nidoran♀", spawnRate: 20 },
+            { name: "nidoran♂", spawnRate: 20 },
         ]
     },
     {
-        id: 4, name: "Route 2", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 4, name: "Route 2", minLevel: 3, maxLevel: 4, dropMultiplier: 1, pokemon: [
+            { name: "pidgey", spawnRate: 30 },
+            { name: "ratata", spawnRate: 20 },
+            { name: "oddish", spawnRate: 20 },
+            { name: "bellsprout", spawnRate: 20 },
+            { name: "caterpie", spawnRate: 15 },
+            { name: "weedle", spawnRate: 15 },
         ]
     },
     {
-        id: 5, name: "Route 3", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 5, name: "Route 3", minLevel: 3, maxLevel: 8, dropMultiplier: 1, pokemon: [
+            { name: "mankey", spawnRate: 20 },
+            { name: "sandshrew", spawnRate: 20 },
+            { name: "ekans", spawnRate: 20 },
+            { name: "spearow", spawnRate: 20 },
+            { name: "ratata", spawnRate: 20 },
         ]
     },
     {
-        id: 6, name: "Route 4", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 6, name: "Route 4", minLevel: 7, maxLevel: 12, dropMultiplier: 1, pokemon: [
+            { name: "charmander", spawnRate: 1 },
+            { name: "psyduck", spawnRate: 4 },
+            { name: "mankey", spawnRate: 15 },
+            { name: "sandshrew", spawnRate: 20 },
+            { name: "ekans", spawnRate: 15 },
+            { name: "arbok", spawnRate: 5 },
+            { name: "spearow", spawnRate: 20 },
+            { name: "ratata", spawnRate: 20 },
         ]
     },
     {
-        id: 7, name: "Mt. Moon", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 7, name: "Mt. Moon", minLevel: 5, maxLevel: 10, dropMultiplier: 1, pokemon: [
+            { name: "chansey", spawnRate: 1 },
+            { name: "onix", spawnRate: 1 },
+            { name: "clefairy", spawnRate: 2 },
+            { name: "clefable", spawnRate: 1 },
+            { name: "paras", spawnRate: 15 },
+            { name: "zubat", spawnRate: 30 },
+            { name: "geodude", spawnRate: 30 },
+            { name: "omanyte", spawnRate: 9 },
+            { name: "kabuto", spawnRate: 9 },
+            { name: "kabutops", spawnRate: 1 },
+            { name: "omastar", spawnRate: 1 },
         ]
     },
     {
-        id: 8, name: "Route 24", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 8, name: "Route 24", minLevel: 7, maxLevel: 12, dropMultiplier: 1, pokemon: [
+            { name: "psyduck", spawnRate: 20 },
+            { name: "bellsprout", spawnRate: 10 },
+            { name: "oddish", spawnRate: 10 },
+            { name: "meowth", spawnRate: 20 },
+            { name: "pidgey", spawnRate: 20 },
+            { name: "venonat", spawnRate: 20 },
         ]
     },
     {
-        id: 9, name: "Route 25", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 9, name: "Route 25", minLevel: 9, maxLevel: 14, dropMultiplier: 1, pokemon: [
+            { name: "squirtle", spawnRate: 1 },
+            { name: "psyduck", spawnRate: 19 },
+            { name: "bellsprout", spawnRate: 10 },
+            { name: "oddish", spawnRate: 10 },
+            { name: "meowth", spawnRate: 10 },
+            { name: "persian", spawnRate: 10 },
+            { name: "pidgey", spawnRate: 20 },
+            { name: "venonat", spawnRate: 20 },
+
         ]
     },
     {
-        id: 10, name: "Route 5", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 10, name: "Route 5", minLevel: 11, maxLevel: 16, dropMultiplier: 1, pokemon: [
+            { name: "chansey", spawnRate: 1 },
+            { name: "psyduck", spawnRate: 10 },
+            { name: "abra", spawnRate: 4 },
+            { name: "pidgeotto", spawnRate: 10 },
+            { name: "jigglypuff", spawnRate: 15 },
+            { name: "ratata", spawnRate: 10 },
+            { name: "pidgey", spawnRate: 10 },
+            { name: "vulpix", spawnRate: 20 },
+            { name: "growlithe", spawnRate: 20 },
         ]
     },
     {
-        id: 11, name: "Route 6", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 11, name: "Route 6", minLevel: 11, maxLevel: 16, dropMultiplier: 1, pokemon: [
+            { name: "chansey", spawnRate: 1 },
+            { name: "abra", spawnRate: 4 },
+            { name: "pidgeotto", spawnRate: 10 },
+            { name: "jigglypuff", spawnRate: 15 },
+            { name: "ratata", spawnRate: 15 },
+            { name: "pidgey", spawnRate: 15 },
+            { name: "vulpix", spawnRate: 20 },
+            { name: "growlithe", spawnRate: 20 },
         ]
     },
     {
-        id: 12, name: "Route 11", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 12, name: "Route 11", minLevel: 13, maxLevel: 18, dropMultiplier: 1, pokemon: [
+            { name: "chansey", spawnRate: 1 },
+            { name: "mr.mime", spawnRate: 4 },
+            { name: "raticate", spawnRate: 10 },
+            { name: "pidgeotto", spawnRate: 10 },
+            { name: "drowzee", spawnRate: 25 },
+            { name: "hypno", spawnRate: 10 },
+            { name: "ratata", spawnRate: 20 },
+            { name: "pidgey", spawnRate: 20 },
+
         ]
     },
     {
-        id: 13, name: "Digglet's Cave", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 13, name: "Digglet's Cave", minLevel: 13, maxLevel: 18, dropMultiplier: 1, pokemon: [
+            { name: "chansey", spawnRate: 1 },
+            { name: "dugtrio", spawnRate: 4 },
+            { name: "zubat", spawnRate: 10 },
+            { name: "dugtrio", spawnRate: 75 },
+            { name: "sandshrew", spawnRate: 5 },
+            { name: "sandslash", spawnRate: 5 },
         ]
     },
     {
-        id: 14, name: "Route 9", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 14, name: "Route 9", minLevel: 17, maxLevel: 22, dropMultiplier: 1, pokemon: [
+            { name: "chansey", spawnRate: 1 },
+            { name: "nidoran♀", spawnRate: 15 },
+            { name: "nidoran♂", spawnRate: 15 },
+            { name: "nidorina", spawnRate: 5 },
+            { name: "nidorino", spawnRate: 5 },
+            { name: "raticate", spawnRate: 9 },
+            { name: "fearow", spawnRate: 10 },
+            { name: "ratata", spawnRate: 20 },
+            { name: "spearow", spawnRate: 20 },
+
         ]
     },
     {
-        id: 15, name: "Route 10", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 15, name: "Route 10", minLevel: 18, maxLevel: 23, dropMultiplier: 1, pokemon: [
+            { name: "chansey", spawnRate: 1 },
+            { name: "nidoran♀", spawnRate: 15 },
+            { name: "nidoran♂", spawnRate: 15 },
+            { name: "nidorina", spawnRate: 5 },
+            { name: "nidorino", spawnRate: 5 },
+            { name: "raticate", spawnRate: 10 },
+            { name: "fearow", spawnRate: 10 },
+            { name: "ratata", spawnRate: 15 },
+            { name: "spearow", spawnRate: 15 },
+            { name: "krabby", spawnRate: 9 },
         ]
     },
     {
-        id: 16, name: "Rock Tunnel", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 16, name: "Rock Tunnel", minLevel: 18, maxLevel: 23, dropMultiplier: 1, pokemon: [
+            { name: "charmeleon", spawnRate: 1 },
+            { name: "kangaskhan", spawnRate: 1 },
+            { name: "cubone", spawnRate: 8 },
+            { name: "geodude", spawnRate: 20 },
+            { name: "graveler", spawnRate: 10 },
+            { name: "zubat", spawnRate: 20 },
+            { name: "golbat", spawnRate: 10 },
+            { name: "machop", spawnRate: 10 },
+            { name: "onix", spawnRate: 10 },
+            { name: "rhyhorn", spawnRate: 10 },
         ]
     },
     {
-        id: 17, name: "Pokemon Tower", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 17, name: "Pokemon Tower", minLevel: 20, maxLevel: 25, dropMultiplier: 1, pokemon: [
+            { name: "gastly", spawnRate: 60 },
+            { name: "haunter", spawnRate: 20 },
+            { name: "cubone", spawnRate: 9 },
+            { name: "zubat", spawnRate: 5 },
+            { name: "golbat", spawnRate: 5 },
+            { name: "marowak", spawnRate: 1 },
         ]
     },
     {
-        id: 18, name: "Route 8", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 18, name: "Route 8", minLevel: 22, maxLevel: 27, dropMultiplier: 1, pokemon: [
+            { name: "kadabra", spawnRate: 1 },
+            { name: "arcanine", spawnRate: 1 },
+            { name: "ninetales", spawnRate: 1 },
+            { name: "abra", spawnRate: 2 },
+            { name: "growlithe", spawnRate: 20 },
+            { name: "vulpix", spawnRate: 20 },
+            { name: "raticate", spawnRate: 10 },
+            { name: "ratata", spawnRate: 10 },
+            { name: "pidgeotto", spawnRate: 10 },
+            { name: "pidgey", spawnRate: 10 },
+            { name: "jigglypuff", spawnRate: 15 },
+            { name: "wigglytuff", spawnRate: 1 },
+            
         ]
     },
     {
-        id: 19, name: "Route 7", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 19, name: "Route 7", minLevel: 22, maxLevel: 27, dropMultiplier: 1, pokemon: [
+            { name: "porygon", spawnRate: 1 },
+            { name: "kadabra", spawnRate: 1 },
+            { name: "arcanine", spawnRate: 1 },
+            { name: "ninetales", spawnRate: 1 },
+            { name: "abra", spawnRate: 1 },
+            { name: "growlithe", spawnRate: 20 },
+            { name: "vulpix", spawnRate: 20 },
+            { name: "raticate", spawnRate: 10 },
+            { name: "ratata", spawnRate: 10 },
+            { name: "pidgeotto", spawnRate: 10 },
+            { name: "pidgey", spawnRate: 10 },
+            { name: "jigglypuff", spawnRate: 15 },
         ]
     },
     {
-        id: 20, name: "Route 12", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 20, name: "Route 12", minLevel: 25, maxLevel: 30, dropMultiplier: 1, pokemon: [
+            { name: "kingler", spawnRate: 5 },
+            { name: "krabby", spawnRate: 15 },
+            { name: "farfetch'd", spawnRate: 10 },
+            { name: "bellsprout", spawnRate: 10 },
+            { name: "weepinbell", spawnRate: 15 },
+            { name: "oddish", spawnRate: 10 },
+            { name: "gloom", spawnRate: 15 },
+            { name: "pidgey", spawnRate: 10 },
+            { name: "pidgeotto", spawnRate: 10 },
         ]
     },
     {
-        id: 21, name: "Route 13", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 21, name: "Route 13", minLevel: 27, maxLevel: 32, dropMultiplier: 1, pokemon: [
+            { name: "ivysaur", spawnRate: 1 },
+            { name: "parasect", spawnRate: 1 },
+            { name: "kingler", spawnRate: 1 },
+            { name: "krabby", spawnRate: 15 },
+            { name: "farfetch'd", spawnRate: 10 },
+            { name: "bellsprout", spawnRate: 10 },
+            { name: "weepinbell", spawnRate: 15 },
+            { name: "oddish", spawnRate: 10 },
+            { name: "gloom", spawnRate: 15 },
+            { name: "pidgey", spawnRate: 10 },
+            { name: "pidgeotto", spawnRate: 10 },
         ]
     },
     {
-        id: 22, name: "Route 14", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 22, name: "Route 14", minLevel: 29, maxLevel: 34, dropMultiplier: 1, pokemon: [
+            { name: "pinsir", spawnRate: 1 },
+            { name: "scyther", spawnRate: 1 },
+            { name: "tauros", spawnRate: 3 },
+            { name: "venomoth", spawnRate: 10 },
+            { name: "venonat", spawnRate: 15 },
+            { name: "bellsprout", spawnRate: 10 },
+            { name: "weepinbell", spawnRate: 15 },
+            { name: "oddish", spawnRate: 10 },
+            { name: "gloom", spawnRate: 15 },
+            { name: "pidgey", spawnRate: 10 },
+            { name: "pidgeotto", spawnRate: 10 },
         ]
     },
     {
-        id: 23, name: "Route 15", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 23, name: "Route 15", minLevel: 31, maxLevel: 36, dropMultiplier: 1, pokemon: [
+            { name: "pinsir", spawnRate: 1 },
+            { name: "scyther", spawnRate: 1 },
+            { name: "tauros", spawnRate: 2 },
+            { name: "venomoth", spawnRate: 10 },
+            { name: "venonat", spawnRate: 15 },
+            { name: "bellsprout", spawnRate: 10 },
+            { name: "weepinbell", spawnRate: 15 },
+            { name: "oddish", spawnRate: 10 },
+            { name: "gloom", spawnRate: 15 },
+            { name: "pidgey", spawnRate: 10 },
+            { name: "pidgeotto", spawnRate: 10 },
+            { name: "pidgeot", spawnRate: 1 },
         ]
     },
     {
-        id: 24, name: "Route 16", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 24, name: "Route 16", minLevel: 33, maxLevel: 38, dropMultiplier: 1, pokemon: [
+            { name: "pidgey", spawnRate: 20 },
+            { name: "pidgeotto", spawnRate: 20 },
+            { name: "ratata", spawnRate: 15 },
+            { name: "raticate", spawnRate: 15 },
+            { name: "doduo", spawnRate: 25 },
+            { name: "dodrio", spawnRate: 3 },
+            { name: "snorlax", spawnRate: 1 },
+            { name: "pidgeot", spawnRate: 1 },
         ]
     },
     {
-        id: 25, name: "Route 17", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 25, name: "Route 17", minLevel: 35, maxLevel: 40, dropMultiplier: 1, pokemon: [
+            { name: "eevee", spawnRate: 4 },
+            { name: "doduo", spawnRate: 20 },
+            { name: "dodrio", spawnRate: 5 },
+            { name: "ponyta", spawnRate: 20 },
+            { name: "rapidash", spawnRate: 5 },
+            { name: "ratata", spawnRate: 5 },
+            { name: "raticate", spawnRate: 5 },
+            { name: "pidgey", spawnRate: 10 },
+            { name: "pidgeotto", spawnRate: 10 },
+            { name: "psyduck", spawnRate: 15 },
+            { name: "golduck", spawnRate: 1 },
         ]
     },
     {
-        id: 26, name: "Route 18", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 26, name: "Route 18", minLevel: 37, maxLevel: 42, dropMultiplier: 1, pokemon: [
+            { name: "pidgey", spawnRate: 20 },
+            { name: "pidgeotto", spawnRate: 20 },
+            { name: "ratata", spawnRate: 15 },
+            { name: "raticate", spawnRate: 15 },
+            { name: "doduo", spawnRate: 25 },
+            { name: "dodrio", spawnRate: 3 },
+            { name: "golduck", spawnRate: 1 },
+            { name: "snorlax", spawnRate: 1 },
         ]
     },
     {
 
-        id: 27, name: "Route 19", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 27, name: "Route 19", minLevel: 39, maxLevel: 44, dropMultiplier: 1, pokemon: [
+            { name: "lapras", spawnRate: 1 },
+            { name: "wartortle", spawnRate: 1 },
+            { name: "starmie", spawnRate: 1 },
+            { name: "staryu", spawnRate: 20 },
+            { name: "tentacruel", spawnRate: 7 },
+            { name: "tentacool", spawnRate: 20 },
+            { name: "magikarp", spawnRate: 20 },
+            { name: "gyarados", spawnRate: 10 },
+            { name: "horsea", spawnRate: 10 },
+            { name: "seadra", spawnRate: 10 },
         ]
     },
     {
-        id: 28, name: "Route 20", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 28, name: "Route 20", minLevel: 41, maxLevel: 46, dropMultiplier: 1, pokemon: [
+            { name: "lapras", spawnRate: 1 },
+            { name: "wartortle", spawnRate: 1 },
+            { name: "starmie", spawnRate: 1 },
+            { name: "staryu", spawnRate: 20 },
+            { name: "tentacruel", spawnRate: 7 },
+            { name: "tentacool", spawnRate: 20 },
+            { name: "magikarp", spawnRate: 20 },
+            { name: "gyarados", spawnRate: 10 },
+            { name: "goldeen", spawnRate: 10 },
+            { name: "seaking", spawnRate: 10 },
         ]
     },
     {
-        id: 29, name: "Pokemon Mansion", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 29, name: "Pokemon Mansion", minLevel: 43, maxLevel: 48, dropMultiplier: 1, pokemon: [
+            { name: "ditto", spawnRate: 1 },
+            { name: "weezing", spawnRate: 5 },
+            { name: "koffing", spawnRate: 40 },
+            { name: "muk", spawnRate: 5 },
+            { name: "grimer", spawnRate: 40 },
+            { name: "magmar", spawnRate: 14 },
         ]
     },
     {
-        id: 30, name: "Route 21", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 30, name: "Route 21", minLevel: 45, maxLevel: 50, dropMultiplier: 1, pokemon: [
+            { name: "victreebel", spawnRate: 1 },
+            { name: "vileplume", spawnRate: 1 },
+            { name: "tangela", spawnRate: 15 },
+            { name: "gloom", spawnRate: 14 },
+            { name: "weepinbell", spawnRate: 14 },
+            { name: "bellsprout", spawnRate: 10 },
+            { name: "oddish", spawnRate: 10 },
+            { name: "exeggcute", spawnRate: 25 },
+            { name: "exeggutor", spawnRate: 20 },
         ]
     },
     {
-        id: 31, name: "Route 23", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 31, name: "Route 23", minLevel: 47, maxLevel: 52, dropMultiplier: 1, pokemon: [
+            { name: "exeggutor", spawnRate: 1 },
+            { name: "exeggcute", spawnRate: 12 },
+            { name: "nidoqueen", spawnRate: 1 },
+            { name: "nidoking", spawnRate: 1 },
+            { name: "nidorina", spawnRate: 20 },
+            { name: "nidorino", spawnRate: 20 },
+            { name: "spearow", spawnRate: 10 },
+            { name: "fearow", spawnRate: 10 },
+            { name: "primeape", spawnRate: 5 },
+            { name: "nidoran♀", spawnRate: 10 },
+            { name: "nidoran♂", spawnRate: 10 },
         ]
     },
     {
-        id: 32, name: "Victory Road", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 32, name: "Victory Road", minLevel: 49, maxLevel: 54, dropMultiplier: 1, pokemon: [
+            { name: "hitmonchan", spawnRate: 1 },
+            { name: "hitmonlee", spawnRate: 1 },
+            { name: "lickitung", spawnRate: 1 },
+            { name: "rhydon", spawnRate: 1 },
+            { name: "rhyhorn", spawnRate: 10 },
+            { name: "onix", spawnRate: 8 },
+            { name: "geodude", spawnRate: 10 },
+            { name: "graveler", spawnRate: 15 },
+            { name: "machop", spawnRate: 10 },
+            { name: "machoke", spawnRate: 15 },
+            { name: "zubat", spawnRate: 10 },
+            { name: "golbat", spawnRate: 15 },
+            { name: "aerodactyl", spawnRate: 1 },
+            { name: "flareon", spawnRate: 1 },
+            { name: "moltres", spawnRate: 1 },
+
         ]
     },
     {
-        id: 33, name: "Power Plant", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 33, name: "Power Plant", minLevel: 51, maxLevel: 56, dropMultiplier: 1, pokemon: [
+            { name: "weezing", spawnRate: 5 },
+            { name: "koffing", spawnRate: 15 },
+            { name: "muk", spawnRate: 5 },
+            { name: "grimer", spawnRate: 15 },
+            { name: "electrode", spawnRate: 5 },
+            { name: "voltorb", spawnRate: 15 },
+            { name: "pikachu", spawnRate: 15 },
+            { name: "raichu", spawnRate: 5 },
+            { name: "magnemite", spawnRate: 10 },
+            { name: "magneton", spawnRate: 5 },
+            { name: "electabuzz", spawnRate: 3 },
+            { name: "jolteon", spawnRate: 1 },
+            { name: "zapdos", spawnRate: 1 }
         ]
     },
     {
-        id: 34, name: "Seafoam Islands", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 34, name: "Seafoam Islands", minLevel: 53, maxLevel: 58, dropMultiplier: 1, pokemon: [
+            { name: "dewgong", spawnRate: 10 },
+            { name: "seel", spawnRate: 15 },
+            { name: "shellder", spawnRate: 15 },
+            { name: "cloyster", spawnRate: 10 },
+            { name: "jinx", spawnRate: 6 },
+            { name: "slowpoke", spawnRate: 10 },
+            { name: "slowbro", spawnRate: 10 },
+            { name: "slowking", spawnRate: 1 },
+            { name: "poliwag", spawnRate: 10 },
+            { name: "poliwhirl", spawnRate: 10 },
+            { name: "poliwrath", spawnRate: 1 },
+            { name: "vaporeon", spawnRate: 1 },
+            { name: "articuno", spawnRate: 1 },
         ]
     },
     {
-        id: 35, name: "Cerulean Cave", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
-        ]
-    },
-    {
-        id: 36, name: "Pokemon League", minLevel: 5, maxLevel: 5, dropMultiplier: 1, pokemon: [
-            { id: 1, spawnRate: 100 },
+        id: 35, name: "Cerulean Cave", minLevel: 55, maxLevel: 60, dropMultiplier: 1, pokemon: [
+            { name: "mew", spawnRate: 1 },
+            { name: "mewtwo", spawnRate: 1 },
+            { name: "gengar", spawnRate: 2 },
+            { name: "machamp", spawnRate: 2 },
+            { name: "golem", spawnRate: 2 },
+            { name: "alakazam", spawnRate: 2 },
+            { name: "venusaur", spawnRate: 3 },
+            { name: "charizard", spawnRate: 3 },
+            { name: "blastoise", spawnRate: 3 },
+            { name: "dragonite", spawnRate: 1 },
+            { name: "dratini", spawnRate: 60 },
+            { name: "dragonair", spawnRate: 30 },
+            
         ]
     },
 ];
