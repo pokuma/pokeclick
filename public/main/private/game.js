@@ -115,17 +115,61 @@ document.addEventListener("DOMContentLoaded", function (e) {
     }, 1000);
 });
 
-//Updates all elements in the nav bar
-var updateNavBar = function () {
-    levelNav.innerHTML = "level: " + player.level;
-    moneyNav.innerHTML = "money: " + player.money;
-    damageNav.innerHTML = "click damage: " + player.attacks;
-    pokeCount.innerHTML = "pokedex: " + player.pokeCounter + " / " + pokemonList.length;
-}
-
 //Loads the default route
 var loadDefaultRoute = function () {
     route = locationList[0];
+}
+
+/*Spawns a random pokemon
+ *The pokemon is chosen randomly from the pokemonList array
+ *The pokemon's id is set to the pokemonList array index + 1
+ *The pokemon object stats are set to the pokemonList array values
+ *The pokemon's hp bar is restored to full
+ *The pokemon's sprite loaded
+ *The pokemon's name is displayed
+ *A border is added to the pokemon sprite
+ *hpBar and xpBar are updated
+ */
+ var spawnPokemon = function () {
+    pokemon.id = Math.floor(Math.random() * pokemonList.length) + 1;
+    updatePokemonObjectFromId(pokemon.id);
+    updateHpBar();
+    if (spawnShinyPokemon()) {
+        pokemonSprite.src = "assets/images/pokemon/shiny/" + pokemon.id + ".png";
+        pokeName.innerHTML = pokemon.name + "✨";
+    }
+    else {
+        pokemonSprite.src = "assets/images/pokemon/" + pokemon.id + ".png";
+        pokeName.innerHTML = pokemon.name;
+    }
+
+    pokemonSprite.style.border = "1px solid white";
+    pokemonSprite.style.borderRadius = "20px";
+    pokemonIsCapturedPokeball();
+    updateHpBar();
+    updateXpBar();
+}
+
+//Every time a pokemon spawns, this function is called, and the pokemon has a chance of being shiny
+var spawnShinyPokemon = function () {
+    let shinyChance = 0.02; // 2% chance of shiny
+    let randShiny = parseFloat(Math.random()).toFixed(4)
+
+    // Shiny spawned
+    if (randShiny <= shinyChance) {
+        return true;
+    }
+
+    return false;
+}
+
+//Loads the new pokemon in the pokemon object given its id
+var updatePokemonObjectFromId = function (id) {
+    pokemon.name = pokemonList[id - 1].name;
+    pokemon.baseHP = Math.floor(pokemonList[id - 1].baseHP * hpMultiplier);
+    pokemon.baseXP = Math.floor(pokemonList[id - 1].baseXP * xpMultiplier);
+    pokemon.hp = pokemon.baseHP;
+    pokemon.catchRate = pokemonList[id - 1].catchRate;
 }
 
 //Determines if the pokemon is already captured and changes the pokeball image accordingly
@@ -138,6 +182,18 @@ var pokemonIsCapturedPokeball = function () {
         caught.src = "assets/images/pokeballs/None.svg";
         caught.style.filter = "invert(100%)";
     }
+}
+
+/*Check if the pokemon is already captured by the player
+ * Iterates through the player's caught pokemons array and check if the pokemon is already captured by comparing the names
+ */
+var alreadyCaught = function (name) {
+    for (let i = 0; i < player.caughtPokemons.length; i++) {
+        if (player.caughtPokemons[i] === name) {
+            return true;
+        }
+    }
+    return false;
 }
 
 /*Every time the player tries attacks the pokemon, this function is called
@@ -160,41 +216,6 @@ var attack = function () {
     }
     updateHpBar();
 }
-
-/* Updates the hp bar
- * Changes the color of the hp bar depending on the pokemon's health
- * Sets the padding of the hp bar
- */
-var updateHpBar = function () {
-    hpBarText.innerHTML = "hp: " + pokemon.hp + " / " + pokemon.baseHP;
-    hpBar.style.width = "" + pokemon.hp / pokemon.baseHP * 100 + "%";
-    hpBar.ariaValueNow = pokemon.hp / pokemon.baseHP * 100;
-
-    if (pokemon.hp > pokemon.baseHP * yellowZone) {
-        hpBarText.style.color = "white";
-        hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-green";
-    }
-    if (pokemon.hp < pokemon.baseHP * yellowZone) {
-        hpBarText.style.color = "black";
-        hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-warning";
-    }
-    if (pokemon.hp < pokemon.baseHP * redZone) {
-        hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-danger";
-    }
-    setHealthPointsPadding();
-}
-
-/*Check if the pokemon is already captured by the player
- * Iterates through the player's caught pokemons array and check if the pokemon is already captured by comparing the names
- */
-var alreadyCaught = function (name) {
-    for (let i = 0; i < player.caughtPokemons.length; i++) {
-        if (player.caughtPokemons[i] === name) {
-            return true;
-        }
-    }
-    return false;
-};
 
 /* When the pokemon dies:
  * Get the drops of the pokemon (money and xp)
@@ -233,26 +254,12 @@ var updatePokemonCounter = function () {
     startPokeCounterAnimation();
 }
 
-//Pokedex animation, moves the pokedex counter up
-var startPokeCounterAnimation = function () {
-    pokeCount.style.animation = "pokedexUp 1s";
-    pokeCount.onanimationiteration = "infinite";
-    setTimeout(function () {
-        pokeCount.style.animation = "none";
-        pokeCount.onanimationiteration = "none";
-    }, 1000);
-}
-
-//Capture animation, rotates the pokeball
-var startCaptureAnimation = function () {
-    pokemonSprite.style.border = "none";
-    pokemonSprite.src = "assets/images/pokeballs/Pokeball.svg";
-    pokemonSprite.style.animation = "rotate 1s";
-    pokemonSprite.onanimationiteration = "infinite";
-    setTimeout(function () {
-        pokemonSprite.style.animation = "none";
-        pokemonSprite.onanimationiteration = "none";
-    }, 1000);
+//Updates all elements in the nav bar
+var updateNavBar = function () {
+    levelNav.innerHTML = "level: " + player.level;
+    moneyNav.innerHTML = "money: " + player.money;
+    damageNav.innerHTML = "click damage: " + player.attacks;
+    pokeCount.innerHTML = "pokedex: " + player.pokeCounter + " / " + pokemonList.length;
 }
 
 //Get the drops of the pokemon (money and xp)
@@ -261,96 +268,27 @@ var getPokemonDrops = function () {
     gainMoney();
 }
 
-//Increase the player money
-var gainMoney = function () {
-    player.money += 1;
-    updateNavBar();
-    startMoneyAnimation();
-}
-
-//Money animation, moves the money counter up
-var startMoneyAnimation = function () {
-    moneyNav.style.animation = "moneyUp 1s";
-    moneyNav.onanimationiteration = "infinite";
-    setTimeout(function () {
-        moneyNav.style.animation = "none";
-        moneyNav.onanimationiteration = "none";
-    }, 1000);
-}
-
-//Pokemon shake animation
-var startPokemonShake = function () {
-    pokemonSprite.style.animation = "shake 0.5s";
-    pokemonSprite.onanimationiteration = "infinite";
-}
-
-//Stop the pokemon shake animation
-var stopPokemonShake = function () {
-    pokemonSprite.style.animation = "none";
-    pokemonSprite.onanimationiteration = "none";
-}
-
-//Every time a pokemon spawns, this function is called, and the pokemon has a chance of being shiny
-var spawnShinyPokemon = function () {
-    let shinyChance = 0.02; // 2% chance of shiny
-    let randShiny = parseFloat(Math.random()).toFixed(4)
-
-    // Shiny spawned
-    if (randShiny <= shinyChance) {
-        return true;
-    }
-
-    return false;
-}
-
-/*Spawns a random pokemon
- *The pokemon is chosen randomly from the pokemonList array
- *The pokemon's id is set to the pokemonList array index + 1
- *The pokemon object stats are set to the pokemonList array values
- *The pokemon's hp bar is restored to full
- *The pokemon's sprite loaded
- *The pokemon's name is displayed
- *A border is added to the pokemon sprite
- *hpBar and xpBar are updated
+/* Updates the hp bar
+ * Changes the color of the hp bar depending on the pokemon's health
+ * Sets the padding of the hp bar
  */
-var spawnPokemon = function () {
-    pokemon.id = Math.floor(Math.random() * pokemonList.length) + 1;
-    updatePokemonObjectFromId(pokemon.id);
-    updateHpBar();
-    if (spawnShinyPokemon()) {
-        pokemonSprite.src = "assets/images/pokemon/shiny/" + pokemon.id + ".png";
-        pokeName.innerHTML = pokemon.name + "✨";
-    }
-    else {
-        pokemonSprite.src = "assets/images/pokemon/" + pokemon.id + ".png";
-        pokeName.innerHTML = pokemon.name;
-    }
+var updateHpBar = function () {
+    hpBarText.innerHTML = "hp: " + pokemon.hp + " / " + pokemon.baseHP;
+    hpBar.style.width = "" + pokemon.hp / pokemon.baseHP * 100 + "%";
+    hpBar.ariaValueNow = pokemon.hp / pokemon.baseHP * 100;
 
-    pokemonSprite.style.border = "1px solid white";
-    pokemonSprite.style.borderRadius = "20px";
-    pokemonIsCapturedPokeball();
-    updateHpBar();
-    updateXpBar();
-}
-
-//Loads the new pokemon in the pokemon object given its id
-var updatePokemonObjectFromId = function (id) {
-    pokemon.name = pokemonList[id - 1].name;
-    pokemon.baseHP = Math.floor(pokemonList[id - 1].baseHP * hpMultiplier);
-    pokemon.baseXP = Math.floor(pokemonList[id - 1].baseXP * xpMultiplier);
-    pokemon.hp = pokemon.baseHP;
-    pokemon.catchRate = pokemonList[id - 1].catchRate;
-}
-
-//Centers the xp bar text depending on the number of digits
-var setExperiencePadding = function () {
-    if (xpBar.ariaValueNow == 100) {
-        xpBarText.style.paddingLeft = "100px";
-    } else if (xpBar.ariaValueNow > 9 && xpBar.ariaValueNow < 100) {
-        xpBarText.style.paddingLeft = "104px";
-    } else {
-        xpBarText.style.paddingLeft = "108px";
+    if (pokemon.hp > pokemon.baseHP * yellowZone) {
+        hpBarText.style.color = "white";
+        hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-green";
     }
+    if (pokemon.hp < pokemon.baseHP * yellowZone) {
+        hpBarText.style.color = "black";
+        hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-warning";
+    }
+    if (pokemon.hp < pokemon.baseHP * redZone) {
+        hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-danger";
+    }
+    setHealthPointsPadding();
 }
 
 //Centers the hp bar text depending on the number of digits
@@ -364,6 +302,13 @@ var setHealthPointsPadding = function () {
             hpBarText.style.paddingLeft = "108px";
         }
     }
+}
+
+//Increase the player money
+var gainMoney = function () {
+    player.money += 1;
+    updateNavBar();
+    startMoneyAnimation();
 }
 
 /*  When the pokemon is defeated, the player gains xp according to the pokemon base xp and some other factors
@@ -413,6 +358,61 @@ var updateXpBar = function () {
     xpBar.style.width = "" + xpBar.ariaValueNow + "%";
     setExperiencePadding();
 };
+
+//Centers the xp bar text depending on the number of digits
+var setExperiencePadding = function () {
+    if (xpBar.ariaValueNow == 100) {
+        xpBarText.style.paddingLeft = "100px";
+    } else if (xpBar.ariaValueNow > 9 && xpBar.ariaValueNow < 100) {
+        xpBarText.style.paddingLeft = "104px";
+    } else {
+        xpBarText.style.paddingLeft = "108px";
+    }
+}
+
+//Money animation, moves the money counter up
+var startMoneyAnimation = function () {
+    moneyNav.style.animation = "moneyUp 1s";
+    moneyNav.onanimationiteration = "infinite";
+    setTimeout(function () {
+        moneyNav.style.animation = "none";
+        moneyNav.onanimationiteration = "none";
+    }, 1000);
+}
+
+//Pokemon shake animation
+var startPokemonShake = function () {
+    pokemonSprite.style.animation = "shake 0.5s";
+    pokemonSprite.onanimationiteration = "infinite";
+}
+
+//Stop the pokemon shake animation
+var stopPokemonShake = function () {
+    pokemonSprite.style.animation = "none";
+    pokemonSprite.onanimationiteration = "none";
+}
+
+//Pokedex animation, moves the pokedex counter up
+var startPokeCounterAnimation = function () {
+    pokeCount.style.animation = "pokedexUp 1s";
+    pokeCount.onanimationiteration = "infinite";
+    setTimeout(function () {
+        pokeCount.style.animation = "none";
+        pokeCount.onanimationiteration = "none";
+    }, 1000);
+}
+
+//Capture animation, rotates the pokeball
+var startCaptureAnimation = function () {
+    pokemonSprite.style.border = "none";
+    pokemonSprite.src = "assets/images/pokeballs/Pokeball.svg";
+    pokemonSprite.style.animation = "rotate 1s";
+    pokemonSprite.onanimationiteration = "infinite";
+    setTimeout(function () {
+        pokemonSprite.style.animation = "none";
+        pokemonSprite.onanimationiteration = "none";
+    }, 1000);
+}
 
 // Saves the player by writing player to JSON and saving it in localStorage
 var savePlayer = function () {
