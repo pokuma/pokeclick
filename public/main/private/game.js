@@ -3,6 +3,8 @@ import {
     locationList,
 } from "./data.js";
 
+
+//Objects
 let route = {
     id: 0,
     name: "",
@@ -32,6 +34,7 @@ let player = {
     caughtPokemons: [],
 };
 
+//Variables
 const yellowZone = 0.65;
 const redZone = 0.3;
 
@@ -298,7 +301,7 @@ var spawnShinyPokemon = function () {
 var spawnPokemon = function () {
     pokemon.id = Math.floor(Math.random() * pokemonList.length) + 1;
     updatePokemonObjectFromId(pokemon.id);
-
+    updateHpBar();
     if (spawnShinyPokemon()) {
         pokemonSprite.src = "assets/images/pokemon/shiny/" + pokemon.id + ".png";
         pokeName.innerHTML = pokemon.name + "✨";
