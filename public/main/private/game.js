@@ -32,20 +32,13 @@ let player = {
     caughtPokemons: [],
 };
 
+const yellowZone = 0.65;
+const redZone = 0.3;
+
 let hpMultiplier = 2;
 let xpMultiplier = 1;
 
 let tutorials = true;
-
-// Pokemon health points bar
-const hpBar = document.getElementById("hpBar");
-const yellowZone = 0.65;
-const redZone = 0.3;
-let hpBarText = document.getElementById("hpBarText");
-
-// Experience bar
-const xpBar = document.getElementById("xpBar");
-let xpBarText = document.getElementById("xpBarText");
 
 // Player level Nav
 let levelNav = document.getElementById("level");
@@ -59,24 +52,28 @@ let damageNav = document.getElementById("damage");
 // Pokemon counter Nav
 let pokeCount = document.getElementById("pokeCount");
 
-// Pokemon image
-const pokemonSprite = document.getElementById("pokemon");
+// Pokeball image to know the pokemon is already captured in your pokedex
+let caught = document.getElementById("caught");
 
 // Pokemon name
 const pokeName = document.getElementById("pokemonName");
 
-// Pokeball image to know the pokemon is already captured in your pokedex
-let caught = document.getElementById("caught");
-caught.style.width = "30px";
-caught.style.height = "30px";
+// Pokemon image
+const pokemonSprite = document.getElementById("pokemon");
 
-//Tutorial Modals
-const tutorialModal = document.getElementById("welcomeModal");
-const logoTutorial = document.getElementById("logoTutorial");
+// Pokemon health points bar
+const hpBar = document.getElementById("hpBar");
+const hpBarText = document.getElementById("hpBarText");
+
+// Player experience bar
+const xpBar = document.getElementById("xpBar");
+const xpBarText = document.getElementById("xpBarText");
+
 
 // Waits for all the html to load before doing this code
 document.addEventListener("DOMContentLoaded", function (e) {
-    loadDefaultRoute();
+
+    // Add click event listeners to the buttons
     document.getElementById("replayTutorialButton").addEventListener("click", function () {
         showTutorial();
     });
@@ -86,46 +83,46 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById("pokemon").addEventListener("click", function () {
         attack();
     });
+    
+    // Load the player if it exists from the local storage
     if (localStorage.getItem("player") !== null) {
         loadPlayer();
         xpBar.ariaValueNow = player.xp;
         xpBar.ariaValueMax = player.nextLevelXP;
-        $("#xpBar").css("width", xpBar.ariaValueNow + "%");
+        xpBarText.innerHTML = "xp: " + player.xp + " / " + player.nextLevelXP;
     }
 
-    if (localStorage.getItem("pokeCounter") !== null && localStorage.getItem("caught") !== null) {
-        loadPokeCaught();
-    }
-
+    // Show the tutorial if the player is level 1 and tutorials are enabled
     if (player.level == 1 && tutorials == true) {
         setTimeout(function () {
             showTutorial();
         }, 1000);
     }
 
-    // Attack every second
-    setInterval(function () {
-        if (!pokemonSprite.getAttribute("src").includes("Pokeball")) {
-            attack();
-        }
-    }, 1000);
-
-
-    // Spawn the first pokemon
+    updateNavBar();
     spawnPokemon();
+    loadDefaultRoute();
 
+    //Attack every second
+    setInterval(function () {
+        attack();
+    }, 1000);
+});
+
+//Updates all elements in the nav bar
+var updateNavBar = function () {
     levelNav.innerHTML = "level: " + player.level;
     moneyNav.innerHTML = "money: " + player.money;
     damageNav.innerHTML = "click damage: " + player.attacks;
     pokeCount.innerHTML = "pokedex: " + player.pokeCounter + " / " + pokemonList.length;
-});
+}
 
-
-
+//Loads the default route
 var loadDefaultRoute = function () {
     route = locationList[0];
 }
 
+//Determines if the pokemon is already captured and changes the pokeball image accordingly
 var pokemonIsCapturedPokeball = function () {
     if (alreadyCaught(pokemon.name)) {
         caught.src = "assets/images/pokeballs/Pokeball.svg";
@@ -137,36 +134,50 @@ var pokemonIsCapturedPokeball = function () {
     }
 }
 
+//Every time the player tries attacks the pokemon, this function is called
 var attack = function () {
-    if (pokemonSprite.getAttribute("src").includes("Pokeball")) {
+
+    //Only attack if the sprite is a pokemon
+    if (!pokemonSprite.getAttribute("src").includes("pokemon")) {
         return
     }
 
+    //If the attack kills the pokemon
     if (pokemon.hp - player.attacks <= 0) {
         hpBarText.style.color = "white";
         pokemonDies();
     }
+
+    //If the attack doesn't kill the pokemon
     if (pokemon.hp - player.attacks > 0) {
         startPokemonShake();
         pokemon.hp -= player.attacks;
-        //function that changes progress bar color based on the pokemon hp
-        if (pokemon.hp < pokemon.baseHP * yellowZone) {
-            hpBarText.style.color = "black";
-            hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-warning";
-        }
 
-        if (pokemon.hp < pokemon.baseHP * redZone) {
-            hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-danger";
-        }
+        
 
-        hpBarText.innerHTML = "hp: " + pokemon.hp + " / " + pokemon.baseHP;
-        hpBar.style.width = "" + pokemon.hp / pokemon.baseHP * 100 + "%";
-        hpBar.ariaValueNow = pokemon.hp / pokemon.baseHP * 100;
+        updateHpBar();
     }
 
     setHealthPointsPadding();
 }
 
+//Updates the hp bar
+var updateHpBar = function () {
+    hpBarText.innerHTML = "hp: " + pokemon.hp + " / " + pokemon.baseHP;
+    hpBar.style.width = "" + pokemon.hp / pokemon.baseHP * 100 + "%";
+    hpBar.ariaValueNow = pokemon.hp / pokemon.baseHP * 100;
+
+    //Change the color of the hp bar depending on the pokemon's health
+    if (pokemon.hp < pokemon.baseHP * yellowZone) {
+        hpBarText.style.color = "black";
+        hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-warning";
+    }
+    if (pokemon.hp < pokemon.baseHP * redZone) {
+        hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-danger";
+    }
+}
+
+//Check if the pokemon is already captured by the player
 var alreadyCaught = function (name) {
     for (let i = 0; i < player.caughtPokemons.length; i++) {
         if (player.caughtPokemons[i] === name) {
@@ -190,10 +201,12 @@ var pokemonDies = function () {
     hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-sucess";
     if (!alreadyCaught(pokemon.name)) {
         startCaptureAnimation();
+
+        //If the pokemon is not already captured, the player has a pokemonCatchRate/256 chance of capturing it
         if (pokemon.catchRate > Math.floor(Math.random() * 256)) {
             setTimeout(function () {
                 updatePokemonCounter();
-                save();
+                savePlayer();
             }, 1000);
         }
         setTimeout(function () {
@@ -206,10 +219,11 @@ var pokemonDies = function () {
     else {
         spawnPokemon();
         pokemonIsCapturedPokeball();
-        save();
+        savePlayer();
     }
 }
 
+//When a new pokemon is caught, this function is called to update the pokedex counter and the player's caughtPokemons array
 var updatePokemonCounter = function () {
     player.caughtPokemons.push(pokemon.name);
     player.pokeCounter++;
@@ -222,6 +236,8 @@ var updatePokemonCounter = function () {
     }, 1000);
 }
 
+
+//Capture animation, rotates the pokeball
 var startCaptureAnimation = function () {
     pokemonSprite.style.border = "none";
     pokemonSprite.src = "assets/images/pokeballs/Pokeball.svg";
@@ -233,11 +249,13 @@ var startCaptureAnimation = function () {
     }, 1000);
 }
 
+//Get the drops of the pokemon (money and xp)
 var getPokemonDrops = function () {
     gainXP();
     gainMoney();
 }
 
+//Increase the player money
 var gainMoney = function () {
     player.money += 1;
     moneyNav.innerHTML = "money: " + player.money;
@@ -245,21 +263,24 @@ var gainMoney = function () {
     moneyNav.onanimationiteration = "infinite";
 }
 
+//Pokemon shake animation
 var startPokemonShake = function () {
     pokemonSprite.style.animation = "shake 0.5s";
     pokemonSprite.onanimationiteration = "infinite";
 }
 
+//Stop the pokemon shake animation
 var stopPokemonShake = function () {
     pokemonSprite.style.animation = "none";
     pokemonSprite.onanimationiteration = "none";
 }
 
+//Every time a pokemon spawns, this function is called, and the pokemon has a chance of being shiny
 var spawnShinyPokemon = function () {
     let shinyChance = 0.02; // 2% chance of shiny
     let randShiny = parseFloat(Math.random()).toFixed(4)
 
-    // Shiny spawned!
+    // Shiny spawned
     if (randShiny <= shinyChance) {
         return true;
     }
@@ -267,6 +288,7 @@ var spawnShinyPokemon = function () {
     return false;
 }
 
+//Spawns a random pokemon
 var spawnPokemon = function () {
     pokemon.id = Math.floor(Math.random() * pokemonList.length) + 1;
     updatePokemonObjectFromId(pokemon.id);
@@ -299,8 +321,7 @@ var spawnPokemon = function () {
     setExperiencePadding();
 }
 
-
-
+//Loads the new pokemon in the pokemon object given its id
 var updatePokemonObjectFromId = function (id) {
     pokemon.name = pokemonList[id - 1].name;
     pokemon.baseHP = Math.floor(pokemonList[id - 1].baseHP * hpMultiplier);
@@ -309,6 +330,7 @@ var updatePokemonObjectFromId = function (id) {
     pokemon.catchRate = pokemonList[id - 1].catchRate;
 }
 
+//Centers the xp bar text depending on the number of digits
 var setExperiencePadding = function () {
     if (xpBar.ariaValueNow == 100) {
         xpBarText.style.paddingLeft = "100px";
@@ -319,6 +341,7 @@ var setExperiencePadding = function () {
     }
 }
 
+//Centers the hp bar text depending on the number of digits
 var setHealthPointsPadding = function () {
     if (hpBar.ariaValueNow == 100) {
         hpBarText.style.paddingLeft = "100px";
@@ -331,6 +354,9 @@ var setHealthPointsPadding = function () {
     }
 }
 
+/*  When the pokemon is defeated, the player gains xp according to the pokemon base xp and some other factors
+*   If the player has enough xp to level up, the player levels up and the xp bar resets, but keeps the extra xp
+*/  
 var gainXP = function () {
     if (player.xp + pokemon.baseXP < player.nextLevelXP) {
         player.xp += pokemon.baseXP;
@@ -372,27 +398,35 @@ var gainXP = function () {
     setExperiencePadding();
 }
 
+//Sets the hp bar to 100% and the hp text to the max hp
 var restoreHP = function () {
     hpBarText.innerHTML = "hp: " + hpBar.ariaValueMax + " / " + hpBar.ariaValueMax;
     hpBar.ariaValueNow = 100;
     hpBar.style.width = "100%";
 }
 
-// Saves the game by writing play to JSON and save it in localStorage
-var save = function () {
+// Saves the player by writing player to JSON and saving it in localStorage
+var savePlayer = function () {
     localStorage.setItem("player", JSON.stringify(player));
 };
 
-// Loads the game from localStorage and update favIcon to starter
+// Loads the player from localStorage
 var loadPlayer = function () {
     player = JSON.parse(localStorage.getItem("player"));
 };
 
-var loadPokeCaught = function () {
-    caughtPokemons = JSON.parse(localStorage.getItem("caught"));
-    player.pokeCounter = JSON.parse(localStorage.getItem("pokeCounter"));
+// Shows a prompt to reset the player profile if the player enters "RESET"
+var resetProfile = function () {
+    let confirm = prompt('If you wish to reset your profile, please enter "RESET":', "");
+
+    if (confirm === null || confirm === "") {
+        alert("Profile was NOT reset!");
+    } else if (confirm === "RESET") {
+        resetConfirmed();
+    }
 };
 
+// Resets the player profile and reloads the page
 var resetConfirmed = function () {
     alert("You have reset your profile!");
 
@@ -406,19 +440,9 @@ var resetConfirmed = function () {
         caughtPokemons: [],
     };
 
-    save();
+    savePlayer();
     window.location.reload(true);
 }
-
-var resetProfile = function () {
-    let confirm = prompt('If you wish to reset your profile, please enter "RESET":', "");
-
-    if (confirm === null || confirm === "") {
-        alert("Profile was NOT reset!");
-    } else if (confirm === "RESET") {
-        resetConfirmed();
-    }
-};
 
 //Start tutorial
 var showTutorial = function () {

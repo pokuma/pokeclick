@@ -1,3 +1,8 @@
+#caught{
+    width: 30px;
+    height: 30px;
+}
+
 #pokemon {
     border: 1px solid white;
     border-radius: 20px;
