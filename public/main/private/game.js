@@ -38,7 +38,7 @@ const redZone = 0.3;
 let hpMultiplier = 2;
 let xpMultiplier = 1;
 
-let tutorials = true;
+let tutorials = false;
 
 // Player level Nav
 let levelNav = document.getElementById("level");
@@ -99,6 +99,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }, 1000);
     }
 
+    //Load the game elements
     updateNavBar();
     spawnPokemon();
     loadDefaultRoute();
@@ -144,21 +145,16 @@ var attack = function () {
 
     //If the attack kills the pokemon
     if (pokemon.hp - player.attacks <= 0) {
-        hpBarText.style.color = "white";
+        pokemon.hp = 0;
         pokemonDies();
     }
 
     //If the attack doesn't kill the pokemon
     if (pokemon.hp - player.attacks > 0) {
-        startPokemonShake();
         pokemon.hp -= player.attacks;
-
-        
-
-        updateHpBar();
+        startPokemonShake();        
     }
-
-    setHealthPointsPadding();
+    updateHpBar();
 }
 
 //Updates the hp bar
@@ -168,6 +164,10 @@ var updateHpBar = function () {
     hpBar.ariaValueNow = pokemon.hp / pokemon.baseHP * 100;
 
     //Change the color of the hp bar depending on the pokemon's health
+    if (pokemon.hp > pokemon.baseHP * yellowZone) {
+        hpBarText.style.color = "white";
+        hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-green";
+    }
     if (pokemon.hp < pokemon.baseHP * yellowZone) {
         hpBarText.style.color = "black";
         hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-warning";
@@ -175,10 +175,12 @@ var updateHpBar = function () {
     if (pokemon.hp < pokemon.baseHP * redZone) {
         hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-danger";
     }
+    setHealthPointsPadding();
 }
 
 //Check if the pokemon is already captured by the player
 var alreadyCaught = function (name) {
+    //Iterate through the player's caught pokemons array and check if the pokemon is already captured by comparing the names
     for (let i = 0; i < player.caughtPokemons.length; i++) {
         if (player.caughtPokemons[i] === name) {
             return true;
@@ -197,29 +199,22 @@ var alreadyCaught = function (name) {
 var pokemonDies = function () {
     getPokemonDrops();
     stopPokemonShake();
-    restoreHP();
-    hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-sucess";
+    
     if (!alreadyCaught(pokemon.name)) {
         startCaptureAnimation();
 
         //If the pokemon is not already captured, the player has a pokemonCatchRate/256 chance of capturing it
-        if (pokemon.catchRate > Math.floor(Math.random() * 256)) {
-            setTimeout(function () {
+        setTimeout(function () {
+            if(pokemon.catchRate > Math.floor(Math.random() * 256)){
                 updatePokemonCounter();
                 savePlayer();
-            }, 1000);
-        }
-        setTimeout(function () {
+            }
             spawnPokemon();
-            pokemonIsCapturedPokeball();
-            moneyNav.style.animation = "none";
-            moneyNav.onanimationiteration = "none";
         }, 1000);
     }
     else {
-        spawnPokemon();
-        pokemonIsCapturedPokeball();
         savePlayer();
+        spawnPokemon();
     }
 }
 
@@ -227,7 +222,11 @@ var pokemonDies = function () {
 var updatePokemonCounter = function () {
     player.caughtPokemons.push(pokemon.name);
     player.pokeCounter++;
-    pokeCount.innerHTML = "pokedex: " + player.pokeCounter + " / " + pokemonList.length;
+    updateNavBar();
+    startPokeCounterAnimation();
+}
+
+var startPokeCounterAnimation = function () {
     pokeCount.style.animation = "pokedexUp 1s";
     pokeCount.onanimationiteration = "infinite";
     setTimeout(function () {
@@ -235,7 +234,6 @@ var updatePokemonCounter = function () {
         pokeCount.onanimationiteration = "none";
     }, 1000);
 }
-
 
 //Capture animation, rotates the pokeball
 var startCaptureAnimation = function () {
@@ -258,9 +256,17 @@ var getPokemonDrops = function () {
 //Increase the player money
 var gainMoney = function () {
     player.money += 1;
-    moneyNav.innerHTML = "money: " + player.money;
+    updateNavBar();
+    startMoneyAnimation();
+}
+
+var startMoneyAnimation = function () {
     moneyNav.style.animation = "moneyUp 1s";
     moneyNav.onanimationiteration = "infinite";
+    setTimeout(function () {
+        moneyNav.style.animation = "none";
+        moneyNav.onanimationiteration = "none";
+    }, 1000);
 }
 
 //Pokemon shake animation
@@ -364,7 +370,6 @@ var gainXP = function () {
 
     if (player.xp + pokemon.baseXP >= player.nextLevelXP) {
         player.xp += pokemon.baseXP;
-
         let obtainedLevels = Math.floor(player.xp / player.nextLevelXP);
         player.level += obtainedLevels;
         levelNav.innerHTML = "level: " + player.level;
@@ -400,9 +405,8 @@ var gainXP = function () {
 
 //Sets the hp bar to 100% and the hp text to the max hp
 var restoreHP = function () {
-    hpBarText.innerHTML = "hp: " + hpBar.ariaValueMax + " / " + hpBar.ariaValueMax;
-    hpBar.ariaValueNow = 100;
-    hpBar.style.width = "100%";
+    pokemon.hp = pokemon.baseHP;
+    updateHpBar();
 }
 
 // Saves the player by writing player to JSON and saving it in localStorage
