@@ -3,6 +3,13 @@ import {
     locationList,
 } from "./data.js";
 
+// Game settings for debugging purposes
+let startingRequiredXP = 10;
+
+let hpMultiplier = 3;
+let xpMultiplier = 1;
+
+let tutorials = false;
 
 //Objects
 let route = {
@@ -34,14 +41,9 @@ let player = {
     caughtPokemons: [],
 };
 
-//Variables
+//Health threshold for the hp bar colors
 const yellowZone = 0.65;
 const redZone = 0.3;
-
-let hpMultiplier = 2;
-let xpMultiplier = 1;
-
-let tutorials = false;
 
 // Player level Nav
 let levelNav = document.getElementById("level");
@@ -440,7 +442,7 @@ var resetConfirmed = function () {
     alert("You have reset your profile!");
 
     player = {
-        nextLevelXP: 100,
+        nextLevelXP: startingRequiredXP,
         xp: 0,
         level: 1,
         money: 0,
