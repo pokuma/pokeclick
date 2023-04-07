@@ -8,6 +8,8 @@ let startingRequiredXP = 10;
 
 let hpMultiplier = 3;
 let xpMultiplier = 1;
+let requiredXpIncrease = 10; // 10 increase in required xp per level, expected to be a formula in the future
+let attackDamageIncrease = 2; // 2 increase in attack damage per level, expected to be a formula in the future
 
 let tutorials = true;
 
@@ -324,30 +326,15 @@ var gainXP = function () {
 
     if (player.xp + pokemon.baseXP >= player.nextLevelXP) {
         player.xp += pokemon.baseXP;
-        let obtainedLevels = Math.floor(player.xp / player.nextLevelXP);
-        player.level += obtainedLevels;
-        levelNav.innerHTML = "level: " + player.level;
-        levelNav.style.animation = "levelUp 1s";
-        levelNav.onanimationiteration = "infinite";
-        setTimeout(function () {
-            levelNav.style.animation = "none";
-            levelNav.onanimationiteration = "none";
-        }, 1000);
-
-        let xpLeft = player.xp % player.nextLevelXP;
-        player.xp = xpLeft;
-        player.nextLevelXP += 10 * obtainedLevels;
-
-        if (player.level % 2 == 0) {
-            player.attacks += 3;
-            damageNav.innerHTML = "click damage: " + player.attacks;
-            damageNav.style.animation = "damageUp 1s";
-            damageNav.onanimationiteration = "infinite";
+        while (player.xp >= player.nextLevelXP) {
+            player.level++;
+            player.xp -= player.nextLevelXP;
+            player.nextLevelXP += requiredXpIncrease;
+            player.attacks += attackDamageIncrease;
+            startLevelUpAnimation();
         }
-        else {
-            damageNav.style.animation = "none";
-            damageNav.onanimationiteration = "none";
-        }
+        player.xp = player.xp % player.nextLevelXP;
+        updateNavBar();
     }
     updateXpBar();
 }
@@ -370,6 +357,16 @@ var setExperiencePadding = function () {
     } else {
         xpBarText.style.paddingLeft = "108px";
     }
+}
+
+//Level up animation
+var startLevelUpAnimation = function () {
+    levelNav.style.animation = "levelUp 1s";
+    levelNav.onanimationiteration = "infinite";
+    setTimeout(function () {
+        levelNav.style.animation = "none";
+        levelNav.onanimationiteration = "none";
+    }, 1000);
 }
 
 //Money animation, moves the money counter up
