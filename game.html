@@ -26,80 +26,83 @@
 <body id="body" class="clicked" onload="loadDarkMode()">
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-        <div class="container-fluid">
-            <div class="row px-3 order-1">
+    <nav class="navbar navbar-expand-xl bg-dark navbar-dark">
+        <div class="container-fluid px-0">
+            <div class="row px-0 order-1">
                 <div data-toggle="popover" id="logoTutorial">
                     <a class="nav-link text-center" draggable="false" href="index.html"><img id="navBarLogo"
                         src="assets/images/logo/logo.png" draggable="false" style="width: 100px;" alt="logo"></a>
                 </div>      
             </div>
             
-            <div class="navbar-collapse justify-content-center align-items-center my-3 order-3 order-lg-2" id="collapsibleNavbar">
+            <div class="navbar-collapse justify-content-center align-items-center my-3 order-3 order-xl-2" id="collapsibleNavbar">
                 <ul class="navbar-nav text-light text-center">
                     <div data-toggle="popover" id="levelTutorial">
-                        <li class="nav-item px-4 py-1 py-lg-0" id="level"></li>
+                        <li class="nav-item px-4 py-1" id="level"></li>
                     </div>
                     <div data-toggle="popover" id="moneyTutorial">
-                        <li class="nav-item px-4 py-1 py-lg-0" id="money"></li>
+                        <li class="nav-item px-4 py-1" id="money"></li>
                     </div>
                     <div data-toggle="popover" id="clickDamageTutorial">
-                        <li class="nav-item px-4 py-1 py-lg-0" id="damage"></li>
+                        <li class="nav-item px-4 py-1" id="damage"></li>
                     </div>
                     <div data-toggle="popover" id="pokedexTutorial">
-                        <li class="nav-item px-4 py-1 py-lg-0" id="pokeCount"></li>
+                        <li class="nav-item px-4 py-1" id="pokeCount"></li>
                     </div>
                     
                 </ul>
             </div>
 
-            <div class="row align-items-center pb-2 order-2 order-lg-3">
-                <div class="col pl-3 pl-lg-0 px-0">
-                    <div data-toggle="popover" id="sliderTutorial">
-                        <div class="nightmode-toggle hide-for-small-down align-content-center w-100">
-                            <i class="fa fa-sun-o text-light pl-4 pl-sm-0"> </i>
-                        <label class="switch">
-                            <input type="checkbox" id="dark-mode-toggle" onclick="changeDarkMode()">
-                            <span class="slider round clickable"> </span>
-                        </label>
-                        <i class="fa fa-moon-o text-light"> </i>
+            <div class="d-flex order-2 order-xl-3 justify-content-end">
+                <div class="row align-items-center">
+                    <div class="col px-0">
+                        <div data-toggle="popover" id="sliderTutorial">
+                            <div class="nightmode-toggle hide-for-small-down align-content-center d-flex">
+                                <i class="fa fa-sun-o text-light"> </i>
+                            <label class="switch">
+                                <input type="checkbox" id="dark-mode-toggle" onclick="changeDarkMode()">
+                                <span class="slider round clickable"> </span>
+                            </label>
+                            <i class="fa fa-moon-o text-light"> </i>
+                            </div>
+                            
                         </div>
-                        
                     </div>
-                </div>
-                <div class="col pr-3 pl-0">
-                    <div id="startMenu" class="dropdown clearfix clickable">
-                        <div data-toggle="popover" id="menuTutorial">
-                            <button class="btn btn-secondary btn-start-menu dropdown-toggle clickable"
-                            type="dropdownMenubutton" data-bs-toggle="dropdown" aria-expanded="false">
-                            start menu
-
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end clickable bg-dark border border-light">
-                            <li>
-                                <a draggable="false" class="dropdown-item dropdown-item-start-menu clickable text-light"
-                                    href="options.html">settings</a>
-                            </li>
-                            <hr class="separator" class="text-light">
-                            <li>
-                                <a draggable="false" class="dropdown-item dropdown-item-start-menu clickable text-light"
-                                    id="helpMenu" href="#" data-toggle="modal" data-target="#helpModal">help</a>
-                                <a>
-                            </li>
-                            <hr class="separator" class="text-light">
-                            <li>
-                                <a id="resetProfileButton" draggable="false" class="dropdown-item dropdown-item-start-menu clickable text-light" href="#">reset profile</a>
-                            </li>
-                            <hr class="separator" class="text-light">
-                            <li>
-                                <a id="replayTutorialButton" draggable="false" class="dropdown-item dropdown-item-start-menu clickable text-light" href="#">replay tutorial</a>
-                            </li>
-                        </ul>
+                    <div class="col">
+                        <div id="startMenu" class="dropdown clearfix clickable">
+                            <div data-toggle="popover" id="menuTutorial">
+                                <button class="btn btn-secondary btn-start-menu dropdown-toggle clickable"
+                                type="dropdownMenubutton" data-bs-toggle="dropdown" aria-expanded="false">
+                                start menu
+    
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end clickable bg-dark border border-light">
+                                <li>
+                                    <a draggable="false" class="dropdown-item dropdown-item-start-menu clickable text-light"
+                                        href="options.html">settings</a>
+                                </li>
+                                <hr class="separator" class="text-light">
+                                <li>
+                                    <a draggable="false" class="dropdown-item dropdown-item-start-menu clickable text-light"
+                                        id="helpMenu" href="#" data-toggle="modal" data-target="#helpModal">help</a>
+                                    <a>
+                                </li>
+                                <hr class="separator" class="text-light">
+                                <li>
+                                    <a id="resetProfileButton" draggable="false" class="dropdown-item dropdown-item-start-menu clickable text-light" href="#">reset profile</a>
+                                </li>
+                                <hr class="separator" class="text-light">
+                                <li>
+                                    <a id="replayTutorialButton" draggable="false" class="dropdown-item dropdown-item-start-menu clickable text-light" href="#">replay tutorial</a>
+                                </li>
+                            </ul>
+                            </div>
+                            
                         </div>
-                        
                     </div>
                 </div>
             </div>
+            
         </div>
     </nav>
 
@@ -176,6 +179,7 @@
                 </div>
             </div>
         </div>
+        <!-- Map 
         <div class="col-xl-auto">
             <div class="justify-content-center align-items-center pb-5" id="saveSelector">
                 <div class="justify-content-center row justify-content-xl-start pl-xl-5">
@@ -184,6 +188,7 @@
             </div>
             
         </div>
+        -->
     </div>
     
     <!-- TUTORIAL -->
