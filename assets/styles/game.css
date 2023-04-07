@@ -17,14 +17,14 @@
 
 #pokemonCard {
     width: 400px;
-    height: 550px;
+    height: auto;
     border-radius: 20px;
     background-color: rgb(51, 51, 51, 0.9);
 }
 
 #mapImage{
     width: 656px;
-    height: 550px;
+    height: auto;
 }
 
 #hpBarText,
@@ -66,6 +66,10 @@
     color: white;
 }
 
+.row{
+    margin: 0;
+    padding: 0;
+}
 /* Shake style animation, for now its used on the pokemons only when the player attacks them. */
 
 @keyframes shake {
