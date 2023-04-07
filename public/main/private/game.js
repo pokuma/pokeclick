@@ -306,12 +306,9 @@ var gainMoney = function () {
 *   xp bar is updated
 */  
 var gainXP = function () {
-    if (player.xp + pokemon.baseXP < player.nextLevelXP) {
-        player.xp += pokemon.baseXP;
-    }
-
-    if (player.xp + pokemon.baseXP >= player.nextLevelXP) {
-        player.xp += pokemon.baseXP;
+    player.xp += pokemon.baseXP;
+    if (player.xp >= player.nextLevelXP) {
+        
         while (player.xp >= player.nextLevelXP) {
             player.level++;
             player.xp -= player.nextLevelXP;
