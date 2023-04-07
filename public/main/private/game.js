@@ -292,20 +292,6 @@ var updateHpBar = function () {
     if (pokemon.hp < pokemon.baseHP * redZone) {
         hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-danger";
     }
-    setHealthPointsPadding();
-}
-
-//Centers the hp bar text depending on the number of digits
-var setHealthPointsPadding = function () {
-    if (hpBar.ariaValueNow == 100) {
-        hpBarText.style.paddingLeft = "100px";
-    } else {
-        if (hpBar.ariaValueNow - player.attacks > 9) {
-            hpBarText.style.paddingLeft = "104px";
-        } else if (hpBar.ariaValueNow <= 9) {
-            hpBarText.style.paddingLeft = "108px";
-        }
-    }
 }
 
 //Increase the player money
@@ -345,19 +331,7 @@ var updateXpBar = function () {
     xpBar.ariaValueNow = Math.floor((player.xp / xpBar.ariaValueMax) * 100);
     xpBarText.innerHTML = "xp " + player.xp + " / " + player.nextLevelXP;
     xpBar.style.width = "" + xpBar.ariaValueNow + "%";
-    setExperiencePadding();
 };
-
-//Centers the xp bar text depending on the number of digits
-var setExperiencePadding = function () {
-    if (xpBar.ariaValueNow == 100) {
-        xpBarText.style.paddingLeft = "100px";
-    } else if (xpBar.ariaValueNow > 9 && xpBar.ariaValueNow < 100) {
-        xpBarText.style.paddingLeft = "104px";
-    } else {
-        xpBarText.style.paddingLeft = "108px";
-    }
-}
 
 //Level up animation
 var startLevelUpAnimation = function () {
