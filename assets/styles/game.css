@@ -27,11 +27,18 @@
     height: auto;
 }
 
-#hpBarText,
+#hpBarText {
+    position: relative;
+    justify-content: center;
+    bottom: 121px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
 #xpBarText {
-    position: absolute;
-    padding-left: 100px;
-    padding-top: 8px;
+    position: relative;
+    justify-content: center;
+    bottom: 91px;
     font-size: 18px;
     font-weight: bold;
 }
