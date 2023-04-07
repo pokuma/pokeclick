@@ -27,6 +27,10 @@
     height: auto;
 }
 
+#bars{
+    height: 0px;
+}
+
 #hpBarText {
     position: relative;
     justify-content: center;
