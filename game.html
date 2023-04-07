@@ -132,41 +132,53 @@
     </div>
 
     <!-- Pokemon Card -->
-    <div class="d-flex justify-content-center align-items-center pb-5" id="saveSelector">
-        <div class="justify-content-center row pb-5">
-            <div class="border border-light bg-dark p-5 pt-0 pb-0" id="pokemonCard">
-                <div class="popoverclass" data-toggle="popover" id="attackTutorial">
-                    <div class="justify-content-center container row g-0 p-5 ">
-
-                        <div class="justify-content-center container row g-0 text-light mb-3">
-                            <img id="caught" alt="pokeball"><span id="pokemonName"
-                                class="justify-content-center container row g-0 text-light"></span>
-    
+    <div class="row w-100 justify-content-center">
+        <div class="col-xl-auto">
+            <div class="justify-content-center align-items-center pb-5" id="saveSelector">
+                <div class="justify-content-center row justify-content-xl-end pr-xl-5">
+                    <div class="border border-light bg-dark p-5 pt-0 pb-0" id="pokemonCard">
+                        <div class="popoverclass" data-toggle="popover" id="attackTutorial">
+                            <div class="justify-content-center container row g-0 p-5 ">
+        
+                                <div class="justify-content-center container row g-0 text-light mb-3">
+                                    <img id="caught" alt="pokeball"><span id="pokemonName"
+                                        class="justify-content-center container row g-0 text-light"></span>
+            
+                                </div>
+                                <img draggable="false" id="pokemon" src="">
+                            </div>
+                            <div class="border border-dark mb-3 g-0">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar progress-bar-animated" role="progressbar" id="hpBar"
+                                        aria-valuemin="0" style="width: 100%;" aria-valuenow="100" aria-valuemax="100">
+                                    </div>
+                                    <div style="position: absolute;" id="hpBarText">
+                                    </div>
+                                </div>
+                                <div class="progress mt-3">
+                                    <div class="progress-bar progress-bar progress-bar-animated" role="progressbar" id="xpBar"
+                                        aria-valuemin="0" style="width: 0%;" aria-valuenow="0" aria-valuemax="100">
+                                    </div>
+                                    <div style="position: absolute;" id="xpBarText">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <img draggable="false" id="pokemon" src="">
-                    </div>
-                    <div class="border border-dark mb-3 g-0">
-                        <div class="progress">
-                            <div class="progress-bar progress-bar progress-bar-animated" role="progressbar" id="hpBar"
-                                aria-valuemin="0" style="width: 100%;" aria-valuenow="100" aria-valuemax="100">
-                            </div>
-                            <div style="position: absolute;" id="hpBarText">
-                            </div>
-                        </div>
-                        <div class="progress mt-3">
-                            <div class="progress-bar progress-bar progress-bar-animated" role="progressbar" id="xpBar"
-                                aria-valuemin="0" style="width: 0%;" aria-valuenow="0" aria-valuemax="100">
-                            </div>
-                            <div style="position: absolute;" id="xpBarText">
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
-                
             </div>
         </div>
+        <div class="col-xl-auto">
+            <div class="justify-content-center align-items-center pb-5" id="saveSelector">
+                <div class="justify-content-center row justify-content-xl-start pl-xl-5">
+                        <img draggable="false" id="mapImage" src="assets/images/map/map.png">
+                </div>
+            </div>
+            
+        </div>
     </div>
-
+    
     <!-- TUTORIAL -->
     <div class="modal" id="welcomeModal" role="dialog">
         <div class="modal-dialog" role="document">
