@@ -10,10 +10,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 125px;
+    width: 100%;
     padding: 10px;
     border-radius: 4px;
-    margin: auto;
+    box-sizing: border-box;
+    background-color: #007bff;
+    color: white;
+}
+
+.cancelRegister {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #dc3545;
+    color: white;
 }
 
 .controlsRegister {
