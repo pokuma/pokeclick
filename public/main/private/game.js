@@ -433,7 +433,7 @@ var showTutorial = function () {
         placement: 'top',
         title: 'Attack',
         html: true,
-        content: 'this is the attack button, it will attack the pokemon for damage equal to your click damage.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="attackTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
+        content: 'clicking the sprite of the pokemon on the screen will deal damage to the pokemon for damage equal to your click damage. try it!<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="attackTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
         trigger: 'manual',
     });
     $('#logoTutorial').popover({
@@ -482,7 +482,7 @@ var showTutorial = function () {
         placement: 'bottom',
         title: 'Menu',
         html: true,
-        content: 'this is the menu, a list of utilities.<br><div class="row"><div class="col-4"></div><div class="col-8"><a id="menuTutorialButton" class="btn btn-secondary text-light">end tutorial</a></div></div>',
+        content: 'this is the menu. here you will find on option to replay this tutorial if needed, among other useful stuff.<br><div class="row"><div class="col-4"></div><div class="col-8"><a id="menuTutorialButton" class="btn btn-secondary text-light">end tutorial</a></div></div>',
         trigger: 'manual',
     });
 
