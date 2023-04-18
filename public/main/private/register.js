@@ -1,3 +1,6 @@
+
+showCorrectRegisterModal();
+
 function validateForm() {
     const nameInput = document.getElementById("nicknames");
     const emailInput = document.getElementById("emails");
@@ -15,5 +18,21 @@ function validateForm() {
         return false;
     }
     alert("Cuenta \"" + emailInput.value + "\" creada con exito!");
-    return true;
+    
+    
+    
+    return showCorrectRegisterModal();
+    
 }
+
+var showCorrectRegisterModal = function () {
+    $('#correctRegisterModal').modal({
+        backdrop: 'static',
+        keyboard: false,
+    });
+    $('#correctRegisterModal').modal('show');
+};
+
+$(document).on('click', '#correctRegisterModalButton', function () {
+    $('#correctRegisterModal').modal('hide');
+});
