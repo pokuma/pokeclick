@@ -12,6 +12,7 @@ let requiredXpIncrease = 10; // 10 increase in required xp per level, expected t
 let attackDamageIncrease = 2; // 2 increase in attack damage per level, expected to be a formula in the future
 
 let tutorials = true;
+let allowAttack = true;
 
 //Objects
 let route = {
@@ -115,7 +116,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
     loadDefaultRoute();
 
     setInterval(function () {
-        attack();
+        if(allowAttack==true){
+            attack();
+        }
     }, 1000);
 });
 
@@ -425,6 +428,7 @@ var resetConfirmed = function () {
 
 //Start tutorial
 var showTutorial = function () {
+    allowAttack = false;
     $('#welcomeModal').modal({
         backdrop: 'static',
         keyboard: false,
@@ -524,4 +528,5 @@ $(document).on('click', '#sliderTutorialButton', function () {
 });
 $(document).on('click', '#menuTutorialButton', function () {
     $('#menuTutorial').popover('hide');
+    allowAttack = true;
 });
