@@ -11,7 +11,7 @@ let xpMultiplier = 1;
 let requiredXpIncrease = 10; // 10 increase in required xp per level, expected to be a formula in the future
 let attackDamageIncrease = 2; // 2 increase in attack damage per level, expected to be a formula in the future
 
-let tutorials = true;
+let tutorials = false;
 let allowAttack = true;
 
 //Objects
@@ -43,6 +43,8 @@ let player = {
     pokeCounter: 0,
     caughtPokemons: [],
 };
+
+
 
 //Health threshold for the hp bar colors
 const yellowZone = 0.65;
@@ -77,6 +79,9 @@ const hpBarText = document.getElementById("hpBarText");
 const xpBar = document.getElementById("xpBar");
 const xpBarText = document.getElementById("xpBarText");
 
+// Captured pokemon list
+var caughtPokemons = document.getElementById("caughtPokemons");
+
 
 /* Waits for all the html to load before doing this code
 * Add click event listeners to the buttons
@@ -86,7 +91,7 @@ const xpBarText = document.getElementById("xpBarText");
 * Attack every second
 */
 document.addEventListener("DOMContentLoaded", function (e) {
-
+    
     
     document.getElementById("replayTutorialButton").addEventListener("click", function () {
         showTutorial();
@@ -110,7 +115,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
             showTutorial();
         }, 1000);
     }
-
+    orderCaughtListById();
+    listCaughtPokemons();
     updateNavBar();
     spawnPokemon();
     loadDefaultRoute();
@@ -169,6 +175,44 @@ var spawnShinyPokemon = function () {
 
     return false;
 }
+
+
+var listCaughtPokemons = function()
+{
+    orderCaughtListById();
+
+
+    var text = "";
+    
+    for (let i = 0; i < player.caughtPokemons.length; i++) {
+        var pokemon = player.caughtPokemons[i];
+        var image = '<img src="assets/images/pokemon/' + findPokemonId(pokemon) + '.png" draggable="false" style="height: 30px;" alt="Caught pokemon icons">';
+        text += image + " " + player.caughtPokemons[i]  + "<br>";
+    }
+
+    caughtPokemons.innerHTML = '<span class="h2 ml-4">pokédex</span><br><br>' + text;
+};
+
+var orderCaughtListById = function () {
+    player.caughtPokemons.sort(function(pokemonName1, pokemonName2) {
+        var pokemon1 = pokemonList.find(function(pokemon) {
+          return pokemon.name === pokemonName1;
+        });
+        var pokemon2 = pokemonList.find(function(pokemon) {
+          return pokemon.name === pokemonName2;
+        });
+        return pokemon1.id - pokemon2.id;
+      });
+};
+
+
+var findPokemonId = function (pokemonName) {
+    for (let i = 0; i < pokemonList.length; i++) {
+        if (pokemonName.toLowerCase() === pokemonList[i].name.toLowerCase()) {
+            return pokemonList[i].id;
+        }
+    }
+};
 
 //Loads the new pokemon in the pokemon object given its id
 var updatePokemonObjectFromId = function (id) {
@@ -242,6 +286,7 @@ var pokemonDies = function () {
         setTimeout(function () {
             if(pokemon.catchRate > Math.floor(Math.random() * 256)){
                 updatePokemonCounter();
+                listCaughtPokemons();
                 savePlayer();
             }
             spawnPokemon();

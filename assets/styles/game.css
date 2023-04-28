@@ -1,6 +1,8 @@
-h1{ 
+h1 { 
     font-size:20px;
 }
+
+
 
 #caught{
     width: 30px;
@@ -14,14 +16,27 @@ h1{
     animation: cursor 1s infinite;
 }
 
+
+#caughtPokemons {
+    float: left;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-top: 60px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+
 #pokemonName {
+
     font-family: 'PEPgenius10', sans-serif;
     font-size: x-large;
 }
 
 #pokemonCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 400px;
-    height: auto;
     border-radius: 20px;
     background-color: rgb(51, 51, 51, 0.9);
 }
@@ -186,4 +201,20 @@ h1{
     100% {
         transform: translate(0px, 0px);
     }
+}
+
+
+@media only screen and (max-width: 575px) {
+    .container {
+        flex-direction: column;
+    }
+
+    #caughtPokemons {
+        order: 3;
+      }
+      
+    #pokemonCard {
+        order: 2;
+      }
+
 }
