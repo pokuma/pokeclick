@@ -31,9 +31,22 @@
  button,
  label,
  input,
+ a,
  #navBarLogo {
      animation: cursor 700ms linear infinite;
  }
+
+ a{
+    font-size: small;
+ }
+
+ a:link {
+    color: blue;
+  }
+
+  a:hover{
+    color: blueviolet;
+  }
 
 
 

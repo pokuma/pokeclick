@@ -11,3 +11,8 @@ function validateForm() {
 
     return true;
 }
+
+function forgetPasswordPopup() {
+    var popup = document.getElementById("forgetPasswordPopup");
+    popup.classList.toggle("show");
+}

@@ -17,6 +17,7 @@
 
     <link href="assets/styles/styles.css" media="all" rel="stylesheet" type="text/css" />
     <link href="assets/styles/register.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="assets/styles/login.css" media="all" rel="stylesheet" type="text/css" />
 </head>
 
 <body id="body" onload="loadDarkMode()">
@@ -49,13 +50,19 @@
                     <input class="controlsRegister" type="text" name="email" id="emails" placeholder="Email">
                     <i class="material-icons">email</i>
                 </div>
-                <div class="input-container">
+                
+                <div class="input-container" style="display: flex; align-items: center;">
                     <input class="controlsRegister" type="password" name="password" id="passwords"
                         placeholder="Password">
                     <i class="material-icons">lock</i>
                 </div>
-                
+
+                <div class="popup" style="color: blue;" onclick="forgetPasswordPopup()">Forget password?
+                    <span class="popupText" id="forgetPasswordPopup">You will receive an email with the steps to follow</span>
+                </div>
+
                 <div class="d-flex">
+                    
                     <button class="cancelRegister" onclick="window.location.href='index.html'; return false;" style="color: white;">Cancel</button>
                     <input class="submitRegister" type="submit" value="Enter" style="color: white;">
                 </div>
