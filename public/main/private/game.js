@@ -618,7 +618,7 @@ var showTutorial = function () {
         placement: 'bottom',
         title: 'Menu',
         html: true,
-        content: 'this is the menu. here you will find on option to replay this tutorial if needed, among other useful stuff. <br><br>now go ahead and have fun!<br><br><div class="row"><div class="col-4"></div><div class="col-8"><a id="menuTutorialButton" class="btn btn-secondary text-light">end tutorial</a></div></div>',
+        content: 'this is the menu. here you will find on option to replay this tutorial if needed, among other useful stuff. <br><br> if you have any questions, it is probably answered in the <b>faq</b> page here.<br><br>now go ahead and have fun!<br><br><div class="row"><div class="col-4"></div><div class="col-8"><a id="menuTutorialButton" class="btn btn-secondary text-light">end tutorial</a></div></div>',
         trigger: 'manual',
     });
 
