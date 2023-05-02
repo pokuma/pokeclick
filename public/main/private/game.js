@@ -106,70 +106,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
 
     window.addEventListener('keyup', event => {
-        //
-        if(activeTutorial=="welcomeModal"){
-            $('#welcomeModal').modal('hide');
-            $('#attackTutorial').popover('show');
-            setTimeout(function () {
-                activeTutorial = "attackTutorial";
-            }, 20);
-        }
-        if(activeTutorial=="attackTutorial"){
-            $('#attackTutorial').popover('hide');
-            $('#logoTutorial').popover('show');
-            setTimeout(function () {
-                activeTutorial = "logoTutorial";
-            }, 20);
-        }
-        if(activeTutorial=="logoTutorial"){
-            $('#logoTutorial').popover('hide');
-            $('#levelTutorial').popover('show');
-            setTimeout(function () {
-                activeTutorial = "levelTutorial";
-            }, 20);
-        }
-        if(activeTutorial=="levelTutorial"){
-            $('#levelTutorial').popover('hide');
-            $('#moneyTutorial').popover('show');
-            setTimeout(function () {
-                activeTutorial = "moneyTutorial";
-            }, 20);
-        }
-        if(activeTutorial=="moneyTutorial"){
-            $('#moneyTutorial').popover('hide');
-            $('#clickDamageTutorial').popover('show');
-            setTimeout(function () {
-                activeTutorial = "clickDamageTutorial";
-            }, 20);
-        }
-        if(activeTutorial=="clickDamageTutorial"){
-            $('#clickDamageTutorial').popover('hide');
-            $('#pokedexTutorial').popover('show');
-            setTimeout(function () {
-                activeTutorial = "pokedexTutorial";
-            }, 20);
-        }
-        if(activeTutorial=="pokedexTutorial"){
-            $('#pokedexTutorial').popover('hide');
-            $('#sliderTutorial').popover('show');
-            setTimeout(function () {
-                activeTutorial = "sliderTutorial";
-            }, 20);
-        }
-        if(activeTutorial=="sliderTutorial"){
-            $('#sliderTutorial').popover('hide');
-            $('#menuTutorial').popover('show');
-            setTimeout(function () {
-                activeTutorial = "menuTutorial";
-            }, 20);
-        }
-        if(activeTutorial=="menuTutorial"){
-            $('#menuTutorial').popover('hide');
-            setTimeout(function () {
-                activeTutorial = "none";
-            }, 20);
-            allowAttack = true;
-        }
+        //Check if any tutorial is active and if it is, hide it and show the next one
+        progressTutorial();
+
     });
     
     document.getElementById("replayTutorialButton").addEventListener("click", function () {
@@ -549,6 +488,73 @@ var resetConfirmed = function () {
 
     savePlayer();
     window.location.reload(true);
+}
+
+//keypress controls for the tutorial
+var progressTutorial = function () {
+    if(activeTutorial=="welcomeModal"){
+        $('#welcomeModal').modal('hide');
+        $('#attackTutorial').popover('show');
+        setTimeout(function () {
+            activeTutorial = "attackTutorial";
+        }, 20);
+    }
+    if(activeTutorial=="attackTutorial"){
+        $('#attackTutorial').popover('hide');
+        $('#logoTutorial').popover('show');
+        setTimeout(function () {
+            activeTutorial = "logoTutorial";
+        }, 20);
+    }
+    if(activeTutorial=="logoTutorial"){
+        $('#logoTutorial').popover('hide');
+        $('#levelTutorial').popover('show');
+        setTimeout(function () {
+            activeTutorial = "levelTutorial";
+        }, 20);
+    }
+    if(activeTutorial=="levelTutorial"){
+        $('#levelTutorial').popover('hide');
+        $('#moneyTutorial').popover('show');
+        setTimeout(function () {
+            activeTutorial = "moneyTutorial";
+        }, 20);
+    }
+    if(activeTutorial=="moneyTutorial"){
+        $('#moneyTutorial').popover('hide');
+        $('#clickDamageTutorial').popover('show');
+        setTimeout(function () {
+            activeTutorial = "clickDamageTutorial";
+        }, 20);
+    }
+    if(activeTutorial=="clickDamageTutorial"){
+        $('#clickDamageTutorial').popover('hide');
+        $('#pokedexTutorial').popover('show');
+        setTimeout(function () {
+            activeTutorial = "pokedexTutorial";
+        }, 20);
+    }
+    if(activeTutorial=="pokedexTutorial"){
+        $('#pokedexTutorial').popover('hide');
+        $('#sliderTutorial').popover('show');
+        setTimeout(function () {
+            activeTutorial = "sliderTutorial";
+        }, 20);
+    }
+    if(activeTutorial=="sliderTutorial"){
+        $('#sliderTutorial').popover('hide');
+        $('#menuTutorial').popover('show');
+        setTimeout(function () {
+            activeTutorial = "menuTutorial";
+        }, 20);
+    }
+    if(activeTutorial=="menuTutorial"){
+        $('#menuTutorial').popover('hide');
+        setTimeout(function () {
+            activeTutorial = "none";
+        }, 20);
+        allowAttack = true;
+    }
 }
 
 //Start tutorial
