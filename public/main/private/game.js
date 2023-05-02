@@ -92,6 +92,15 @@ var caughtPokemons = document.getElementById("caughtPokemons");
 */
 document.addEventListener("DOMContentLoaded", function (e) {
     
+    // Add event listener to the pokemon image to attack when spacebar/enter is pressed
+    window.addEventListener('keydown', event => {
+        if(event.target == document.getElementById("pokemon")) {
+            if (event.code == "Space" || event.code == "Enter") {
+                event.preventDefault();
+                attack();
+            }
+        }
+    });
     
     document.getElementById("replayTutorialButton").addEventListener("click", function () {
         showTutorial();
@@ -102,6 +111,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById("pokemon").addEventListener("click", function () {
         attack();
     });
+    
     
     if (localStorage.getItem("player") !== null) {
         loadPlayer();
@@ -190,7 +200,7 @@ var listCaughtPokemons = function()
         text += image + " " + player.caughtPokemons[i]  + "<br>";
     }
 
-    caughtPokemons.innerHTML = '<span class="h2 ml-4">pokédex</span><br><br>' + text;
+    caughtPokemons.innerHTML = '<span class="h2 ml-4">pokedex</span><br><br>' + text;
 };
 
 var orderCaughtListById = function () {
