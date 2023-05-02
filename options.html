@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta name="Register" content="Register page">
+    <meta name="Register" content="Options page">
     <meta charset="utf-8">
     <meta name="theme-color" content="rgb(83, 82, 82);" />
     <link rel="icon" type="image/x-icon" href="assets/images/logo/favicon.ico">
@@ -27,13 +27,13 @@
                     src="assets/images/logo/logo.png" draggable="false" style="width: 100px;" alt="logo"></a>
             <div class="row">
                 <div class="col">
-                    <div class="nightmode-toggle hide-for-small-down">
+                    <div class="nightmode-toggle hide-for-small-down align-content-center d-flex">
                         <i class="fa fa-sun-o text-light"> </i>
-                        <label class="switch ">
-                            <input type="checkbox" id="dark-mode-toggle" onclick="changeDarkMode()">
-                            <span class="slider round clickable"> </span>
-                        </label>
-                        <i class="fa fa-moon-o text-light"> </i>
+                    <label for="dark-mode-toggle" class="switch" title="Switch control">
+                        <input type="checkbox" id="dark-mode-toggle" onclick="changeDarkMode()" >
+                        <span class="slider round clickable"> </span>
+                    </label>
+                    <i class="fa fa-moon-o text-light"> </i>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,6 @@
     <img draggable="false"  src="assets\images\options\settings.png" alt="Options" width="250" style="display: block;  margin: 50px auto 0; padding-bottom:30px">
     <div class="form-register bg-secondary">
         <form onsubmit="return validateForm()" action="game.html" method="get">
-            <section>
                 <label for="sound">Volumen de sonido:</label>
                     <input type="range" id="sound" name="sound" min="0" max="100" value="50" style="display: block;  margin: 5px auto 0;"><br>
         
@@ -54,8 +53,7 @@
                         <option value="low">Baja</option>
                         <option value="medium">Media</option>
                         <option value="high">Alta</option>
-               <input class="submitRegister bg-primary" type="submit" value="Submit" style="margin: 25px auto 0; color: white;">
-            </section>
+               <input title="submit" class="submitRegister bg-primary" type="submit" value="Submit" style="margin: 25px auto 0; color: white;">
         </form>
     </div>
     <script src="public/main/private/script.js"></script>

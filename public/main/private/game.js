@@ -12,6 +12,7 @@ let requiredXpIncrease = 10; // 10 increase in required xp per level, expected t
 let attackDamageIncrease = 2; // 2 increase in attack damage per level, expected to be a formula in the future
 
 let tutorials = false;
+let activeTutorial = "none";
 let allowAttack = true;
 
 //Objects
@@ -92,6 +93,23 @@ var caughtPokemons = document.getElementById("caughtPokemons");
 */
 document.addEventListener("DOMContentLoaded", function (e) {
     
+    window.addEventListener('keydown', event => {
+        // Add event listener to the pokemon image to attack when spacebar/enter is pressed
+        
+        if(event.target == document.getElementById("pokemon")) {
+            if (event.code == "Space" || event.code == "Enter") {
+                event.preventDefault();
+                attack();
+            }
+        }
+        
+    });
+
+    window.addEventListener('keyup', event => {
+        //Check if any tutorial is active and if it is, hide it and show the next one
+        progressTutorial();
+
+    });
     
     document.getElementById("replayTutorialButton").addEventListener("click", function () {
         showTutorial();
@@ -102,6 +120,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById("pokemon").addEventListener("click", function () {
         attack();
     });
+    
     
     if (localStorage.getItem("player") !== null) {
         loadPlayer();
@@ -190,7 +209,7 @@ var listCaughtPokemons = function()
         text += image + " " + player.caughtPokemons[i]  + "<br>";
     }
 
-    caughtPokemons.innerHTML = '<span class="h2 ml-4">pokédex</span><br><br>' + text;
+    caughtPokemons.innerHTML = '<span class="h2 ml-4">pokedex</span><br><br>' + text;
 };
 
 var orderCaughtListById = function () {
@@ -471,8 +490,76 @@ var resetConfirmed = function () {
     window.location.reload(true);
 }
 
+//keypress controls for the tutorial
+var progressTutorial = function () {
+    if(activeTutorial=="welcomeModal"){
+        $('#welcomeModal').modal('hide');
+        $('#attackTutorial').popover('show');
+        setTimeout(function () {
+            activeTutorial = "attackTutorial";
+        }, 20);
+    }
+    if(activeTutorial=="attackTutorial"){
+        $('#attackTutorial').popover('hide');
+        $('#logoTutorial').popover('show');
+        setTimeout(function () {
+            activeTutorial = "logoTutorial";
+        }, 20);
+    }
+    if(activeTutorial=="logoTutorial"){
+        $('#logoTutorial').popover('hide');
+        $('#levelTutorial').popover('show');
+        setTimeout(function () {
+            activeTutorial = "levelTutorial";
+        }, 20);
+    }
+    if(activeTutorial=="levelTutorial"){
+        $('#levelTutorial').popover('hide');
+        $('#moneyTutorial').popover('show');
+        setTimeout(function () {
+            activeTutorial = "moneyTutorial";
+        }, 20);
+    }
+    if(activeTutorial=="moneyTutorial"){
+        $('#moneyTutorial').popover('hide');
+        $('#clickDamageTutorial').popover('show');
+        setTimeout(function () {
+            activeTutorial = "clickDamageTutorial";
+        }, 20);
+    }
+    if(activeTutorial=="clickDamageTutorial"){
+        $('#clickDamageTutorial').popover('hide');
+        $('#pokedexTutorial').popover('show');
+        setTimeout(function () {
+            activeTutorial = "pokedexTutorial";
+        }, 20);
+    }
+    if(activeTutorial=="pokedexTutorial"){
+        $('#pokedexTutorial').popover('hide');
+        $('#sliderTutorial').popover('show');
+        setTimeout(function () {
+            activeTutorial = "sliderTutorial";
+        }, 20);
+    }
+    if(activeTutorial=="sliderTutorial"){
+        $('#sliderTutorial').popover('hide');
+        $('#menuTutorial').popover('show');
+        setTimeout(function () {
+            activeTutorial = "menuTutorial";
+        }, 20);
+    }
+    if(activeTutorial=="menuTutorial"){
+        $('#menuTutorial').popover('hide');
+        setTimeout(function () {
+            activeTutorial = "none";
+        }, 20);
+        allowAttack = true;
+    }
+}
+
 //Start tutorial
 var showTutorial = function () {
+    activeTutorial = "welcomeModal"
     allowAttack = false;
     $('#welcomeModal').modal({
         backdrop: 'static',
@@ -482,7 +569,7 @@ var showTutorial = function () {
         placement: 'top',
         title: 'Attack',
         html: true,
-        content: 'clicking the sprite of the pokemon on the screen will deal damage to the pokemon for damage equal to your click damage. try it!<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="attackTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
+        content: 'clicking the sprite of the pokemon will deal damage. <br>try it!<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="attackTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
         trigger: 'manual',
     });
     $('#logoTutorial').popover({
@@ -496,7 +583,7 @@ var showTutorial = function () {
         placement: 'bottom',
         title: 'Level',
         html: true,
-        content: 'this is your level, the higher the level the more damage you do, and the more xp you need to level up.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="levelTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
+        content: 'this is your level, the higher the level the more damage you do.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="levelTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
         trigger: 'manual',
     });
     $('#moneyTutorial').popover({
@@ -510,7 +597,7 @@ var showTutorial = function () {
         placement: 'bottom',
         title: 'Click Damage',
         html: true,
-        content: 'this is your click damage, the higher the damage the more damage you do when you click on the pokemon.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="clickDamageTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
+        content: 'this is your click damage, it indicates how much damage you do when you click on the pokemon.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="clickDamageTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
         trigger: 'manual',
     });
     $('#pokedexTutorial').popover({
@@ -531,7 +618,7 @@ var showTutorial = function () {
         placement: 'bottom',
         title: 'Menu',
         html: true,
-        content: 'this is the menu. here you will find on option to replay this tutorial if needed, among other useful stuff.<br><div class="row"><div class="col-4"></div><div class="col-8"><a id="menuTutorialButton" class="btn btn-secondary text-light">end tutorial</a></div></div>',
+        content: 'this is the menu. here you will find on option to replay this tutorial if needed, among other useful stuff. <br><br>now go ahead and have fun!<br><br><div class="row"><div class="col-4"></div><div class="col-8"><a id="menuTutorialButton" class="btn btn-secondary text-light">end tutorial</a></div></div>',
         trigger: 'manual',
     });
 
@@ -542,36 +629,45 @@ var showTutorial = function () {
 $(document).on('click', '#welcomeTutorialButton', function () {
     $('#welcomeModal').modal('hide');
     $('#attackTutorial').popover('show');
+    activeTutorial = "attackTutorial";
 });
 $(document).on('click', '#attackTutorialButton', function () {
     $('#attackTutorial').popover('hide');
     $('#logoTutorial').popover('show');
+    activeTutorial = "logoTutorial";
 });
 $(document).on('click', '#logoTutorialButton', function () {
     $('#logoTutorial').popover('hide');
     $('#levelTutorial').popover('show');
+    activeTutorial = "levelTutorial";
 });
 $(document).on('click', '#levelTutorialButton', function () {
     $('#levelTutorial').popover('hide');
     $('#moneyTutorial').popover('show');
+    activeTutorial = "moneyTutorial";
 });
 $(document).on('click', '#moneyTutorialButton', function () {
     $('#moneyTutorial').popover('hide');
     $('#clickDamageTutorial').popover('show');
+    activeTutorial = "clickDamageTutorial";
 });
 $(document).on('click', '#clickDamageTutorialButton', function () {
     $('#clickDamageTutorial').popover('hide');
     $('#pokedexTutorial').popover('show');
+    activeTutorial = "pokedexTutorial";
 });
 $(document).on('click', '#pokedexTutorialButton', function () {
     $('#pokedexTutorial').popover('hide');
     $('#sliderTutorial').popover('show');
+    activeTutorial = "sliderTutorial";
 });
 $(document).on('click', '#sliderTutorialButton', function () {
     $('#sliderTutorial').popover('hide');
     $('#menuTutorial').popover('show');
+    activeTutorial = "menuTutorial";
 });
 $(document).on('click', '#menuTutorialButton', function () {
     $('#menuTutorial').popover('hide');
+    activeTutorial = "none";
     allowAttack = true;
 });

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta name="description" content="Webpage designed for my game project">
+    <meta name="description" content="Main game page">
     <meta charset="utf-8">
     <link rel="icon" type="image/x-icon" href="assets/images/logo/favicon.ico">
     <meta name="theme-color" content="rgb(83, 82, 82);" />
@@ -59,7 +59,7 @@
                         <div data-toggle="popover" id="sliderTutorial">
                             <div class="nightmode-toggle hide-for-small-down align-content-center d-flex">
                                 <i class="fa fa-sun-o text-light"> </i>
-                            <label for="switch-control" class="switch" title="Switch control">
+                            <label for="dark-mode-toggle" class="switch" title="Switch control">
                                 <input type="checkbox" id="dark-mode-toggle" onclick="changeDarkMode()" >
                                 <span class="slider round clickable"> </span>
                             </label>
@@ -144,7 +144,7 @@
     <!-- Pokemon Card -->
     <div class="container">
         <div class="row">
-          <div class="col-sm-2 p-3 justify-content-center align-items-center border text-light border-light bg-dark" id="caughtPokemons"><span class="h2 ml-4">pokédex</span><br><br></div>
+          <div class="col-sm-2 p-3 justify-content-center align-items-center border text-light border-light bg-dark" id="caughtPokemons"><span class="h2 ml-4">pokedex</span><br><br></div>
           <div class="col-sm-10 justify-content-center">
             <div class="col-xl-auto">
               <div class="justify-content-center align-items-center pb-5" id="saveSelector">
@@ -155,7 +155,7 @@
                         <div class="justify-content-center container row g-0 text-light mb-3">
                           <img id="caught" alt="pokeball"><span id="pokemonName" class="justify-content-center container row g-0 text-light"></span>
                         </div>
-                        <img draggable="false" id="pokemon" src="" alt="pokemon sprite">
+                        <img draggable="false" id="pokemon" src="" alt="pokemon sprite" tabindex="0">
                       </div>
                       <div>
                         <div class="border border-dark mb-3 g-0 pb-3">
@@ -204,20 +204,24 @@
                 </div>
                 <div class="modal-body">
                     <p>
-                        this is a game where your goal is to catch all the 151 pokemons.
+                        this is a game where your goal is to catch all the 151 pokemon.
                         
                     </p>
                     <p>
-                        you can do this by clicking on the pokemon on screen until its hp bar reaches 0.
+                        everytime a pokemon is defeated, a pokeball is automatically thrown, and the pokemon will have a chance to be caught.
                         
                     </p>
                     <p>
-                        each pokemon has different stats and catch rate, so you will have to encounter some pokemon multiple times to catch it.
+                        each pokemon has a different catch rate, so you will probably have to defeat some pokemon multiple times to catch it.
                         
                     </p>
+                    <br>
                     <p>
-                        if you are lucky, you might even encounter a shiny pokemon!
+                    <b>
+                        press any key to or the "next" button to continue.
+                    </b>
                     </p>
+                
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" id="welcomeTutorialButton">next</button>
