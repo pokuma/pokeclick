@@ -1,0 +1,41 @@
+.form-register {
+    width: fit-content;
+    padding: 30px;
+    margin: auto;
+    border-radius: 10px;
+    border: solid black 2px;
+}
+
+.submitRegister {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #007bff;
+    color: white;
+    margin-left: 10px;
+}
+
+.cancelRegister {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    padding: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #dc3545;
+    color: white;
+    margin-right: 10px;
+}
+
+.controlsRegister {
+    width: 200px;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 2px solid rgb(0, 0, 0);
+}

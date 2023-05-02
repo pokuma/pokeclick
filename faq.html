@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="Faq" content="Faq page">
+    <meta charset="utf-8">
+    <meta name="theme-color" content="rgb(83, 82, 82);" />
+    <link rel="icon" type="image/x-icon" href="assets/images/logo/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>faq</title>
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src="https://example.com/fontawesome/v5.15.4/js/all.js" data-auto-a11y="true"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="assets/styles/styles.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="assets/styles/faq.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+
+<body id="body" onload="loadDarkMode()">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="nav-link" draggable="false" href="index.html"><img id="navBarLogo"
+                    src="assets/images/logo/logo.png" draggable="false" style="width: 100px;" alt="logo"></a>
+            
+            <a class="nav-link" draggable="false" href="game.html"><img id="navBarLogo"
+                    src="assets/images/faq/BackToGame.png" draggable="false" style="width: 250px; padding-right: 50px;" alt="logo"></a>
+
+            <div class="row">
+                <div class="col">
+                    <div class="nightmode-toggle hide-for-small-down">
+                        <i class="fa fa-sun-o text-light"> </i>
+                        <label class="switch ">
+                            <input type="checkbox" id="dark-mode-toggle" onclick="changeDarkMode()">
+                            <span class="slider round clickable"> </span>
+                        </label>
+                        <i class="fa fa-moon-o text-light"> </i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <img draggable="false" src="assets\images\faq\faq.png" alt="Options" width="100"
+        style="display: block;  margin: 50px auto 0; padding-bottom:30px">
+
+    <div class="acordeon">
+        <button class="accordion">How much xp does a pokemon give?</button>
+        <div class="panel">
+            <p>It depends on the pokemon. Each pokemon gives different xp amount based on Oficial Pokemon stats.
+            </p>
+        </div>
+
+        <button class="accordion">Does the game has a limit?</button>
+        <div class="panel">
+            <p>Game doesn't have a limit. Your goal is to catch al the 151 pokemons but u can still play to get more levels, upgrades or catch shiny pokemons!</p>
+        </div>
+
+        <button class="accordion">What is the catch rate of a pokemon?</button>
+        <div class="panel">
+            <p>Each pokemon has a different catch rate based on Oficial Pokemon stats, so a legendary pokemon like Mew is harder to catch than a caterpie.</p>
+        </div>
+
+        <button class="accordion">How much hp does the pokemon lose each second?</button>
+        <div class="panel">
+            <p>The damage over time is exactly the same than click damage per second.</p>
+        </div>
+
+        <button class="accordion">How do I know that i catched a pokemon?</button>
+        <div class="panel">
+            <p>It appears on the pokedex on the left and also on the top of the screen at the Pokedex counter. 
+                Whenever you encounter a pokemon that you have already catched, the pokeball icon on top of the 
+                pokemon name will be filled.</p>
+        </div>
+
+        <button class="accordion">What do i get from leveling up?</button>
+        <div class="panel">
+            <p>You get more click damage (so damage over time) each time you level up.</p>
+        </div>
+
+        <button class="accordion">Can i restart my game?</button>
+        <div class="panel">
+            <p>Yes. You can restar your game by clicking on the option "RESET PROFILE" in the "START MENU" and then writting "RESET".</p>
+        </div>
+
+        <button class="accordion">Can i save my game?</button>
+        <div class="panel">
+            <p>Game is automatically saved in the local storage, so you don't have to worry about that.</p>
+        </div>
+
+        <button class="accordion">Where can i buy upgrades with my money?</button>
+        <div class="panel">
+            <p>We didn't implement that feature yet, so for now, money is useless. In the future you would be able to buy 
+                upgrades in the shop that could increase your catch ratio or your click damage. Stay tuned! :)</p>
+        </div>
+
+        
+
+    </div>
+
+    <script src="public/main/private/script.js"></script>
+    <script src="public/main/private/faq.js"></script>
+    <!--Ion icons-->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
