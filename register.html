@@ -55,15 +55,15 @@
         style="display: block;  margin: 50px auto 0; padding-bottom:30px">
     <div class="form-register bg-secondary">
         <form onsubmit="return validateForm()" action="game.html" method="get">
-            <section>
+            
                 <div class="input-container">
                     <input class="controlsRegister" type="text" name="nickname" id="nicknames" placeholder="Nickname">
                     <i class="material-icons">person</i>
-                </div>
+                </div class="input-container">
                 <div class="input-container">
                     <input class="controlsRegister" type="text" name="email" id="emails" placeholder="Email">
                     <i class="material-icons">email</i>
-                </div>
+                </div class="input-container">
                 <div class="input-container">
                     <input class="controlsRegister" type="password" name="password" id="passwords"
                         placeholder="Password">
@@ -79,8 +79,7 @@
                     <button class="cancelRegister" onclick="window.location.href='index.html'; return false;" style="color: white;">Cancel</button>
                     <input class="submitRegister" type="submit" value="Submit" style="color: white;">
                 </div>
-                
-            </section>
+            
         </form>
     </div>
 
