@@ -42,7 +42,6 @@
     <img draggable="false"  src="assets\images\options\settings.png" alt="Options" width="250" style="display: block;  margin: 50px auto 0; padding-bottom:30px">
     <div class="form-register bg-secondary">
         <form onsubmit="return validateForm()" action="game.html" method="get">
-            <section>
                 <label for="sound">Volumen de sonido:</label>
                     <input type="range" id="sound" name="sound" min="0" max="100" value="50" style="display: block;  margin: 5px auto 0;"><br>
         
@@ -54,8 +53,7 @@
                         <option value="low">Baja</option>
                         <option value="medium">Media</option>
                         <option value="high">Alta</option>
-               <input class="submitRegister bg-primary" type="submit" value="Submit" style="margin: 25px auto 0; color: white;">
-            </section>
+               <input title="submit" class="submitRegister bg-primary" type="submit" value="Submit" style="margin: 25px auto 0; color: white;">
         </form>
     </div>
     <script src="public/main/private/script.js"></script>
