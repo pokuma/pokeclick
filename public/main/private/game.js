@@ -12,6 +12,7 @@ let requiredXpIncrease = 10; // 10 increase in required xp per level, expected t
 let attackDamageIncrease = 2; // 2 increase in attack damage per level, expected to be a formula in the future
 
 let tutorials = false;
+let activeTutorial = "none";
 let allowAttack = true;
 
 //Objects
@@ -92,13 +93,82 @@ var caughtPokemons = document.getElementById("caughtPokemons");
 */
 document.addEventListener("DOMContentLoaded", function (e) {
     
-    // Add event listener to the pokemon image to attack when spacebar/enter is pressed
     window.addEventListener('keydown', event => {
+        // Add event listener to the pokemon image to attack when spacebar/enter is pressed
+        
         if(event.target == document.getElementById("pokemon")) {
             if (event.code == "Space" || event.code == "Enter") {
                 event.preventDefault();
                 attack();
             }
+        }
+        
+    });
+
+    window.addEventListener('keyup', event => {
+        //
+        if(activeTutorial=="welcomeModal"){
+            $('#welcomeModal').modal('hide');
+            $('#attackTutorial').popover('show');
+            setTimeout(function () {
+                activeTutorial = "attackTutorial";
+            }, 20);
+        }
+        if(activeTutorial=="attackTutorial"){
+            $('#attackTutorial').popover('hide');
+            $('#logoTutorial').popover('show');
+            setTimeout(function () {
+                activeTutorial = "logoTutorial";
+            }, 20);
+        }
+        if(activeTutorial=="logoTutorial"){
+            $('#logoTutorial').popover('hide');
+            $('#levelTutorial').popover('show');
+            setTimeout(function () {
+                activeTutorial = "levelTutorial";
+            }, 20);
+        }
+        if(activeTutorial=="levelTutorial"){
+            $('#levelTutorial').popover('hide');
+            $('#moneyTutorial').popover('show');
+            setTimeout(function () {
+                activeTutorial = "moneyTutorial";
+            }, 20);
+        }
+        if(activeTutorial=="moneyTutorial"){
+            $('#moneyTutorial').popover('hide');
+            $('#clickDamageTutorial').popover('show');
+            setTimeout(function () {
+                activeTutorial = "clickDamageTutorial";
+            }, 20);
+        }
+        if(activeTutorial=="clickDamageTutorial"){
+            $('#clickDamageTutorial').popover('hide');
+            $('#pokedexTutorial').popover('show');
+            setTimeout(function () {
+                activeTutorial = "pokedexTutorial";
+            }, 20);
+        }
+        if(activeTutorial=="pokedexTutorial"){
+            $('#pokedexTutorial').popover('hide');
+            $('#sliderTutorial').popover('show');
+            setTimeout(function () {
+                activeTutorial = "sliderTutorial";
+            }, 20);
+        }
+        if(activeTutorial=="sliderTutorial"){
+            $('#sliderTutorial').popover('hide');
+            $('#menuTutorial').popover('show');
+            setTimeout(function () {
+                activeTutorial = "menuTutorial";
+            }, 20);
+        }
+        if(activeTutorial=="menuTutorial"){
+            $('#menuTutorial').popover('hide');
+            setTimeout(function () {
+                activeTutorial = "none";
+            }, 20);
+            allowAttack = true;
         }
     });
     
@@ -483,6 +553,7 @@ var resetConfirmed = function () {
 
 //Start tutorial
 var showTutorial = function () {
+    activeTutorial = "welcomeModal"
     allowAttack = false;
     $('#welcomeModal').modal({
         backdrop: 'static',
@@ -541,7 +612,7 @@ var showTutorial = function () {
         placement: 'bottom',
         title: 'Menu',
         html: true,
-        content: 'this is the menu. here you will find on option to replay this tutorial if needed, among other useful stuff. <br><br>now go ahead and have fun!<br><div class="row"><div class="col-4"></div><div class="col-8"><a id="menuTutorialButton" class="btn btn-secondary text-light">end tutorial</a></div></div>',
+        content: 'this is the menu. here you will find on option to replay this tutorial if needed, among other useful stuff. <br><br>now go ahead and have fun!<br><br><div class="row"><div class="col-4"></div><div class="col-8"><a id="menuTutorialButton" class="btn btn-secondary text-light">end tutorial</a></div></div>',
         trigger: 'manual',
     });
 
@@ -552,36 +623,45 @@ var showTutorial = function () {
 $(document).on('click', '#welcomeTutorialButton', function () {
     $('#welcomeModal').modal('hide');
     $('#attackTutorial').popover('show');
+    activeTutorial = "attackTutorial";
 });
 $(document).on('click', '#attackTutorialButton', function () {
     $('#attackTutorial').popover('hide');
     $('#logoTutorial').popover('show');
+    activeTutorial = "logoTutorial";
 });
 $(document).on('click', '#logoTutorialButton', function () {
     $('#logoTutorial').popover('hide');
     $('#levelTutorial').popover('show');
+    activeTutorial = "levelTutorial";
 });
 $(document).on('click', '#levelTutorialButton', function () {
     $('#levelTutorial').popover('hide');
     $('#moneyTutorial').popover('show');
+    activeTutorial = "moneyTutorial";
 });
 $(document).on('click', '#moneyTutorialButton', function () {
     $('#moneyTutorial').popover('hide');
     $('#clickDamageTutorial').popover('show');
+    activeTutorial = "clickDamageTutorial";
 });
 $(document).on('click', '#clickDamageTutorialButton', function () {
     $('#clickDamageTutorial').popover('hide');
     $('#pokedexTutorial').popover('show');
+    activeTutorial = "pokedexTutorial";
 });
 $(document).on('click', '#pokedexTutorialButton', function () {
     $('#pokedexTutorial').popover('hide');
     $('#sliderTutorial').popover('show');
+    activeTutorial = "sliderTutorial";
 });
 $(document).on('click', '#sliderTutorialButton', function () {
     $('#sliderTutorial').popover('hide');
     $('#menuTutorial').popover('show');
+    activeTutorial = "menuTutorial";
 });
 $(document).on('click', '#menuTutorialButton', function () {
     $('#menuTutorial').popover('hide');
+    activeTutorial = "none";
     allowAttack = true;
 });
