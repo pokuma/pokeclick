@@ -7,6 +7,8 @@ function validateForm() {
     const passwordInput = document.getElementById("passwords");
     const reppasswordInput = document.getElementById("reppasswords");
 
+   
+
 
     if (nameInput.value === "" || emailInput.value === "" || passwordInput.value === "") {
         alert("Por favor, rellene todos los campos requeridos.");
@@ -18,6 +20,9 @@ function validateForm() {
         return false;
     }
     alert("Cuenta \"" + emailInput.value + "\" creada con exito!");
+    let user = "";
+    user = "user=" + nameInput.value;
+    document.cookie = "user=" + user.toLowerCase();
     
     
     

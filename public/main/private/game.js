@@ -83,6 +83,10 @@ const xpBarText = document.getElementById("xpBarText");
 // Captured pokemon list
 var caughtPokemons = document.getElementById("caughtPokemons");
 
+const welcomeModalTitle = document.getElementById("welcomeModalTitle");
+let user = document.cookie.split("=")[4];
+welcomeModalTitle.innerHTML = "welcome to pokeclicker " + user + " !";
+
 
 /* Waits for all the html to load before doing this code
 * Add click event listeners to the buttons

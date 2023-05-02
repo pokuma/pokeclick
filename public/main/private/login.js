@@ -8,6 +8,9 @@ function validateForm() {
         return false;
     }
     alert("Logeo en la cuenta \"" + emailInput.value + "\" con exito!");
+    let user = "";
+    user = "user=" + emailInput.value;
+    document.cookie = "user=" + user.toLowerCase();
 
     return true;
 }
