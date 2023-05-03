@@ -3,6 +3,8 @@ import {
     locationList,
 } from "./data.js";
 
+let debugMode = false;
+
 // Game settings for debugging purposes
 let startingRequiredXP = 10;
 
@@ -14,6 +16,13 @@ let attackDamageIncrease = 2; // 2 increase in attack damage per level, expected
 let tutorials = true;
 let activeTutorial = "none";
 let allowAttack = true;
+
+export let animationsOn = true;
+
+if(debugMode){
+    tutorials = false;
+    animationsOn = false;
+}
 
 //Objects
 let route = {
@@ -81,7 +90,7 @@ const xpBar = document.getElementById("xpBar");
 const xpBarText = document.getElementById("xpBarText");
 
 // Captured pokemon list
-var caughtPokemons = document.getElementById("caughtPokemons");
+var caughtPokemons = document.getElementById("pokedex");
 
 const welcomeModalTitle = document.getElementById("welcomeModalTitle");
 let user = document.cookie.split("=")[4];
@@ -146,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     setInterval(function () {
         if(allowAttack==true){
-            attack();
+            //attack();
         }
     }, 1000);
 });
@@ -204,7 +213,6 @@ var listCaughtPokemons = function()
 {
     orderCaughtListById();
 
-
     var text = "";
     
     for (let i = 0; i < player.caughtPokemons.length; i++) {
@@ -213,7 +221,7 @@ var listCaughtPokemons = function()
         text += image + " " + player.caughtPokemons[i]  + "<br>";
     }
 
-    caughtPokemons.innerHTML = '<span class="h2 ml-4">pokedex</span><br><br>' + text;
+    caughtPokemons.innerHTML = text;
 };
 
 var orderCaughtListById = function () {
@@ -305,15 +313,26 @@ var pokemonDies = function () {
     stopPokemonShake();
     
     if (!alreadyCaught(pokemon.name)) {
-        startCaptureAnimation();
-        setTimeout(function () {
+        if(animationsOn == true){
+            startCaptureAnimation();
+            setTimeout(function () {
+                if(pokemon.catchRate > Math.floor(Math.random() * 256)){
+                    updatePokemonCounter();
+                    listCaughtPokemons();
+                    savePlayer();
+                }
+                spawnPokemon();
+            }, 1000);
+        }
+        if(animationsOn == false){
             if(pokemon.catchRate > Math.floor(Math.random() * 256)){
                 updatePokemonCounter();
                 listCaughtPokemons();
                 savePlayer();
             }
             spawnPokemon();
-        }, 1000);
+        }
+        
     }
     else {
         savePlayer();

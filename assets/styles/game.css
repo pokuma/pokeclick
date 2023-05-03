@@ -3,6 +3,28 @@ h1 {
 }
 
 
+/*Pokedex scroll bar*/
+    /* width */
+    div ::-webkit-scrollbar {
+        width: 15px;
+    }
+    
+    /* Track */
+    div ::-webkit-scrollbar-track {
+        box-shadow: inset 50px 0 5px rgb(70, 70, 70);; 
+        border-radius: 10px;
+    }
+    
+    /* Handle */
+    div ::-webkit-scrollbar-thumb {
+        background: white; 
+        border-radius: 10px;
+    }
+    
+    /* Handle on hover */
+    div ::-webkit-scrollbar-thumb:hover {
+        background: grey; 
+    }
 
 #caught{
     width: 30px;
@@ -16,24 +38,30 @@ h1 {
     animation: cursor 1s infinite;
 }
 
-
 #caughtPokemons {
     float: left;
     background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
     margin-top: 60px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    height: 535px;
+}
+
+#pokedex {
+    float: left;
+    background-color: #fff;
+    width: 100%;
+    overflow-y: auto;
+    height: 430px;
 }
 
 #pokemonName {
 
     font-family: 'PEPgenius10', sans-serif;
     font-size: x-large;
+    height: 40px;
 }
 
 #pokemonCard {
-    display: flex;
     justify-content: center;
     align-items: center;
     width: 400px;
