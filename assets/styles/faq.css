@@ -17,10 +17,17 @@
     margin-top: 10px;
 }
 
+.accordion:focus{
+    background-color: #989999;
+    border-color: white;
+    border: 1px solid white;
+}
 
 .active,
 .accordion:hover {
     background-color: #394047;
+    border-color: white;
+    border: 1px solid white;
 }
 
 
@@ -45,4 +52,3 @@
 .active:after {
     content: "\2796";
 }
-
