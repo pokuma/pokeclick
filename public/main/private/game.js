@@ -11,7 +11,7 @@ let xpMultiplier = 1;
 let requiredXpIncrease = 10; // 10 increase in required xp per level, expected to be a formula in the future
 let attackDamageIncrease = 2; // 2 increase in attack damage per level, expected to be a formula in the future
 
-let tutorials = false;
+let tutorials = true;
 let activeTutorial = "none";
 let allowAttack = true;
 

@@ -19,7 +19,7 @@ function validateForm() {
         alert("Las contraseñas no coinciden.");
         return false;
     }
-    alert("Cuenta \"" + emailInput.value + "\" creada con exito!");
+    alert("Cuenta \"" + nameInput.value + "\" creada con exito!");
     let user = "";
     user = "user=" + nameInput.value;
     document.cookie = "user=" + user.toLowerCase();
