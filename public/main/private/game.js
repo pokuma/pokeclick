@@ -3,7 +3,20 @@ import {
     locationList,
 } from "./data.js";
 
-let debugMode = false;
+//  =====   DEBUG   =====
+
+let debugMode = false; //!IMPORTANT: Set to false before pushing to main branch
+
+/*
+*   Debug variables
+*   Debug mode is used to test the game faster
+*   This variables control various aspects of the game
+*/
+let debugPause = false; //Stops the game from progressing (stops the attack interval)
+let debugAttackInterval = 1; //Sets the attack interval to "x"ms
+
+//  =====   END DEBUG   =====
+
 
 // Game settings for debugging purposes
 let startingRequiredXP = 10;
@@ -16,12 +29,17 @@ let attackDamageIncrease = 2; // 2 increase in attack damage per level, expected
 let tutorials = true;
 let activeTutorial = "none";
 let allowAttack = true;
+let attackInterval = 1000;
 
 export let animationsOn = true;
 
 if(debugMode){
+    if(debugPause){
+        allowAttack = false;
+    }
     tutorials = false;
     animationsOn = false;
+    attackInterval = debugAttackInterval;
 }
 
 //Objects
@@ -155,9 +173,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     setInterval(function () {
         if(allowAttack==true){
-            //attack();
+            attack();
         }
-    }, 1000);
+    }, attackInterval);
 });
 
 //Loads the default route
