@@ -45,6 +45,10 @@ h1 {
     animation: cursor 1s infinite;
 }
 
+#pokemon:hover{
+    transform: translateY(0.1em);
+}
+
 #caughtPokemons,
 #shopPanel {
     background-color: #fff;
@@ -61,8 +65,14 @@ h1 {
 }
 
 #shop table tr:hover{
-    background-color: rgb(136, 147, 156);
+    background-color: rgb(0, 0, 0);
     color: white;
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.25em);
+}
+
+#shop table tr:active{
+    transform: translateY(0.1em);
 }
 
 #shop table tr td img{
@@ -160,8 +170,13 @@ th:last-child {
     border-radius: 100px;
 }
 
+#startMenu:hover {
+    background-color: black;
+    transform: translateY(-0.1em);
+}
+
 .dropdown-item-start-menu:hover {
-    background-color: rgba(86, 94, 100, 1);
+    background-color: rgb(0, 0, 0);
     color: white;
 }
 

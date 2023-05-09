@@ -3,8 +3,6 @@ import {
     locationList,
 } from "./data.js";
 
-
-
 //  =====   DEBUG   =====
 
 let debugMode = false; //!IMPORTANT: Set to false before pushing to main branch
