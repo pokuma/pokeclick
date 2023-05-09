@@ -45,8 +45,11 @@ h1 {
     animation: cursor 1s infinite;
 }
 
-#pokemon:hover{
+#pokemon:hover,
+#pokemon:focus {
     transform: translateY(0.1em);
+    background-color: rgb(0, 0, 0);
+    box-shadow: 1px 1px 10px 1px white;
 }
 
 #caughtPokemons,
@@ -64,10 +67,9 @@ h1 {
     border-spacing: 0px 20px;
 }
 
-#shop table tr:hover{
+#shop table tr:hover,
+#shop table tr:focus{
     background-color: rgb(0, 0, 0);
-    color: white;
-    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
     transform: translateY(-0.25em);
 }
 
@@ -84,7 +86,7 @@ table{
 }
 
 tr{
-    background-color: rgb(64, 74, 77);
+    background-color: #404a4d;
     height: 65px;
 }
 
@@ -112,6 +114,7 @@ th:last-child {
     width: 100%;
     overflow-y: auto;
     height: 430px;
+    border-radius: 5px;
 }
 
 #pokemonName {
@@ -170,9 +173,22 @@ th:last-child {
     border-radius: 100px;
 }
 
-#startMenu:hover {
-    background-color: black;
+#startMenu,
+#navBarLogo {
+    background-color: #404a4d;
+    color: #fff;
+    border-radius: 5px;
+}
+
+#startMenu:hover,
+#startMenu:focus,
+#navBarLogo:hover,
+#navBarLogo:focus,
+#pokedex:hover,
+#pokedex:focus {
     transform: translateY(-0.1em);
+    background-color: rgb(0, 0, 0);
+    border: 1px solid white;
 }
 
 .dropdown-item-start-menu:hover {
