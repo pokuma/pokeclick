@@ -1,7 +1,10 @@
 h1 { 
     font-size:20px;
 }
-
+ 
+#shophr{
+    margin-bottom: 0px;
+}
 
 /*Pokedex scroll bar*/
     /* width */
@@ -48,6 +51,7 @@ h1 {
     border-radius: 10px;
     height: 535px;
     max-width: 325px;
+    min-width: none;
 }
 
 
@@ -57,7 +61,7 @@ h1 {
 }
 
 #shop table tr:hover{
-    background-color: rgba(86, 94, 100, 1);
+    background-color: rgb(136, 147, 156);
     color: white;
 }
 
@@ -70,7 +74,7 @@ table{
 }
 
 tr{
-    background-color: rgb(71, 71, 71);
+    background-color: rgb(64, 74, 77);
     height: 65px;
 }
 
@@ -88,7 +92,8 @@ th:last-child {
 }
 
 .rightColumn {
-    text-align: right;
+    text-align: center;
+    padding-left: 10px;
 }
 
 #pokedex {
@@ -230,7 +235,7 @@ th:last-child {
 @keyframes levelUp{
     0% {
         transform: translate(0px, 0px);
-        color:green;
+        color:rgb(40, 172, 248);
     }
     50% {
         transform: translate(0px, -5px);
@@ -252,7 +257,7 @@ th:last-child {
 }@keyframes damageUp{
     0% {
         transform: translate(0px, 0px);
-        color:red;
+        color:rgb(31, 201, 187);
     }
     50% {
         transform: translate(0px, -5px);
@@ -263,10 +268,21 @@ th:last-child {
 }@keyframes pokedexUp{
     0% {
         transform: translate(0px, 0px);
-        color:cyan;
+        color:rgb(255, 174, 0);
     }
     50% {
         transform: translate(0px, -5px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}@keyframes moneyDown{
+    0% {
+        transform: translate(0px, 0px);
+        color:red;
+    }
+    50% {
+        transform: translate(0px, 5px);
     }
     100% {
         transform: translate(0px, 0px);
