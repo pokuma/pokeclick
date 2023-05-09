@@ -26,6 +26,10 @@ h1 {
         background: grey; 
     }
 
+#Panels{
+    margin-top: 60px;
+}
+
 #caught{
     width: 30px;
     height: 30px;
@@ -38,12 +42,53 @@ h1 {
     animation: cursor 1s infinite;
 }
 
-#caughtPokemons {
-    float: left;
+#caughtPokemons,
+#shopPanel {
     background-color: #fff;
-    margin-top: 60px;
     border-radius: 10px;
     height: 535px;
+    max-width: 325px;
+}
+
+
+#shop table{
+    border-collapse: separate;
+    border-spacing: 0px 20px;
+}
+
+#shop table tr:hover{
+    background-color: rgba(86, 94, 100, 1);
+    color: white;
+}
+
+#shop table tr td img{
+    width: 48px;
+}
+
+table{
+    height: 430px;
+}
+
+tr{
+    background-color: rgb(71, 71, 71);
+    height: 65px;
+}
+
+td:first-child,
+th:first-child {
+  border-radius: 40px 0 0 40px;
+  padding-left: 10px;
+  padding-right: 5px;
+}
+
+td:last-child,
+th:last-child {
+  border-radius: 0 40px 40px 0;
+    padding-right: 18px;
+}
+
+.rightColumn {
+    text-align: right;
 }
 
 #pokedex {
@@ -55,15 +100,12 @@ h1 {
 }
 
 #pokemonName {
-
     font-family: 'PEPgenius10', sans-serif;
     font-size: x-large;
     height: 40px;
 }
 
 #pokemonCard {
-    justify-content: center;
-    align-items: center;
     width: 400px;
     border-radius: 20px;
     background-color: rgb(51, 51, 51, 0.9);
@@ -232,17 +274,4 @@ h1 {
 }
 
 
-@media only screen and (max-width: 575px) {
-    .container {
-        flex-direction: column;
-    }
 
-    #caughtPokemons {
-        order: 3;
-      }
-      
-    #pokemonCard {
-        order: 2;
-      }
-
-}
