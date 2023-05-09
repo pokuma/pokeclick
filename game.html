@@ -156,6 +156,7 @@
             <!-- SHOP -->
             <div class="col-lg-3 p-3 justify-content-center border text-light border-light bg-dark d-flex order-1 order-lg-0 m-2 m-lg-auto d-flex"
                 id="shopPanel">
+                <div class="popoverclass" data-toggle="tooltip" id="shopTutorial">
                 <div class="align-items-center">
                     <span class="h2 ml-2">shop</span>
                     <hr id="shophr">
@@ -218,7 +219,8 @@
                             </tr>
                         </table>
                     </div>
-                </div><br><br>
+                </div>
+            </div>
             </div>
 
             <!-- POKEMON -->
@@ -263,13 +265,16 @@
             <!-- POKEDEX -->
             <div class="col-lg-3 p-3 justify-content-center align-items-center border text-light border-light bg-dark order-2 m-2 m-lg-auto"
                 id="caughtPokemons" >
+                
                 <div class="align-items-center">
                     <span class="h2 ml-2">pokedex</span>
                     <hr>
+                    <div class="popoverclass" data-toggle="tooltip" id="pokedexListTutorial">
                     <div id="pokedex" class="justify-content-center align-items-center text-light bg-dark" tabindex="0" role="scrollbar" aria-label="pokedex">
 
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </div>
@@ -288,8 +293,8 @@
     </div>
 
     <!-- TUTORIAL -->
-    <div class="modal" id="welcomeModal" role="dialog">
-        <div class="modal-dialog" role="document">
+    <div class="modal" id="welcomeModal" role="dialog" >
+        <div class="modal-dialog" role="document" aria-modal="true">
             <div class="modal-content">
                 <div class="modal-header justify-content-center">
                     <div>
