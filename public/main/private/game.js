@@ -269,7 +269,7 @@ var findPokemonId = function (pokemonName) {
 //Loads the new pokemon in the pokemon object given its id
 var updatePokemonObjectFromId = function (id) {
     pokemon.name = pokemonList[id - 1].name;
-    pokemon.baseHP = Math.floor(pokemonList[id - 1].baseHP * hpMultiplier) + (player.caughtPokemons.length +1) * 5;
+    pokemon.baseHP = Math.floor(pokemonList[id - 1].baseHP * hpMultiplier) + (player.caughtPokemons.length +1) * 8;
     pokemon.baseXP = Math.floor(pokemonList[id - 1].baseXP * xpMultiplier);
     pokemon.hp = pokemon.baseHP;
     pokemon.catchRate = pokemonList[id - 1].catchRate;
@@ -341,7 +341,6 @@ var pokemonDies = function () {
                     updatePokemonCounter();
                     listCaughtPokemons();
                     savePlayer();
-                    hpMultiplier = hpMultiplier * 0.02 * listCaughtPokemons.length;
                 }
                 spawnPokemon();
             }, 1000);
@@ -408,7 +407,7 @@ var updateHpBar = function () {
 
 //Increase the player money
 var gainMoney = function () {
-    player.money += 5;
+    player.money += 5 + Math.floor(player.caughtPokemons.length / 5);
     updateNavBar();
     startMoneyAnimation();
 }
