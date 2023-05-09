@@ -110,6 +110,9 @@ const xpBarText = document.getElementById("xpBarText");
 // Captured pokemon list
 var caughtPokemons = document.getElementById("pokedex");
 
+
+
+
 const welcomeModalTitle = document.getElementById("welcomeModalTitle");
 let user = document.cookie.split("=")[4];
 welcomeModalTitle.innerHTML = "welcome to pokeclicker " + user + " !";
@@ -266,7 +269,7 @@ var findPokemonId = function (pokemonName) {
 //Loads the new pokemon in the pokemon object given its id
 var updatePokemonObjectFromId = function (id) {
     pokemon.name = pokemonList[id - 1].name;
-    pokemon.baseHP = Math.floor(pokemonList[id - 1].baseHP * hpMultiplier);
+    pokemon.baseHP = Math.floor(pokemonList[id - 1].baseHP * hpMultiplier) + (player.caughtPokemons.length +1) * 8;
     pokemon.baseXP = Math.floor(pokemonList[id - 1].baseXP * xpMultiplier);
     pokemon.hp = pokemon.baseHP;
     pokemon.catchRate = pokemonList[id - 1].catchRate;
@@ -369,7 +372,7 @@ var updatePokemonCounter = function () {
 //Updates all elements in the nav bar
 var updateNavBar = function () {
     levelNav.innerHTML = "level: " + player.level;
-    moneyNav.innerHTML = "money: " + player.money;
+    moneyNav.innerHTML = "money: " + player.money + 'Y';
     damageNav.innerHTML = "click damage: " + player.attacks;
     pokeCount.innerHTML = "pokedex: " + player.pokeCounter + " / " + pokemonList.length;
 }
@@ -404,7 +407,7 @@ var updateHpBar = function () {
 
 //Increase the player money
 var gainMoney = function () {
-    player.money += 1;
+    player.money += 5 + Math.floor(player.caughtPokemons.length / 5);
     updateNavBar();
     startMoneyAnimation();
 }
@@ -458,6 +461,15 @@ var startMoneyAnimation = function () {
     }, 1000);
 }
 
+var startDamageUpAnimation = function () {
+    damageNav.style.animation = "damageUp 1s";
+    damageNav.onanimationiteration = "infinite";
+    setTimeout(function () {
+        damageNav.style.animation = "none";
+        damageNav.onanimationiteration = "none";
+    }, 1000);
+}
+
 //Pokemon shake animation
 var startPokemonShake = function () {
     pokemonSprite.style.animation = "shake 0.5s";
@@ -490,6 +502,23 @@ var startCaptureAnimation = function () {
         pokemonSprite.style.animation = "none";
         pokemonSprite.onanimationiteration = "none";
     }, 1000);
+}
+
+//Money down animation, moves the money counter down
+var startMoneyDownAnimation = function () {
+    moneyNav.style.animation = "moneyDown 1s";
+    moneyNav.onanimationiteration = "infinite";
+    setTimeout(function () {
+        moneyNav.style.animation = "none";
+        moneyNav.onanimationiteration = "none";
+    }, 1000);
+}
+
+//Buy animations
+var buyAnimation = function () {
+    startMoneyDownAnimation();
+    startDamageUpAnimation();
+    updateNavBar();
 }
 
 // Saves the player by writing player to JSON and saving it in localStorage
@@ -711,4 +740,41 @@ $(document).on('click', '#menuTutorialButton', function () {
     $('#menuTutorial').popover('hide');
     activeTutorial = "none";
     allowAttack = true;
+});
+
+//SHOP BUTTONS
+$(document).on('click', '#shopCandy', function () {
+    if(player.money >= 10){
+        player.money -= 10;
+        player.attacks += 1;
+        buyAnimation();
+    }
+});
+$(document).on('click', '#shopPowerWeight', function () {
+    if(player.money >= 50){
+        player.money -= 50;
+        player.attacks += 5;
+        buyAnimation();
+    }
+});
+$(document).on('click', '#shopXAttack', function () {
+    if(player.money >= 150){
+        player.money -= 150;
+        player.attacks += 10;
+        buyAnimation();
+    }
+});
+$(document).on('click', '#shopCalcium', function () {
+    if(player.money >= 300){
+        player.money -= 300;
+        player.attacks += 15;
+        buyAnimation();
+    }
+});
+$(document).on('click', '#shopRareCandy', function () {
+    if(player.money >= 1000){
+        player.money -= 1000;
+        player.attacks += 25;
+        buyAnimation();
+    }
 });

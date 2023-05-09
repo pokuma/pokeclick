@@ -26,16 +26,17 @@
 <body id="body" class="clicked" onload="loadDarkMode()">
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-xl bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-xl bg-dark navbar-dark z-1">
         <div class="container-fluid px-0">
             <div class="row px-0 order-1">
                 <div data-toggle="popover" id="logoTutorial">
                     <a class="nav-link text-center" draggable="false" href="index.html"><img id="navBarLogo"
-                        src="assets/images/logo/logo.png" draggable="false" style="width: 100px;" alt="logo"></a>
-                </div>      
+                            src="assets/images/logo/logo.png" draggable="false" style="width: 100px;" alt="logo"></a>
+                </div>
             </div>
-            
-            <div class="navbar-collapse justify-content-center align-items-center my-3 order-3 order-xl-2" id="collapsibleNavbar">
+
+            <div class="navbar-collapse justify-content-center align-items-center my-3 order-3 order-xl-2"
+                id="collapsibleNavbar">
                 <ul class="navbar-nav text-light text-center">
                     <li data-toggle="popover" id="levelTutorial">
                         <div class="nav-item px-4 py-1" id="level"></div>
@@ -49,7 +50,7 @@
                     <li data-toggle="popover" id="pokedexTutorial">
                         <div class="nav-item px-4 py-1" id="pokeCount"></div>
                     </li>
-                    
+
                 </ul>
             </div>
 
@@ -59,55 +60,62 @@
                         <div data-toggle="popover" id="sliderTutorial">
                             <div class="nightmode-toggle hide-for-small-down align-content-center d-flex">
                                 <i class="fa fa-sun-o text-light"> </i>
-                            <label for="dark-mode-toggle" class="switch" title="Switch control">
-                                <input type="checkbox" id="dark-mode-toggle" onclick="changeDarkMode()" >
-                                <span class="slider round clickable"> </span>
-                            </label>
-                            <i class="fa fa-moon-o text-light"> </i>
+                                <label for="dark-mode-toggle" class="switch" title="Switch control">
+                                    <input type="checkbox" id="dark-mode-toggle" onclick="changeDarkMode()">
+                                    <span class="slider round clickable"> </span>
+                                </label>
+                                <i class="fa fa-moon-o text-light"> </i>
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="col">
                         <div id="startMenu" class="dropdown clearfix clickable">
                             <div data-toggle="popover" id="menuTutorial">
                                 <button class="btn btn-secondary btn-start-menu dropdown-toggle clickable"
-                                type="dropdownMenubutton" data-bs-toggle="dropdown" aria-expanded="false">
-                                start menu
-    
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end clickable bg-dark border border-light">
-                                <li>
-                                    <a draggable="false" class="dropdown-item dropdown-item-start-menu clickable text-light"
-                                        href="options.html">settings</a>
-                                </li>
-                                <hr class="separator" class="text-light">
-                                <li>
-                                    <a draggable="false" class="dropdown-item dropdown-item-start-menu clickable text-light"
-                                        href="faq.html">faq</a>
-                                </li>
-                                <hr class="separator" class="text-light">
-                                <li>
-                                    <a draggable="false" class="dropdown-item dropdown-item-start-menu clickable text-light"
-                                        id="helpMenu" href="#" data-toggle="modal" data-target="#helpModal">help</a>
-                                    <a>
-                                </li>
-                                <hr class="separator" class="text-light">
-                                <li>
-                                    <a id="resetProfileButton" draggable="false" class="dropdown-item dropdown-item-start-menu clickable text-light" href="#">reset profile</a>
-                                </li>
-                                <hr class="separator" class="text-light">
-                                <li>
-                                    <a id="replayTutorialButton" draggable="false" class="dropdown-item dropdown-item-start-menu clickable text-light" href="#">replay tutorial</a>
-                                </li>
-                            </ul>
+                                    type="dropdownMenubutton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    start menu
+
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end clickable bg-dark border border-light">
+                                    <li>
+                                        <a draggable="false"
+                                            class="dropdown-item dropdown-item-start-menu clickable text-light"
+                                            href="options.html">settings</a>
+                                    </li>
+                                    <hr class="separator" class="text-light">
+                                    <li>
+                                        <a draggable="false"
+                                            class="dropdown-item dropdown-item-start-menu clickable text-light"
+                                            href="faq.html">faq</a>
+                                    </li>
+                                    <hr class="separator" class="text-light">
+                                    <li>
+                                        <a draggable="false"
+                                            class="dropdown-item dropdown-item-start-menu clickable text-light"
+                                            id="helpMenu" href="#" data-toggle="modal" data-target="#helpModal">help</a>
+                                        <a>
+                                    </li>
+                                    <hr class="separator" class="text-light">
+                                    <li>
+                                        <a id="resetProfileButton" draggable="false"
+                                            class="dropdown-item dropdown-item-start-menu clickable text-light"
+                                            href="#">reset profile</a>
+                                    </li>
+                                    <hr class="separator" class="text-light">
+                                    <li>
+                                        <a id="replayTutorialButton" draggable="false"
+                                            class="dropdown-item dropdown-item-start-menu clickable text-light"
+                                            href="#">replay tutorial</a>
+                                    </li>
+                                </ul>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </nav>
 
@@ -139,56 +147,135 @@
         </div>
     </div>
 
-    
 
-    <!-- Pokemon Card -->
+
+    <!-- Panels -->
     <div class="container">
-        <div class="row">
-          <div class="col-sm-3 p-3 justify-content-center align-items-center border text-light border-light bg-dark" id="caughtPokemons">
-            <div class="align-items-center">
-                <span class="h2">pokedex</span>
-                <hr>
-                <div id="pokedex" class="justify-content-center align-items-center text-light bg-dark">
+        <div class="row justify-content-center" id="Panels">
 
-                </div>
-            </div><br><br></div>
-          <div class="col-sm-7 justify-content-center">
-            <div class="col-xl-auto">
-              <div class="justify-content-center align-items-center pb-5" id="saveSelector">
-                <div class="justify-content-center row pr-xl-5">
-                  <div class="border border-light bg-dark p-5 pt-0 pb-0" id="pokemonCard">
-                    <div class="popoverclass" data-toggle="popover" id="attackTutorial">
-                      <div class="justify-content-center container row g-0 pt-5 p-3 p-sm-5 ">
-                        <div class="justify-content-center container row g-0 text-light mb-3">
-                          <img id="caught" alt="pokeball"><span id="pokemonName" class="justify-content-center container row g-0 text-light"></span>
-                        </div>
-                        <img draggable="false" id="pokemon" src="" alt="pokemon sprite" tabindex="0">
-                      </div>
-                      <div>
-                        <div class="border border-dark mb-3 g-0 pb-3">
-                          <div class="progress">
-                            <div class="progress-bar progress-bar progress-bar-animated" role="progressbar" id="hpBar" aria-valuemin="0" style="width: 100%;" aria-valuenow="100" aria-valuemax="100"></div>
-                          </div>
-                          <div class="progress mt-3">
-                            <div class="progress-bar progress-bar progress-bar-animated" role="progressbar" id="xpBar" aria-valuemin="0" style="width: 0%;" aria-valuenow="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                        <div id="bars">
-                          <div class="row" id="hpBarText"></div>
-                          <div class="row" id="xpBarText"></div>
-                        </div>
-                      </div>
+            <!-- SHOP -->
+            <div class="col-lg-3 p-3 justify-content-center border text-light border-light bg-dark d-flex order-1 order-lg-0 m-2 m-lg-auto d-flex"
+                id="shopPanel">
+                <div class="align-items-center">
+                    <span class="h2 ml-2">shop</span>
+                    <hr id="shophr">
+                    <div id="shop" class="text-light bg-dark pt-0">
+                        <table class="p-0">
+                            <tr id="shopCandy">
+                                <td>
+                                    <img src="assets/images/shop/yellow.png" alt="image of a pokemon candy">
+                                </td>
+                                <td class="rightColumn">
+                                    +1 dmg
+                                </td>
+                                <td class="rightColumn">
+                                    10Y
+                                </td>
+                            </tr>
+                            <tr id="shopPowerWeight">
+                                <td>
+                                    <img src="assets/images/shop/power-weight.png" alt="image of a pokrmon bracelet">
+                                </td>
+                                <td class="rightColumn">
+                                    +5 dmg
+                                </td>
+                                <td  class="rightColumn">
+                                    50Y
+                                </td>
+                            </tr>
+                            <tr id="shopXAttack">
+                                <td>
+                                    <img src="assets/images/shop/x-attack.png" alt="image of a pokemon x-attack item">
+                                </td>
+                                <td class="rightColumn">
+                                    +10 dmg
+                                </td>
+                                <td class="rightColumn">
+                                    150Y
+                                </td>
+                            </tr>
+                            <tr id="shopCalcium">
+                                <td>
+                                    <img src="assets/images/shop/calcium.png" alt="image of a pokemon calcium item">
+                                </td>
+                                <td class="rightColumn">
+                                    +15 dmg
+                                </td>
+                                <td class="rightColumn">
+                                    300Y
+                                </td>
+                            </tr>
+                            <tr id="shopRareCandy">
+                                <td>
+                                    <img src="assets/images/shop/rare-candy.png" alt="image of a pokemon rare candy">
+                                </td>
+                                <td class="rightColumn">
+                                    +25 dmg
+                                </td>
+                                <td class="rightColumn">
+                                    1000Y
+                                </td>
+                            </tr>
+                        </table>
                     </div>
-                  </div>
-                </div>
-              </div>
+                </div><br><br>
             </div>
-          </div>
+
+            <!-- POKEMON -->
+            <div class="col-lg-6 justify-content-center order-0 order-lg-1">
+                    <div class="justify-content-center align-items-center py-5 py-lg-0" id="mainPanel">
+                        <div class="justify-content-center row">
+                            <div class="border border-light bg-dark p-5 pt-0 pb-0" id="pokemonCard">
+                                <div class="popoverclass" data-toggle="tooltip" id="attackTutorial">
+                                    <div class="justify-content-center container row g-0 pt-5 p-3 p-sm-5 ">
+                                        <div class="justify-content-center container row g-0 text-light mb-3">
+                                            <img id="caught" alt="pokeball"><span id="pokemonName"
+                                                class="justify-content-center container row g-0 text-light"></span>
+                                        </div>
+                                        <img draggable="false" id="pokemon" src="" alt="pokemon sprite" tabindex="0">
+                                    </div>
+                                    <div>
+                                        <div class="border border-dark mb-3 g-0 pb-3">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar progress-bar-animated"
+                                                    role="progressbar" id="hpBar" aria-valuemin="0" style="width: 100%;"
+                                                    aria-valuenow="100" aria-valuemax="100"></div>
+                                            </div>
+                                            <div class="progress mt-3">
+                                                <div class="progress-bar progress-bar progress-bar-animated"
+                                                    role="progressbar" id="xpBar" aria-valuemin="0" style="width: 0%;"
+                                                    aria-valuenow="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                        <div id="bars">
+                                            <div class="row" id="hpBarText"></div>
+                                            <div class="row" id="xpBarText"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+            
+
+            <!-- POKEDEX -->
+            <div class="col-lg-3 p-3 justify-content-center align-items-center border text-light border-light bg-dark order-2 m-2 m-lg-auto"
+                id="caughtPokemons">
+                <div class="align-items-center">
+                    <span class="h2 ml-2">pokedex</span>
+                    <hr>
+                    <div id="pokedex" class="justify-content-center align-items-center text-light bg-dark">
+
+                    </div>
+                </div><br><br>
+            </div>
         </div>
-      </div>
-      
-    
-        <!-- Map 
+    </div>
+
+
+    <!-- Map 
         <div class="col-xl-auto">
             <div class="justify-content-center align-items-center pb-5" id="saveSelector">
                 <div class="justify-content-center row justify-content-xl-start pl-xl-5">
@@ -199,7 +286,7 @@
         </div>
         -->
     </div>
-    
+
     <!-- TUTORIAL -->
     <div class="modal" id="welcomeModal" role="dialog">
         <div class="modal-dialog" role="document">
@@ -212,23 +299,25 @@
                 <div class="modal-body">
                     <p>
                         this is a game where your goal is to catch all the 151 pokemon.
-                        
+
                     </p>
                     <p>
-                        everytime a pokemon is defeated, a pokeball is automatically thrown, and the pokemon will have a chance to be caught.
-                        
+                        everytime a pokemon is defeated, a pokeball is automatically thrown, and the pokemon will have a
+                        chance to be caught.
+
                     </p>
                     <p>
-                        each pokemon has a different catch rate, so you will probably have to defeat some pokemon multiple times to catch it.
-                        
+                        each pokemon has a different catch rate, so you will probably have to defeat some pokemon
+                        multiple times to catch it.
+
                     </p>
                     <br>
                     <p>
-                    <b>
-                        press any key to or the "next" button to continue.
-                    </b>
+                        <b>
+                            press any key to or the "next" button to continue.
+                        </b>
                     </p>
-                
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" id="welcomeTutorialButton">next</button>
