@@ -37,7 +37,7 @@
 
             <div class="navbar-collapse justify-content-center align-items-center my-3 order-3 order-xl-2"
                 id="collapsibleNavbar">
-                <ul class="navbar-nav text-light text-center">
+                <ul class="navbar-nav text-light text-center" tabindex="0">
                     <li data-toggle="popover" id="levelTutorial">
                         <div class="nav-item px-4 py-1" id="level"></div>
                     </li>
@@ -70,9 +70,9 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div id="startMenu" class="dropdown clearfix clickable">
+                        <div  class="dropdown clearfix clickable">
                             <div data-toggle="popover" id="menuTutorial">
-                                <button class="btn btn-secondary btn-start-menu dropdown-toggle clickable"
+                                <button class="btn btn-start-menu dropdown-toggle clickable text-light" id="startMenu"
                                     type="dropdownMenubutton" data-bs-toggle="dropdown" aria-expanded="false">
                                     start menu
 
@@ -83,7 +83,7 @@
                                             class="dropdown-item dropdown-item-start-menu clickable text-light"
                                             href="options.html">settings</a>
                                     </li>
-                                    <hr class="separator" class="text-light">
+                                    <hr class="separator" class="text-light" >
                                     <li>
                                         <a draggable="false"
                                             class="dropdown-item dropdown-item-start-menu clickable text-light"
@@ -160,10 +160,10 @@
                     <span class="h2 ml-2">shop</span>
                     <hr id="shophr">
                     <div id="shop" class="text-light bg-dark pt-0">
-                        <table class="p-0">
-                            <tr id="shopCandy">
+                        <table class="p-0" aria-label="shop items">
+                            <tr id="shopCandy" tabindex="0">
                                 <td>
-                                    <img src="assets/images/shop/yellow.png" alt="image of a pokemon candy">
+                                    <img src="assets/images/shop/yellow.png" alt="candy">
                                 </td>
                                 <td class="rightColumn">
                                     +1 dmg
@@ -172,9 +172,9 @@
                                     10Y
                                 </td>
                             </tr>
-                            <tr id="shopPowerWeight">
+                            <tr id="shopPowerWeight" tabindex="0">
                                 <td>
-                                    <img src="assets/images/shop/power-weight.png" alt="image of a pokrmon bracelet">
+                                    <img src="assets/images/shop/power-weight.png" alt="bracelet">
                                 </td>
                                 <td class="rightColumn">
                                     +5 dmg
@@ -183,9 +183,9 @@
                                     50Y
                                 </td>
                             </tr>
-                            <tr id="shopXAttack">
+                            <tr id="shopXAttack" tabindex="0">
                                 <td>
-                                    <img src="assets/images/shop/x-attack.png" alt="image of a pokemon x-attack item">
+                                    <img src="assets/images/shop/x-attack.png" alt="x-attack">
                                 </td>
                                 <td class="rightColumn">
                                     +10 dmg
@@ -194,9 +194,9 @@
                                     150Y
                                 </td>
                             </tr>
-                            <tr id="shopCalcium">
+                            <tr id="shopCalcium" tabindex="0">
                                 <td>
-                                    <img src="assets/images/shop/calcium.png" alt="image of a pokemon calcium item">
+                                    <img src="assets/images/shop/calcium.png" alt="calcium">
                                 </td>
                                 <td class="rightColumn">
                                     +15 dmg
@@ -205,9 +205,9 @@
                                     300Y
                                 </td>
                             </tr>
-                            <tr id="shopRareCandy">
+                            <tr id="shopRareCandy" tabindex="0">
                                 <td>
-                                    <img src="assets/images/shop/rare-candy.png" alt="image of a pokemon rare candy">
+                                    <img src="assets/images/shop/rare-candy.png" alt="rare candy">
                                 </td>
                                 <td class="rightColumn">
                                     +25 dmg
@@ -262,14 +262,14 @@
 
             <!-- POKEDEX -->
             <div class="col-lg-3 p-3 justify-content-center align-items-center border text-light border-light bg-dark order-2 m-2 m-lg-auto"
-                id="caughtPokemons">
+                id="caughtPokemons" >
                 <div class="align-items-center">
                     <span class="h2 ml-2">pokedex</span>
                     <hr>
-                    <div id="pokedex" class="justify-content-center align-items-center text-light bg-dark">
+                    <div id="pokedex" class="justify-content-center align-items-center text-light bg-dark" tabindex="0" role="scrollbar" aria-label="pokedex">
 
                     </div>
-                </div><br><br>
+                </div>
             </div>
         </div>
     </div>

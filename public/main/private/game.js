@@ -31,7 +31,7 @@ let activeTutorial = "none";
 let allowAttack = true;
 let attackInterval = 1000;
 
-export let animationsOn = true;
+let animationsOn = true;
 
 if(debugMode){
     if(debugPause){
@@ -136,7 +136,29 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 attack();
             }
         }
-        
+
+        if (event.code == "Space" || event.code == "Enter") {
+            if(event.target == document.getElementById("shopCandy")){
+                event.preventDefault();
+                buyCandy();
+            }
+            if(event.target == document.getElementById("shopPowerWeight")){
+                event.preventDefault();
+                buyPowerWeight();
+            }
+            if(event.target == document.getElementById("shopXAttack")){
+                event.preventDefault();
+                buyXAttack();
+            }
+            if(event.target == document.getElementById("shopCalcium")){
+                event.preventDefault();
+                buyCalcium();
+            }
+            if(event.target == document.getElementById("shopRareCandy")){
+                event.preventDefault();
+                buyRareCandy();
+            }
+        }
     });
 
     window.addEventListener('keyup', event => {
@@ -744,37 +766,57 @@ $(document).on('click', '#menuTutorialButton', function () {
 
 //SHOP BUTTONS
 $(document).on('click', '#shopCandy', function () {
-    if(player.money >= 10){
-        player.money -= 10;
-        player.attacks += 1;
-        buyAnimation();
-    }
+    buyCandy();
 });
 $(document).on('click', '#shopPowerWeight', function () {
-    if(player.money >= 50){
-        player.money -= 50;
-        player.attacks += 5;
-        buyAnimation();
-    }
+    buyPowerWeight();
 });
 $(document).on('click', '#shopXAttack', function () {
-    if(player.money >= 150){
-        player.money -= 150;
-        player.attacks += 10;
-        buyAnimation();
-    }
+    buyXAttack();
 });
 $(document).on('click', '#shopCalcium', function () {
-    if(player.money >= 300){
-        player.money -= 300;
-        player.attacks += 15;
-        buyAnimation();
-    }
+    buyCalcium();
 });
 $(document).on('click', '#shopRareCandy', function () {
-    if(player.money >= 1000){
+    buyRareCandy();
+});
+
+function buyRareCandy() {
+    if (player.money >= 1000) {
         player.money -= 1000;
         player.attacks += 25;
         buyAnimation();
     }
-});
+}
+
+function buyCalcium() {
+    if (player.money >= 300) {
+        player.money -= 300;
+        player.attacks += 15;
+        buyAnimation();
+    }
+}
+
+function buyXAttack() {
+    if (player.money >= 150) {
+        player.money -= 150;
+        player.attacks += 10;
+        buyAnimation();
+    }
+}
+
+function buyPowerWeight() {
+    if (player.money >= 50) {
+        player.money -= 50;
+        player.attacks += 5;
+        buyAnimation();
+    }
+}
+
+function buyCandy() {
+    if (player.money >= 10) {
+        player.money -= 10;
+        player.attacks += 1;
+        buyAnimation();
+    }
+}
