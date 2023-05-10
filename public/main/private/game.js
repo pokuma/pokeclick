@@ -129,7 +129,7 @@ welcomeModalTitle.innerHTML = "welcome to pokeclicker " + user + " !";
 */
 document.addEventListener("DOMContentLoaded", function (e) {
     
-    window.addEventListener('keydown', event => {
+    window.addEventListener('keyup', event => {
         // Add event listener to the pokemon image to attack when spacebar/enter is pressed
         
         if(event.target == document.getElementById("pokemon")) {
@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     window.addEventListener('keyup', event => {
         //Check if any tutorial is active and if it is, hide it and show the next one
-        if(event.keyCode !== 9){
+        if(event.code == "KeyF"){
             progressTutorial();
         }
         
