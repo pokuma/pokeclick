@@ -18,6 +18,8 @@ let debugAttackInterval = 1; //Sets the attack interval to "x"ms
 //  =====   END DEBUG   =====
 
 
+
+
 // Game settings for debugging purposes
 let startingRequiredXP = 10;
 
@@ -583,6 +585,7 @@ var resetConfirmed = function () {
 }
 
 //keypress controls for the tutorial
+
 var progressTutorial = function () {
     if(activeTutorial=="welcomeModal"){
         $('#welcomeModal').modal('hide');
@@ -590,6 +593,7 @@ var progressTutorial = function () {
         setTimeout(function () {
             activeTutorial = "attackTutorial";
         }, 20);
+        
     }
     if(activeTutorial=="attackTutorial"){
         $('#attackTutorial').popover('hide');
@@ -663,8 +667,15 @@ var progressTutorial = function () {
     }
 }
 
+
+
+
 //Start tutorial
 var showTutorial = function () {
+    
+
+    
+    
     if(activeTutorial=="none"){
         activeTutorial = "welcomeModal"
         allowAttack = false;
@@ -679,6 +690,9 @@ var showTutorial = function () {
             content: 'clicking the sprite of the pokemon will deal damage. <br>try it!<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="attackTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
             trigger: 'manual',
         });
+        
+        
+        
         $('#shopTutorial').popover({
             placement: 'right',
             title: 'Shop',
@@ -686,32 +700,42 @@ var showTutorial = function () {
             content: 'here you can buy different items to increase your damage<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="shopTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
             trigger: 'manual',
         });
+        
+        $('#shopTutorial').popover({
+            placement: 'right',
+            title: 'Shop',
+            html: true,
+            content: 'here you can buy different items to increase your damage<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="shopTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
+            trigger: 'manual',
+            container: 'body'
+        });
+        
         $('#pokedexListTutorial').popover({
             placement: 'right',
             title: 'Pokedex',
             html: true,
-            content: 'this is a list of the pokemon you have captured already<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="pokedexListTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
+            content: 'this is a list of the pokemon you have captured already<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="pokedexListTutorialButton"  class="btn btn-secondary text-light">next</a></div></div>',
             trigger: 'manual',
         });
         $('#logoTutorial').popover({
             placement: 'bottom',
             title: 'Home Screen',
             html: true,
-            content: 'clicking on the logo will take you back to the home screen.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="logoTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
+            content: 'clicking on the logo will take you back to the home screen.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="logoTutorialButton"  class="btn btn-secondary text-light">next</a></div></div>',
             trigger: 'manual',
         });
         $('#levelTutorial').popover({
             placement: 'bottom',
             title: 'Level',
             html: true,
-            content: 'this is your level, the higher the level the more damage you do.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="levelTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
+            content: 'this is your level, the higher the level the more damage you do.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="levelTutorialButton"  class="btn btn-secondary text-light">next</a></div></div>',
             trigger: 'manual',
         });
         $('#moneyTutorial').popover({
             placement: 'bottom',
             title: 'Money',
             html: true,
-            content: 'this is your money, you can use it to buy upgrades.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="moneyTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
+            content: 'this is your money, you can use it to buy upgrades.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="moneyTutorialButton"  class="btn btn-secondary text-light">next</a></div></div>',
             trigger: 'manual',
         });
         $('#clickDamageTutorial').popover({
@@ -744,65 +768,95 @@ var showTutorial = function () {
         });
 
         $('#welcomeModal').modal('show');
+
+    
+        
     }
 }
+
+
 
 //Tutorial Buttons Sequence Control
 $(document).on('click', '#welcomeTutorialButton', function () {
     $('#welcomeModal').modal('hide');
     $('#attackTutorial').popover('show');
     activeTutorial = "attackTutorial";
+    var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+    popover[0].setAttribute("tabindex", "0");
+    
 });
 $(document).on('click', '#attackTutorialButton', function () {
     $('#attackTutorial').popover('hide');
     $('#shopTutorial').popover('show');
     activeTutorial = "shopTutorial";
+    var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+    popover[0].setAttribute("tabindex", "0");
+    
 });
 $(document).on('click', '#shopTutorialButton', function () {
     $('#shopTutorial').popover('hide');
     $('#pokedexListTutorial').popover('show');
     activeTutorial = "pokedexListTutorial";
+    var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+    popover[0].setAttribute("tabindex", "0");
 });
 $(document).on('click', '#pokedexListTutorialButton', function () {
     $('#pokedexListTutorial').popover('hide');
     $('#logoTutorial').popover('show');
     activeTutorial = "logoTutorial";
+    var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+    popover[0].setAttribute("tabindex", "0");
 });
 $(document).on('click', '#logoTutorialButton', function () {
     $('#logoTutorial').popover('hide');
     $('#levelTutorial').popover('show');
     activeTutorial = "levelTutorial";
+    var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+    popover[0].setAttribute("tabindex", "0");
 });
 $(document).on('click', '#levelTutorialButton', function () {
     $('#levelTutorial').popover('hide');
     $('#moneyTutorial').popover('show');
     activeTutorial = "moneyTutorial";
+    var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+    popover[0].setAttribute("tabindex", "0");
 });
 $(document).on('click', '#moneyTutorialButton', function () {
     $('#moneyTutorial').popover('hide');
     $('#clickDamageTutorial').popover('show');
     activeTutorial = "clickDamageTutorial";
+    var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+    popover[0].setAttribute("tabindex", "0");
 });
 $(document).on('click', '#clickDamageTutorialButton', function () {
     $('#clickDamageTutorial').popover('hide');
     $('#pokedexTutorial').popover('show');
     activeTutorial = "pokedexTutorial";
+    var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+    popover[0].setAttribute("tabindex", "0");
 });
 $(document).on('click', '#pokedexTutorialButton', function () {
     $('#pokedexTutorial').popover('hide');
     $('#sliderTutorial').popover('show');
     activeTutorial = "sliderTutorial";
+    var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+    popover[0].setAttribute("tabindex", "0");
 });
 $(document).on('click', '#sliderTutorialButton', function () {
     $('#sliderTutorial').popover('hide');
     $('#menuTutorial').popover('show');
     activeTutorial = "menuTutorial";
+    var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+    popover[0].setAttribute("tabindex", "0");
 });
 $(document).on('click', '#menuTutorialButton', function () {
     $('#menuTutorial').popover('hide');
     activeTutorial = "none";
     allowAttack = true;
+    var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+    popover[0].setAttribute("tabindex", "0");
 });
+
 
 //SHOP BUTTONS
 $(document).on('click', '#shopCandy', function () {
@@ -860,3 +914,4 @@ function buyCandy() {
         buyAnimation();
     }
 }
+
