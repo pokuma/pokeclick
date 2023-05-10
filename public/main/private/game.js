@@ -665,84 +665,86 @@ var progressTutorial = function () {
 
 //Start tutorial
 var showTutorial = function () {
-    activeTutorial = "welcomeModal"
-    allowAttack = false;
-    $('#welcomeModal').modal({
-        backdrop: 'static',
-        keyboard: false,
-    });
-    $('#attackTutorial').popover({
-        placement: 'right',
-        title: 'Attack',
-        html: true,
-        content: 'clicking the sprite of the pokemon will deal damage. <br>try it!<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="attackTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
-        trigger: 'manual',
-    });
-    $('#shopTutorial').popover({
-        placement: 'right',
-        title: 'Shop',
-        html: true,
-        content: 'here you can buy different items to increase your damage<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="shopTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
-        trigger: 'manual',
-    });
-    $('#pokedexListTutorial').popover({
-        placement: 'right',
-        title: 'Pokedex',
-        html: true,
-        content: 'this is a list of the pokemon you have captured already<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="pokedexListTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
-        trigger: 'manual',
-    });
-    $('#logoTutorial').popover({
-        placement: 'bottom',
-        title: 'Home Screen',
-        html: true,
-        content: 'clicking on the logo will take you back to the home screen.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="logoTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
-        trigger: 'manual',
-    });
-    $('#levelTutorial').popover({
-        placement: 'bottom',
-        title: 'Level',
-        html: true,
-        content: 'this is your level, the higher the level the more damage you do.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="levelTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
-        trigger: 'manual',
-    });
-    $('#moneyTutorial').popover({
-        placement: 'bottom',
-        title: 'Money',
-        html: true,
-        content: 'this is your money, you can use it to buy upgrades.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="moneyTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
-        trigger: 'manual',
-    });
-    $('#clickDamageTutorial').popover({
-        placement: 'bottom',
-        title: 'Click Damage',
-        html: true,
-        content: 'this is your click damage, it indicates how much damage you do when you click on the pokemon.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="clickDamageTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
-        trigger: 'manual',
-    });
-    $('#pokedexTutorial').popover({
-        placement: 'bottom',
-        title: 'Pokedex',
-        html: true,
-        content: 'this is your pokedex, it shows how many pokemon you have caught.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="pokedexTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
-        trigger: 'manual',
-    });
-    $('#sliderTutorial').popover({
-        placement: 'bottom',
-        title: 'Dark Mode',
-        html: true,
-        content: 'this is a slider, it shows whether you have activated dark mode or not.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="sliderTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
-        trigger: 'manual',
-    });
-    $('#menuTutorial').popover({
-        placement: 'bottom',
-        title: 'Menu',
-        html: true,
-        content: 'this is the menu. here you will find on option to replay this tutorial if needed, among other useful stuff. <br><br> if you have any questions, it is probably answered in the <b>faq</b> page here.<br><br>now go ahead and have fun!<br><br><div class="row"><div class="col-4"></div><div class="col-8"><a id="menuTutorialButton" class="btn btn-secondary text-light">end tutorial</a></div></div>',
-        trigger: 'manual',
-    });
+    if(activeTutorial=="none"){
+        activeTutorial = "welcomeModal"
+        allowAttack = false;
+        $('#welcomeModal').modal({
+            backdrop: 'static',
+            keyboard: false,
+        });
+        $('#attackTutorial').popover({
+            placement: 'right',
+            title: 'Attack',
+            html: true,
+            content: 'clicking the sprite of the pokemon will deal damage. <br>try it!<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="attackTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
+            trigger: 'manual',
+        });
+        $('#shopTutorial').popover({
+            placement: 'right',
+            title: 'Shop',
+            html: true,
+            content: 'here you can buy different items to increase your damage<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="shopTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
+            trigger: 'manual',
+        });
+        $('#pokedexListTutorial').popover({
+            placement: 'right',
+            title: 'Pokedex',
+            html: true,
+            content: 'this is a list of the pokemon you have captured already<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="pokedexListTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
+            trigger: 'manual',
+        });
+        $('#logoTutorial').popover({
+            placement: 'bottom',
+            title: 'Home Screen',
+            html: true,
+            content: 'clicking on the logo will take you back to the home screen.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="logoTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
+            trigger: 'manual',
+        });
+        $('#levelTutorial').popover({
+            placement: 'bottom',
+            title: 'Level',
+            html: true,
+            content: 'this is your level, the higher the level the more damage you do.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="levelTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
+            trigger: 'manual',
+        });
+        $('#moneyTutorial').popover({
+            placement: 'bottom',
+            title: 'Money',
+            html: true,
+            content: 'this is your money, you can use it to buy upgrades.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="moneyTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
+            trigger: 'manual',
+        });
+        $('#clickDamageTutorial').popover({
+            placement: 'bottom',
+            title: 'Click Damage',
+            html: true,
+            content: 'this is your click damage, it indicates how much damage you do when you click on the pokemon.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="clickDamageTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
+            trigger: 'manual',
+        });
+        $('#pokedexTutorial').popover({
+            placement: 'bottom',
+            title: 'Pokedex',
+            html: true,
+            content: 'this is your pokedex, it shows how many pokemon you have caught.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="pokedexTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
+            trigger: 'manual',
+        });
+        $('#sliderTutorial').popover({
+            placement: 'bottom',
+            title: 'Dark Mode',
+            html: true,
+            content: 'this is a slider, it shows whether you have activated dark mode or not.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="sliderTutorialButton" class="btn btn-secondary text-light">next</a></div></div>',
+            trigger: 'manual',
+        });
+        $('#menuTutorial').popover({
+            placement: 'bottom',
+            title: 'Menu',
+            html: true,
+            content: 'this is the menu. here you will find on option to replay this tutorial if needed, among other useful stuff. <br><br> if you have any questions, it is probably answered in the <b>faq</b> page here.<br><br>now go ahead and have fun!<br><br><div class="row"><div class="col-4"></div><div class="col-8"><a id="menuTutorialButton" class="btn btn-secondary text-light">end tutorial</a></div></div>',
+            trigger: 'manual',
+        });
 
-    $('#welcomeModal').modal('show');
+        $('#welcomeModal').modal('show');
+    }
 }
 
 //Tutorial Buttons Sequence Control
@@ -761,7 +763,7 @@ $(document).on('click', '#shopTutorialButton', function () {
     $('#pokedexListTutorial').popover('show');
     activeTutorial = "pokedexListTutorial";
 });
-$(document).on('click', '#pokedexListTutorial', function () {
+$(document).on('click', '#pokedexListTutorialButton', function () {
     $('#pokedexListTutorial').popover('hide');
     $('#logoTutorial').popover('show');
     activeTutorial = "logoTutorial";
