@@ -165,7 +165,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     window.addEventListener('keyup', event => {
         //Check if any tutorial is active and if it is, hide it and show the next one
-        progressTutorial();
+        if(event.keyCode !== 9){
+            progressTutorial();
+        }
+        
+        
 
     });
     
@@ -593,6 +597,8 @@ var progressTutorial = function () {
         setTimeout(function () {
             activeTutorial = "attackTutorial";
         }, 20);
+        var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+        popover[0].setAttribute("tabindex", "0");
         
     }
     if(activeTutorial=="attackTutorial"){
@@ -601,6 +607,8 @@ var progressTutorial = function () {
         setTimeout(function () {
             activeTutorial = "shopTutorial";
         }, 20);
+        var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+        popover[0].setAttribute("tabindex", "0");
     }
     if(activeTutorial=="shopTutorial"){
         $('#shopTutorial').popover('hide');
@@ -608,6 +616,8 @@ var progressTutorial = function () {
         setTimeout(function () {
             activeTutorial = "pokedexListTutorial";
         }, 20);
+        var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+        popover[0].setAttribute("tabindex", "0");
     }
     if(activeTutorial=="pokedexListTutorial"){
         $('#pokedexListTutorial').popover('hide');
@@ -615,6 +625,8 @@ var progressTutorial = function () {
         setTimeout(function () {
             activeTutorial = "logoTutorial";
         }, 20);
+        var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+        popover[0].setAttribute("tabindex", "0");
     }
     if(activeTutorial=="logoTutorial"){
         $('#logoTutorial').popover('hide');
@@ -622,6 +634,8 @@ var progressTutorial = function () {
         setTimeout(function () {
             activeTutorial = "levelTutorial";
         }, 20);
+        var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+        popover[0].setAttribute("tabindex", "0");
     }
     if(activeTutorial=="levelTutorial"){
         $('#levelTutorial').popover('hide');
@@ -629,6 +643,8 @@ var progressTutorial = function () {
         setTimeout(function () {
             activeTutorial = "moneyTutorial";
         }, 20);
+        var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+        popover[0].setAttribute("tabindex", "0");
     }
     if(activeTutorial=="moneyTutorial"){
         $('#moneyTutorial').popover('hide');
@@ -636,6 +652,8 @@ var progressTutorial = function () {
         setTimeout(function () {
             activeTutorial = "clickDamageTutorial";
         }, 20);
+        var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+        popover[0].setAttribute("tabindex", "0");
     }
     if(activeTutorial=="clickDamageTutorial"){
         $('#clickDamageTutorial').popover('hide');
@@ -643,6 +661,8 @@ var progressTutorial = function () {
         setTimeout(function () {
             activeTutorial = "pokedexTutorial";
         }, 20);
+        var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+        popover[0].setAttribute("tabindex", "0");
     }
     if(activeTutorial=="pokedexTutorial"){
         $('#pokedexTutorial').popover('hide');
@@ -650,6 +670,8 @@ var progressTutorial = function () {
         setTimeout(function () {
             activeTutorial = "sliderTutorial";
         }, 20);
+        var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+        popover[0].setAttribute("tabindex", "0");
     }
     if(activeTutorial=="sliderTutorial"){
         $('#sliderTutorial').popover('hide');
@@ -657,6 +679,8 @@ var progressTutorial = function () {
         setTimeout(function () {
             activeTutorial = "menuTutorial";
         }, 20);
+        var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+        popover[0].setAttribute("tabindex", "0");
     }
     if(activeTutorial=="menuTutorial"){
         $('#menuTutorial').popover('hide');
@@ -664,6 +688,8 @@ var progressTutorial = function () {
             activeTutorial = "none";
         }, 20);
         allowAttack = true;
+        var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
+        popover[0].setAttribute("tabindex", "0");
     }
 }
 
