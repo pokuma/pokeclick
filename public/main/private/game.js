@@ -763,7 +763,7 @@ $(document).on('click', '#shopTutorialButton', function () {
     $('#pokedexListTutorial').popover('show');
     activeTutorial = "pokedexListTutorial";
 });
-$(document).on('click', '#pokedexListTutorial', function () {
+$(document).on('click', '#pokedexListTutorialButton', function () {
     $('#pokedexListTutorial').popover('hide');
     $('#logoTutorial').popover('show');
     activeTutorial = "logoTutorial";
