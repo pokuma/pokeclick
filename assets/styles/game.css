@@ -1,191 +1,41 @@
-h1 { 
-    font-size:20px;
-}
- 
-#shophr{
-    margin-bottom: 0px;
-}
+/* This file contains all the styles used in the game. 
+    The styles are divided in sections, each section is separated by a comment starting with "/*?".
+    You can use the search function [ctrl + f] to navigate to the section you want.
+    The sections are: 
+    + General styles
+    + Navbar
+    + Panels
+    + Pokemon panel
+    + Shop panel
+    + Pokedex
+    + Map (not implemented)
+    + Animations
+*/
 
-/*Pokedex scroll bar*/
-    /* width */
-    div ::-webkit-scrollbar {
-        width: 15px;
-    }
-    
-    /* Track */
-    div ::-webkit-scrollbar-track {
-        box-shadow: inset 50px 0 5px rgb(70, 70, 70);; 
-        border-radius: 10px;
-    }
-    
-    /* Handle */
-    div ::-webkit-scrollbar-thumb {
-        background: white; 
-        border-radius: 10px;
-    }
-    
-    /* Handle on hover */
-    div ::-webkit-scrollbar-thumb:hover {
-        background: grey; 
-    }
+/*? ===== GENERAL STYLES ===== */
 
-#Panels{
-    margin-top: 60px;
+h1 {
+    font-size: 20px;
 }
 
-#caught{
-    width: 30px;
-    height: 30px;
+.row {
+    margin: 0;
+    padding: 0;
 }
 
-#pokemon {
-    border: 1px solid white;
-    border-radius: 20px;
-    margin-bottom: 15px;
-    animation: cursor 1s infinite;
-}
+/*? ===== NAVBAR ===== */
 
-#pokemon:hover,
-#pokemon:focus {
-    transform: translateY(0.1em);
-    background-color: rgb(0, 0, 0);
-    box-shadow: 1px 1px 10px 1px white;
-}
-
-#caughtPokemons,
-#shopPanel {
-    background-color: #fff;
-    border-radius: 10px;
-    height: 535px;
-    max-width: 325px;
-    min-width: none;
-}
-
-
-#shop table{
-    border-collapse: separate;
-    border-spacing: 0px 20px;
-}
-
-#shop table tr:hover,
-#shop table tr:focus{
-    background-color: rgb(0, 0, 0);
-    transform: translateY(-0.25em);
-}
-
-#shop table tr:active{
-    transform: translateY(0.1em);
-}
-
-#shop table tr td img{
-    width: 48px;
-}
-
-table{
-    height: 430px;
-}
-
-tr{
-    background-color: #404a4d;
-    height: 65px;
-}
-
-td:first-child,
-th:first-child {
-  border-radius: 40px 0 0 40px;
-  padding-left: 10px;
-  padding-right: 5px;
-}
-
-td:last-child,
-th:last-child {
-  border-radius: 0 40px 40px 0;
-    padding-right: 18px;
-}
-
-.rightColumn {
-    text-align: center;
-    padding-left: 10px;
-}
-
-#pokedex {
-    float: left;
-    background-color: #fff;
-    width: 100%;
-    overflow-y: auto;
-    height: 430px;
-    border-radius: 5px;
-}
-
-#pokemonName {
-    font-family: 'PEPgenius10', sans-serif;
-    font-size: x-large;
-    height: 40px;
-}
-
-#pokemonCard {
-    width: 400px;
-    border-radius: 20px;
-    background-color: rgb(51, 51, 51, 0.9);
-}
-
-#mapImage{
-    width: 656px;
-    height: auto;
-}
-
-#bars{
-    height: 0px;
-}
-
-#hpBarText {
-    position: relative;
-    justify-content: center;
-    bottom: 121px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-#xpBarText {
-    position: relative;
-    justify-content: center;
-    bottom: 91px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.progress>#hpBar {
-    height: 70px;
-    width: 250px;
-    accent-color: green;
-    background-color: green;
-}
-
-.progress>#xpBar {
-    height: 70px;
-    width: 250px;
-}
-
-.progress {
-    height: 40px;
-    width: 100%;
-    background-color: #ffffff;
-    border-radius: 100px;
-}
-
-#startMenu,
-#navBarLogo {
+#navBarLogo,
+#startMenu {
     background-color: #404a4d;
     color: #fff;
     border-radius: 5px;
 }
 
-#startMenu:hover,
-#startMenu:focus,
 #navBarLogo:hover,
 #navBarLogo:focus,
-#pokedex:hover,
-#pokedex:focus {
+#startMenu:hover,
+#startMenu:focus {
     transform: translateY(-0.1em);
     background-color: rgb(0, 0, 0);
     border: 1px solid white;
@@ -202,12 +52,194 @@ th:last-child {
     color: white;
 }
 
-.row{
-    margin: 0;
-    padding: 0;
-}
-/* Shake style animation, for now its used on the pokemons only when the player attacks them. */
+/*? ===== PANELS ===== */
 
+#Panels {
+    margin-top: 60px;
+}
+
+#pokemonCard {
+    width: 400px;
+    border-radius: 20px;
+    background-color: rgb(51, 51, 51, 0.9);
+}
+
+#caughtPokemons,
+#shopPanel {
+    background-color: #fff;
+    border-radius: 10px;
+    height: 535px;
+    max-width: 325px;
+    min-width: none;
+}
+
+/*? ===== POKEMON PANEL ===== */
+
+#caught {
+    width: 30px;
+    height: 30px;
+}
+
+#pokemonName {
+    font-family: 'PEPgenius10', sans-serif;
+    font-size: x-large;
+    height: 40px;
+}
+
+#pokemon {
+    border: 1px solid white;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    animation: cursor 1s infinite;
+}
+
+#pokemon:hover,
+#pokemon:focus {
+    transform: translateY(0.1em);
+    background-color: rgb(0, 0, 0);
+    box-shadow: 1px 1px 10px 1px white;
+}
+
+#bars {
+    height: 0px;
+}
+
+#hpBarText {
+    position: relative;
+    justify-content: center;
+    bottom: 121px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.progress>#hpBar {
+    height: 70px;
+    width: 250px;
+    accent-color: green;
+    background-color: green;
+}
+
+#xpBarText {
+    position: relative;
+    justify-content: center;
+    bottom: 91px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.progress>#xpBar {
+    height: 70px;
+    width: 250px;
+}
+
+.progress {
+    height: 40px;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 100px;
+}
+
+/*? ===== SHOP PANEL ===== */
+
+#shophr {
+    margin-bottom: 0px;
+}
+
+#shop table {
+    border-collapse: separate;
+    border-spacing: 0px 20px;
+    height: 430px;
+}
+
+#shop table tr {
+    background-color: #404a4d;
+    height: 65px;
+}
+
+#shop table tr:hover,
+#shop table tr:focus {
+    background-color: rgb(0, 0, 0);
+    transform: translateY(-0.25em);
+}
+
+#shop table tr:active {
+    transform: translateY(0.1em);
+}
+
+#shop table tr td:first-child,
+#shop table tr th:first-child {
+    border-radius: 40px 0 0 40px;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#shop table tr td:last-child,
+#shop table tr th:last-child {
+    border-radius: 0 40px 40px 0;
+    padding-right: 18px;
+}
+
+#shop table tr td img {
+    width: 48px;
+}
+
+.rightColumn {
+    text-align: center;
+    padding-left: 10px;
+}
+
+/*? ===== POKEDEX ===== */
+
+#pokedex {
+    float: left;
+    background-color: #fff;
+    width: 100%;
+    overflow-y: auto;
+    height: 430px;
+    border-radius: 5px;
+}
+
+#pokedex:hover,
+#pokedex:focus {
+    transform: translateY(-0.1em);
+    background-color: rgb(0, 0, 0);
+    border: 1px solid white;
+}
+
+/*Pokedex scroll bar*/
+/* width */
+div ::-webkit-scrollbar {
+    width: 15px;
+}
+
+/* Track */
+div ::-webkit-scrollbar-track {
+    box-shadow: inset 50px 0 5px rgb(70, 70, 70);
+    ;
+    border-radius: 10px;
+}
+
+/* Handle */
+div ::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+div ::-webkit-scrollbar-thumb:hover {
+    background: grey;
+}
+
+/*? ===== MAP (NOT IMPLEMENTED) ===== */
+
+#mapImage {
+    width: 656px;
+    height: auto;
+}
+
+/*? ===== ANIMATIONS ===== */
+
+/* Shake style animation, for now its used on the pokemons only when the player attacks them. */
 @keyframes shake {
     0% {
         transform: translate(1px, 1px) rotate(0deg);
@@ -254,71 +286,87 @@ th:last-child {
     }
 }
 
-@keyframes rotate{
+@keyframes rotate {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
 }
 
-@keyframes levelUp{
+@keyframes levelUp {
     0% {
         transform: translate(0px, 0px);
-        color:rgb(40, 172, 248);
+        color: rgb(40, 172, 248);
     }
+
     50% {
         transform: translate(0px, -5px);
     }
-    100% {
-        transform: translate(0px, 0px);
-    }
-}@keyframes moneyUp{
-    0% {
-        transform: translate(0px, 0px);
-        color:yellow;
-    }
-    50% {
-        transform: translate(0px, -5px);
-    }
-    100% {
-        transform: translate(0px, 0px);
-    }
-}@keyframes damageUp{
-    0% {
-        transform: translate(0px, 0px);
-        color:rgb(31, 201, 187);
-    }
-    50% {
-        transform: translate(0px, -5px);
-    }
-    100% {
-        transform: translate(0px, 0px);
-    }
-}@keyframes pokedexUp{
-    0% {
-        transform: translate(0px, 0px);
-        color:rgb(255, 174, 0);
-    }
-    50% {
-        transform: translate(0px, -5px);
-    }
-    100% {
-        transform: translate(0px, 0px);
-    }
-}@keyframes moneyDown{
-    0% {
-        transform: translate(0px, 0px);
-        color:red;
-    }
-    50% {
-        transform: translate(0px, 5px);
-    }
+
     100% {
         transform: translate(0px, 0px);
     }
 }
 
+@keyframes moneyUp {
+    0% {
+        transform: translate(0px, 0px);
+        color: yellow;
+    }
 
+    50% {
+        transform: translate(0px, -5px);
+    }
 
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes damageUp {
+    0% {
+        transform: translate(0px, 0px);
+        color: rgb(31, 201, 187);
+    }
+
+    50% {
+        transform: translate(0px, -5px);
+    }
+
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes pokedexUp {
+    0% {
+        transform: translate(0px, 0px);
+        color: rgb(255, 174, 0);
+    }
+
+    50% {
+        transform: translate(0px, -5px);
+    }
+
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes moneyDown {
+    0% {
+        transform: translate(0px, 0px);
+        color: red;
+    }
+
+    50% {
+        transform: translate(0px, 5px);
+    }
+
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
