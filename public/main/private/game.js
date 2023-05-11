@@ -688,8 +688,6 @@ var progressTutorial = function () {
             activeTutorial = "none";
         }, 20);
         allowAttack = true;
-        var popover = document.getElementsByClassName("popover bs-popover-auto fade show");
-        popover[0].setAttribute("tabindex", "0");
     }
 }
 
