@@ -23,6 +23,12 @@
     border: 1px solid white;
 }
 
+.panel:focus{
+    background-color: #989999;
+    border-color: white;
+    border: 1px solid white;
+}
+
 .active,
 .accordion:hover {
     background-color: #394047;
