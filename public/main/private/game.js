@@ -826,7 +826,7 @@ var showTutorial = function () {
             placement: 'bottom',
             title: 'Money',
             html: true,
-            content: 'this is your money, you can use it to buy upgrades.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="moneyTutorialButton"  class="btn btn-secondary text-light">next</a></div></div>',
+            content: 'this is your money, you can use it to buy upgrades in the shop.<br><div class="row"><div class="col-8"></div><div class="col-4"><a id="moneyTutorialButton"  class="btn btn-secondary text-light">next</a></div></div>',
             trigger: 'manual',
         });
         $('#clickDamageTutorial').popover({
