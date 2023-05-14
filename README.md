@@ -1,15 +1,13 @@
 # Pokeclick
-pokeclicker repository for user interface group project
-
 ## Link
 [GitHub Pages](https://pokuma.github.io/pokeclick/)
 
 ## Group C - Members
-Antonio Ortega Santaolalla
-Edgar Antonio Álvarez González
-Carlos Domínguez Enríquez
-Víctor Madrona Cisneros
-Ignacio José García García
+Antonio Ortega Santaolalla<br>
+Edgar Antonio Álvarez González<br>
+Carlos Domínguez Enríquez<br>
+Víctor Madrona Cisneros<br>
+Ignacio José García García<br>
 
 ## Description
 Our project consists of a web application that allows the user to play a game similar to the famous Cookie Clicker, but with a Pokémon theme. The game consists of clicking on Pokémon to defeat them to gain money, xp, and have a chance to catch the pokemon. Money can then be used to buy items that give you more damage. The game does not have an end, but the main objective is to catch all the 151 Pokémon in the Kanto Pokédex.
@@ -25,9 +23,11 @@ The features and different pages that we have implemented are:
 * A FAQ page with some insights on the game
 
 ## Technologies
+<p>
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt= “html” width="40" height="40">
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt= “css” width="40" height="40">
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt= “javascript” width="40" height="40">
+</p>
 
 ## Images
 <img src="assets/images/readmeimg/index.png" alt="index page" width="640" height="360">
