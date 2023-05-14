@@ -36,6 +36,5 @@ The features and different pages that we have implemented are:
 </p>
 
 ## Images
-<img src="/assets/images/readmeimg/index.PNG" alt="index page" width="640" height="360">
-<hr>
-<img src="/assets/images/readmeimg/game.PNG" alt="game page" width="1080" height="540">
+<img src="/assets/images/readmeimg/index.PNG" alt="index page" width="320" height="180">
+<img src="/assets/images/readmeimg/game.PNG" alt="game page" width="640" height="308">
