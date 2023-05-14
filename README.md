@@ -9,6 +9,12 @@
 * **Víctor Madrona Cisneros**<br>
 * **Ignacio José García García**<br>
 
+## How to run the project
+* Clone the repository
+* Open the project folder in Visual Studio Code
+* Install the Live Server extension
+* Right click on the index.html file and click on "Open with Live Server" or click on the "Go Live" button on the bottom right corner of the window
+
 ## Description
 Our project consists of a web application that allows the user to play a game similar to the famous Cookie Clicker, but with a Pokémon theme. The game consists of clicking on Pokémon to defeat them to gain money, xp, and have a chance to catch the pokemon. Money can then be used to buy items that give you more damage. The game does not have an end, but the main objective is to catch all the 151 Pokémon in the Kanto Pokédex.
 The features and different pages that we have implemented are:
