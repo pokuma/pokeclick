@@ -3,11 +3,11 @@
 [GitHub Pages](https://pokuma.github.io/pokeclick/)
 
 ## Group C - Members
-Antonio Ortega Santaolalla<br>
-Edgar Antonio Álvarez González<br>
-Carlos Domínguez Enríquez<br>
-Víctor Madrona Cisneros<br>
-Ignacio José García García<br>
+* **Antonio Ortega Santaolalla**<br>
+* **Edgar Antonio Álvarez González**<br>
+* **Carlos Domínguez Enríquez**<br>
+* **Víctor Madrona Cisneros**<br>
+* **Ignacio José García García**<br>
 
 ## Description
 Our project consists of a web application that allows the user to play a game similar to the famous Cookie Clicker, but with a Pokémon theme. The game consists of clicking on Pokémon to defeat them to gain money, xp, and have a chance to catch the pokemon. Money can then be used to buy items that give you more damage. The game does not have an end, but the main objective is to catch all the 151 Pokémon in the Kanto Pokédex.
@@ -30,6 +30,6 @@ The features and different pages that we have implemented are:
 </p>
 
 ## Images
-<img src="/assets/images/readmeimg/index.png" alt="index page" width="640" height="360">
+<img src="/assets/images/readmeimg/index.PNG" alt="index page" width="640" height="360">
 <hr>
-<img src="/assets/images/readmeimg/game.png" alt="game page" width="1080" height="640"
+<img src="/assets/images/readmeimg/game.PNG" alt="game page" width="1080" height="540">
