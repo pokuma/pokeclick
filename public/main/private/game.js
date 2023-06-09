@@ -194,7 +194,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById("pokemon").addEventListener("click", function () {
         attack();
     });
-    
     if (localStorage.getItem("player") !== null) {
         loadPlayer();
         xpBar.ariaValueNow = player.xp;
@@ -359,6 +358,7 @@ var pokemonDies = function () {
                     savePlayer();
                 }
                 spawnPokemon();
+
             }, 1000);
         }
         if(animationsOn == false){
@@ -368,10 +368,14 @@ var pokemonDies = function () {
                 savePlayer();
             }
             spawnPokemon();
+            console.log(localStorage.getItem("player"));
+
         }
         
     }
     else {
+        console.log(localStorage.getItem("player"));
+
         savePlayer();
         spawnPokemon();
     }
@@ -398,6 +402,7 @@ var updateHpBar = function () {
         hpBar.classList = "progress-bar progress-bar progress-bar-animated bg-danger";
     }
 }
+
 
 //Updates the xp bar
 var updateXpBar = function () {
@@ -629,6 +634,17 @@ function buyCandy() {
 // Saves the player by writing player to JSON and saving it in localStorage
 var savePlayer = function () {
     localStorage.setItem("player", JSON.stringify(player));
+    let playerList = JSON.parse(localStorage.getItem("playerList"));
+    for (let i = 0; i < playerList.length; i++) {
+        if (playerList[i].name === player.name) {
+            playerList[i] = player;
+            localStorage.setItem("playerList", JSON.stringify(playerList));
+            return;
+        }
+    }
+
+    playerList.push(player);
+    localStorage.setItem("playerList", JSON.stringify(playerList));
 };
 
 // Loads the player from localStorage

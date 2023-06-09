@@ -7,8 +7,6 @@ function validateForm() {
     const passwordInput = document.getElementById("passwords");
     const reppasswordInput = document.getElementById("reppasswords");
 
-   
-
 
     if (nameInput.value === "" || emailInput.value === "" || passwordInput.value === "") {
         alert("Por favor, rellene todos los campos requeridos.");
@@ -23,7 +21,30 @@ function validateForm() {
     let user = "";
     user = "user=" + nameInput.value;
     document.cookie = "user=" + user.toLowerCase();
-    
+    let player = {
+        name: nameInput.value,
+        email: emailInput.value,
+        password: passwordInput.value,
+        nextLevelXP: 100,
+        xp: 0,
+        level: 1,
+        money: 0,
+        attacks: 5,
+        pokeCounter: 0,
+        caughtPokemons: [],
+   }
+    let playerList = [];
+    if(localStorage.getItem("playerList") != null){
+        playerList = JSON.parse(localStorage.getItem("playerList"));
+        playerList.push(player);
+        localStorage.setItem("playerList", JSON.stringify(playerList));
+    }else{
+        playerList.push(player);
+        localStorage.setItem("playerList", JSON.stringify(playerList));
+    }
+
+    localStorage.setItem("player", JSON.stringify(player));
+        
     
     
     return showCorrectRegisterModal();

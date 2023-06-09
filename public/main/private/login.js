@@ -7,8 +7,23 @@ function validateForm() {
         alert("Por favor, rellene todos los campos requeridos.");
         return false;
     }
-    alert("Logeo en la cuenta \"" + emailInput.value + "\" con exito!");
-    return true;
+    let playerList = JSON.parse(localStorage.getItem("playerList"));
+    console.log(playerList);
+    for (let i = 0; i < playerList.length; i++) {
+        if (playerList[i].email === emailInput.value) {
+            if (playerList[i].password === passwordInput.value) {
+                localStorage.setItem("player", JSON.stringify(playerList[i]));
+                alert("Logeo en la cuenta \"" + emailInput.value + "\" con exito!");
+                return true;
+            }else{
+                alert("Contraseña incorrecta.");
+                return false;
+            }
+        }
+    }
+
+    alert("No se ha encontrado ninguna cuenta con el email \"" + emailInput.value + "\".");
+    return false;
 }
 
 function forgetPasswordPopup() {
