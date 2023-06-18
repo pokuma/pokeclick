@@ -46,21 +46,21 @@
     <img draggable="false"  src="assets\images\options\settings.png" alt="Options" width="250" style="display: block;  margin: 50px auto 0; padding-bottom:30px">
     <div class="form-register bg-secondary">
         <form onsubmit="return validateForm()" action="game.html" method="get">
-                <label for="sound"><b>Master volume :</b> </label>
+                <label for="sound" style="color: white;"><b>Master volume :</b> </label>
                     <input type="range" id="sound" name="sound" min="0" max="100" value="50" style="display: block;  margin: 5px auto 0;"><br>
         
-                    <label for="music"><b>Music volume :</b></label>
+                    <label for="music" style="color: white;"><b>Music volume :</b></label>
                     <input type="range" id="music" name="music" min="0" max="100" value="50" style="display: block;  margin: 5px auto 0;"><br>
         
-                    <label for="graphics"><b>Graphic quality :</b></label>
+                    <label for="graphics" style="color: white;"><b>Graphic quality :</b></label>
                     <select id="graphics" name="graphics" style="descent-override: 5px">
                         <option value="low">Low</option>
                         <option value="medium">Medium</option>
                         <option value="high">High</option>
                     </select><br><br>
-                    <label for="animations"><b>Animations :</b></label>
+                    <label for="animations" style="color: white;"><b>Animations :</b></label>
                     <input type="checkbox" id="animations" name="animations" style="margin: 5px auto 0;" onclick="toggleAnimations()">
-               <input title="submit" class="submitRegister bg-primary" type="submit" value="Submit" style="margin: 25px auto 0; color: white;">
+               <input title="submit" class="submitRegister bg-primary" type="submit" value="Submit" style="margin: 25px auto 0; color: white; background-color: #004fc5;">
         </form>
     </div>
     <script src="public/main/private/script.js"></script>
