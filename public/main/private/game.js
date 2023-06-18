@@ -97,6 +97,9 @@ let player = {
 const yellowZone = 0.65;
 const redZone = 0.3;
 
+// Player user Nav
+let userNav = document.getElementById("user");
+
 // Player level Nav
 let levelNav = document.getElementById("level");
 
@@ -422,6 +425,7 @@ var updatePokemonCounter = function () {
 
 //Updates all elements in the nav bar
 var updateNavBar = function () {
+    userNav.innerHTML = "user: " + JSON.parse(localStorage.getItem("player")).name;
     levelNav.innerHTML = "level: " + player.level;
     moneyNav.innerHTML = "money: " + player.money + 'Y';
     damageNav.innerHTML = "click damage: " + player.attacks;
