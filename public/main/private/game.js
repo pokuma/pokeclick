@@ -528,8 +528,8 @@ var listCaughtPokemons = function()
     
     for (let i = 0; i < player.caughtPokemons.length; i++) {
         var pokemon = player.caughtPokemons[i];
-        var image = '<img src="assets/images/pokemon/' + findPokemonId(pokemon) + '.png" draggable="false" style="height: 40px;" alt="Caught pokemon icons">';
-        text += image + " " + player.caughtPokemons[i]  + "<br>";
+        var image = '<img src="assets/images/pokemon/' + findPokemonId(pokemon) + '.png" draggable="false" style="height: 40px;">';
+        text += image + " " + player.caughtPokemons[i] + '<br>';
     }
 
     caughtPokemons.innerHTML = text;

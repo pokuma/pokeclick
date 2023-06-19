@@ -1,11 +1,49 @@
 
-showCorrectRegisterModal();
+//showCorrectRegisterModal();
+
+const nameInput = document.getElementById("nicknames");
+const emailInput = document.getElementById("emails");
+const passwordInput = document.getElementById("passwords");
+const reppasswordInput = document.getElementById("reppasswords");
+
+const iconPerson = document.getElementById('icon-person');
+const iconEmail = document.getElementById('icon-email');
+const iconPassword = document.getElementById('icon-lock');
+const iconRepPassword = document.getElementById('icon-refresh');
+
+nameInput.addEventListener('input', function() {
+    if (nameInput.value !== "") {
+        iconPerson.style.color = '';
+    } else {
+        iconPerson.style.color = 'red';
+    }
+});
+
+emailInput.addEventListener('input', function() {
+    if (emailInput.value !== "") {
+        iconEmail.style.color = '';
+    } else {
+        iconEmail.style.color = 'red';
+    }
+});
+
+passwordInput.addEventListener('input', function() {
+    if (passwordInput.value !== "") {
+        iconPassword.style.color = '';
+    } else {
+        iconPassword.style.color = 'red';
+    }
+});
+
+reppasswordInput.addEventListener('input', function() {
+    if (reppasswordInput.value !== "") {
+        iconRepPassword.style.color = '';
+    } else {
+        iconRepPassword.style.color = 'red';
+    }
+});
 
 function validateForm() {
-    const nameInput = document.getElementById("nicknames");
-    const emailInput = document.getElementById("emails");
-    const passwordInput = document.getElementById("passwords");
-    const reppasswordInput = document.getElementById("reppasswords");
 
     if (nameInput.value === "" || emailInput.value === "" || passwordInput.value === "") {
         alert("Por favor, rellene todos los campos requeridos.");
