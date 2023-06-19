@@ -1,6 +1,26 @@
+const emailInput = document.getElementById("emails");
+const passwordInput = document.getElementById("passwords");
+const iconEmail = document.getElementById('icon-email');
+const iconPassword = document.getElementById('icon-password');
+
+emailInput.addEventListener('input', function() {
+if (emailInput.value !== "") {
+    iconEmail.style.color = ''; // Change the color to your desired color
+} else {
+    iconEmail.style.color = 'red'; // Revert to the default color
+}
+});
+
+passwordInput.addEventListener('input', function() {
+    if (passwordInput.value !== "") {
+        iconPassword.style.color = ''; // Change the color to your desired color
+    } else {
+        iconPassword.style.color = 'red'; // Revert to the default color
+    }
+    });
+
 function validateForm() {
-    const emailInput = document.getElementById("emails");
-    const passwordInput = document.getElementById("passwords");
+    
 
 
     if (emailInput.value === "" || passwordInput.value === "") {
