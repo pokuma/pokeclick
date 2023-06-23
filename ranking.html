@@ -13,16 +13,21 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <script src="https://example.com/fontawesome/v5.15.4/js/all.js" data-auto-a11y="true"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link href="assets/styles/styles.css" media="all" rel="stylesheet" type="text/css" />
 
     <link href="assets/styles/ranking.css" media="all" rel="stylesheet" type="text/css" />
+
+    <script>
+        function start () {
+            loadDarkMode();
+            reloadRanking();
+        }
+    </script>
 </head>
 
-<body id="body" onload="loadDarkMode()">
+<body id="body" onload="start()" >
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container-fluid">
             <a class="nav-link" draggable="false" href="index.html"><img id="navBarLogo"
@@ -30,7 +35,7 @@
 
             <a class="nav-link" draggable="false" href="game.html"><img id="navBarLogo"
                     src="assets/images/faq/BackToGame.png" draggable="false"
-                    style="width: 250px; padding-left: 25px; padding-right: 25px;" alt="logo"></a>
+                    style="width: 300px; padding-left: 0px; padding-right: 25px;" alt="logo"></a>
 
             <div class="row">
                 <div class="col">
@@ -47,7 +52,7 @@
         </div>
     </nav>
     <h1>
-        <img draggable="false" src="assets\images\ranking\ranking.png" alt="Options" width="100"
+        <img draggable="false" src="assets\images\ranking\ranking.png" alt="Options" width="170"
             style="display: block;  margin: 50px auto 0; padding-bottom:30px">
     </h1>
     <div class="table-container">
@@ -60,11 +65,7 @@
                     <th class="rank">Rank</th>
                     <th class="updown"></th>
                     <th class="name">Name</th>
-                    <th class="tier">Tier</th>
-                    <th class="level">
-                        <i class="fas fa-sort-amount-down"></i>
-                        Level
-                    </th>
+                    <th class="level">Level</th>
                     <th class="pokedex">
                         <i class="fas fa-sort-amount-down"></i>
                         Pokedex
@@ -72,221 +73,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="rank">
-                        <img src="//cdn.lolchess.gg/images/leaderboards/ico-rank-1.svg?2" alt="">
-                    </td>
-                    <td class="updown">
-                        <div
-                            style="display: inline-flex; background-color: #646464; border-radius: 8px; width: 8px; height: 2px;">
-                        </div>
-                    </td>
-                    <td class="user">
-                        <span class="rank">#1</span>
-                        Nacho
-                    </td>
-                    <td class="tier">
-                        <img src="//cdn.lolchess.gg/images/lol/tier/2022/diamond.png" class="icon" alt="Tier Icon">
-                        <span class="tier-name-sm">
-                            DIAMOND
-                        </span>
-                        <span class="tier-name-xxs">
-
-                        </span>
-                    </td>
-                    <td class="levelactive">
-                        3
-                    </td>
-                    <td class="pokedexactive">
-                        36.2%
-                </tr>
-                <tr>
-                    <td class="rank">
-                        <img src="//cdn.lolchess.gg/images/leaderboards/ico-rank-2.svg?2" alt="">
-                    </td>
-                    <td class="updown">
-                        <div
-                            style="display: inline-flex; background-color: #646464; border-radius: 8px; width: 8px; height: 2px;">
-                        </div>
-                    </td>
-                    <td class="summoner">
-
-                        <span class="rank">#2</span>
-
-                        Victor
-
-                    </td>
-                    <td class="tier">
-                        <img src="//cdn.lolchess.gg/images/lol/tier/2022/platinum.png" class="icon" alt="Tier Icon">
-                        <span class="tier-name-sm">
-                            PLATINUM
-                        </span>
-
-                    </td>
-                    <td class="levelactive">
-                        2
-                    </td>
-                    <td class="pokedexactive">
-                        32.6%
-                </tr>
-                <tr>
-                    <td class="rank">
-                        <img src="//cdn.lolchess.gg/images/leaderboards/ico-rank-3.svg?2" alt="">
-                    </td>
-                    <td class="updown">
-                        <div
-                            style="display: inline-flex; background-color: #646464; border-radius: 8px; width: 8px; height: 2px;">
-                        </div>
-                    </td>
-                    <td class="summoner">
-
-                        <span class="rank">#3</span>
-
-                        Andrea
-
-                    </td>
-                    <td class="tier">
-                        <img src="//cdn.lolchess.gg/images/lol/tier/2022/gold.png" class="icon" alt="Tier Icon">
-                        <span class="tier-name-sm">
-                            GOLD
-                        </span>
-
-                    </td>
-                    <td class="levelactive">
-                        1
-                    </td>
-                    <td class="pokedexactive">
-                        28.9%
-                </tr>
-                <tr>
-                    <td class="rank">
-                        4
-                    </td>
-                    <td class="updown">
-                        <div
-                            style="display: inline-flex; background-color: #646464; border-radius: 8px; width: 8px; height: 2px;">
-                        </div>
-                    </td>
-                    <td class="summoner">
-
-                        <span class="rank">#4</span>
-
-                        Pep
-
-                    </td>
-                    <td class="tier">
-                        <img src="//cdn.lolchess.gg/images/lol/tier/2022/silver.png" class="icon" alt="Tier Icon">
-                        <span class="tier-name-sm">
-                            SILVER
-                        </span>
-
-                    </td>
-                    <td class="levelactive">
-                        1
-                    </td>
-                    <td class="pokedexactive">
-                        23.3%
-                </tr>
-                <tr>
-                    <td class="rank">
-                        4
-                    </td>
-                    <td class="updown">
-                        <div
-                            style="display: inline-flex; background-color: #646464; border-radius: 8px; width: 8px; height: 2px;">
-                        </div>
-                    </td>
-                    <td class="summoner">
-
-                        <span class="rank">#4</span>
-
-                        Pep
-
-                    </td>
-                    <td class="tier">
-                        <img src="//cdn.lolchess.gg/images/lol/tier/2022/silver.png" class="icon" alt="Tier Icon">
-                        <span class="tier-name-sm">
-                            SILVER
-                        </span>
-
-                    </td>
-                    <td class="levelactive">
-                        1
-                    </td>
-                    <td class="pokedexactive">
-                        23.3%
-                </tr>
-                <tr>
-                    <td class="rank">
-                        4
-                    </td>
-                    <td class="updown">
-                        <div
-                            style="display: inline-flex; background-color: #646464; border-radius: 8px; width: 8px; height: 2px;">
-                        </div>
-                    </td>
-                    <td class="summoner">
-
-                        <span class="rank">#4</span>
-
-                        Pep
-
-                    </td>
-                    <td class="tier">
-                        <img src="//cdn.lolchess.gg/images/lol/tier/2022/silver.png" class="icon" alt="Tier Icon">
-                        <span class="tier-name-sm">
-                            SILVER
-                        </span>
-
-                    </td>
-                    <td class="levelactive">
-                        1
-                    </td>
-                    <td class="pokedexactive">
-                        23.3%
-                </tr>
-                <tr>
-                    <td class="rank">
-                        4
-                    </td>
-                    <td class="updown">
-                        <div
-                            style="display: inline-flex; background-color: #646464; border-radius: 8px; width: 8px; height: 2px;">
-                        </div>
-                    </td>
-                    <td class="summoner">
-
-                        <span class="rank">#4</span>
-
-                        Pep
-
-                    </td>
-                    <td class="tier">
-                        <img src="//cdn.lolchess.gg/images/lol/tier/2022/silver.png" class="icon" alt="Tier Icon">
-                        <span class="tier-name-sm">
-                            SILVER
-                        </span>
-
-                    </td>
-                    <td class="levelactive">
-                        1
-                    </td>
-                    <td class="pokedexactive">
-                        23.3%
-                </tr>
 
             </tbody>
         </table>
         
     </div>
 
-
-    <script src="public/main/private/script.js"></script>
-
-    <script src="public/main/private/ranking.js"></script>
     <!--Ion icons-->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script defer src="public/main/private/script.js"></script>
+    <script defer src="public/main/private/login.js"></script>
+    <script defer src="public/main/private/ranking.js"></script>
 </body>
 
 </html>
