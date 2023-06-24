@@ -46,15 +46,15 @@ reppasswordInput.addEventListener('input', function() {
 function validateForm() {
 
     if (nameInput.value === "" || emailInput.value === "" || passwordInput.value === "") {
-        alert("Por favor, rellene todos los campos requeridos.");
+        alert("Complete all the fields marked with an asterisk");
         return false;
     }
 
     if (passwordInput.value != reppasswordInput.value) {
-        alert("Las contraseñas no coinciden.");
+        alert("The passwords do not match");
         return false;
     }
-    alert("Cuenta \"" + nameInput.value + "\" creada con exito!");
+    alert("Account \"" + nameInput.value + "\" has been successfully created!");
     let user = "";
     user = "user=" + nameInput.value;
     document.cookie = "user=" + user.toLowerCase();

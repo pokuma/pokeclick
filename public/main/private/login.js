@@ -24,7 +24,7 @@ function validateForm() {
 
 
     if (emailInput.value === "" || passwordInput.value === "") {
-        alert("Por favor, rellene todos los campos requeridos.");
+        alert("Complete all the fields marked with an asterisk");
         return false;
     }
     let playerList = JSON.parse(localStorage.getItem("playerList"));
@@ -33,16 +33,16 @@ function validateForm() {
         if (playerList[i].email === emailInput.value) {
             if (playerList[i].password === passwordInput.value) {
                 localStorage.setItem("player", JSON.stringify(playerList[i]));
-                alert("Logeo en la cuenta \"" + emailInput.value + "\" con exito!");
+                alert("Login in the account \"" + emailInput.value + "\" success!");
                 return true;
             }else{
-                alert("Contraseña incorrecta.");
+                alert("Incorrect password.");
                 return false;
             }
         }
     }
 
-    alert("No se ha encontrado ninguna cuenta con el email \"" + emailInput.value + "\".");
+    alert("There is no account with the email\"" + emailInput.value + "\".");
     return false;
 }
 
