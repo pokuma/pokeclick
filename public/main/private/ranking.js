@@ -23,6 +23,7 @@ function reloadRanking() {
 
         var rankCell = document.createElement("td");
         rankCell.textContent = i+1;
+        rankCell.tabIndex = 0;
         row.appendChild(rankCell);
 
         var updownCell = document.createElement("td");
@@ -32,14 +33,17 @@ function reloadRanking() {
 
         var nameCell = document.createElement("td");
         nameCell.textContent = player.name;
+        nameCell.tabIndex = 0;
         row.appendChild(nameCell);
 
         var levelCell = document.createElement("td");
         levelCell.textContent = player.level;
+        levelCell.tabIndex = 0;
         row.appendChild(levelCell);
 
         var pokedexCell = document.createElement("td");
         pokedexCell.textContent = player.pokeCounter + "/151 - (" + Math.trunc((player.pokeCounter/151)*100) + "%)";
+        pokedexCell.tabIndex = 0;
         row.appendChild(pokedexCell);
 
         // Agregar la fila a la tabla
