@@ -130,6 +130,8 @@ h1 {
 .progress>#xpBar {
     height: 70px;
     width: 250px;
+    accent-color: #0d9afd;
+    background-color: #0d9afd;
 }
 
 .progress {
