@@ -672,6 +672,7 @@ var resetConfirmed = function () {
     alert("You have reset your profile!");
 
     player = {
+        name: player.name,
         nextLevelXP: startingRequiredXP,
         xp: 0,
         level: 1,
